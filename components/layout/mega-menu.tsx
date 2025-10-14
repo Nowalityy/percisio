@@ -98,12 +98,12 @@ export function MegaMenu() {
             {
               title: 'Case Studies',
               description: 'Real-world success stories',
-              href: '/case-studies',
+              href: '/insights/case-studies',
             },
             {
               title: 'Blog',
               description: 'Latest news and insights',
-              href: '/blog',
+              href: '/insights/blog',
             },
           ],
         },
