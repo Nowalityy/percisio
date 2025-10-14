@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "project": "Le Projet",
+    "procedure": "La Procédure",
+    "technology": "La Technologie",
+    "videos": "Vidéos",
+    "documentation": "Documentation",
+    "contact": "Contact",
+    "features": "Fonctionnalités",
+    "caseStudies": "Études de Cas",
+    "blog": "Blog",
+    "about": "À Propos",
+    "team": "Équipe",
+    "faq": "FAQ",
+    "solutions": "Solutions",
+    "resources": "Ressources",
+    "company": "Entreprise"
+  },
+  "hero": {
+    "tagline": "une nouvelle norme pour la médecine",
+    "title": "Percisio",
+    "subtitle": "PERCISIO est une solution de pointe conçue pour simplifier les procédures médicales",
+    "description": "Système d'assistance médicale alimenté par vision par ordinateur qui soutient les praticiens dans diverses applications médicales",
+    "cta": {
+      "primary": "Commencer",
+      "secondary": "Voir les Études de Cas",
+      "demo": "Demander une Démo"
+    }
+  },
+  "features": {
+    "title": "Fonctionnalités Clés",
+    "subtitle": "Technologie médicale avancée à portée de main",
+    "tracking": {
+      "title": "Suivi des Instruments",
+      "description": "Suit les instruments médicaux pendant les procédures avec précision"
+    },
+    "lightweight": {
+      "title": "Léger et Mobile",
+      "description": "Solution portable utilisable partout"
+    },
+    "userFriendly": {
+      "title": "Facile à Utiliser",
+      "description": "Interface intuitive conçue pour les professionnels de santé"
+    },
+    "compatible": {
+      "title": "Multi-Outils Compatible",
+      "description": "Fonctionne avec les sondes échographiques, aiguilles cliniques et plus"
+    },
+    "interventional": {
+      "title": "Applications Polyvalentes",
+      "description": "Supporte la médecine interventionnelle et non-interventionnelle"
+    },
+    "vision": {
+      "title": "Vision par Ordinateur",
+      "description": "Alimenté par une technologie de vision par ordinateur avancée"
+    }
+  },
+  "applications": {
+    "title": "Applications Médicales",
+    "subtitle": "Soutien de diverses procédures médicales",
+    "controls": "Contrôles",
+    "percutaneous": "Interventions Percutanées",
+    "biopsy": "Biopsie",
+    "infiltration": "Infiltration",
+    "puncture": "Ponction",
+    "drainage": "Drainage"
+  },
+  "footer": {
+    "description": "Percisio - Une nouvelle norme pour la médecine. Système d'assistance médicale avancé alimenté par vision par ordinateur.",
+    "product": "Produit",
+    "company": "Entreprise",
+    "legal": "Légal",
+    "followUs": "Suivez-Nous",
+    "allRightsReserved": "Tous droits réservés",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions d'Utilisation",
+    "cookiePolicy": "Politique des Cookies"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "getStarted": "Commencer",
+    "contactUs": "Nous Contacter",
+    "readMore": "Lire Plus",
+    "viewAll": "Tout Voir",
+    "backToHome": "Retour à l'Accueil"
+  },
+  "home": {
+    "badge": "Approuvé par plus de 500 hôpitaux dans le monde",
+    "title": "Réalisez vos interventions avec une précision absolue",
+    "subtitle": "Une visualisation 3D alimentée par l'IA et la réalité augmentée pour réduire les risques, gagner du temps et améliorer les résultats des patients.",
+    "ctaPrimary": "Réserver une Démo",
+    "ctaSecondary": "Découvrir comment ça marche",
+    "stats": {
+      "hospitals": "Hôpitaux dans le Monde",
+      "surgeries": "Chirurgies Réussies",
+      "uptime": "Disponibilité du Système",
+      "support": "Support Expert"
+    },
+    "featuresTitle": "Précision à Chaque Étape",
+    "featuresSubtitle": "Notre plateforme complète combine une technologie de pointe avec un design intuitif pour améliorer les résultats chirurgicaux et la sécurité des patients.",
+    "features": {
+      "aiVisualization": {
+        "title": "Visualisation Alimentée par l'IA",
+        "description": "Algorithmes d'apprentissage automatique avancés pour la reconnaissance anatomique en temps réel et le guidage chirurgical."
+      },
+      "surgicalPrecision": {
+        "title": "Précision Chirurgicale",
+        "description": "Précision sub-millimétrique avec superposition de réalité augmentée pour les procédures complexes."
+      },
+      "collaboration": {
+        "title": "Collaboration en Temps Réel",
+        "description": "Connectez les équipes chirurgicales dans le monde entier avec streaming à faible latence et outils d'annotation."
+      },
+      "holographic": {
+        "title": "Affichage Holographique 3D",
+        "description": "Visualisation immersive de l'anatomie du patient avec perception de profondeur et conscience spatiale."
+      },
+      "hipaa": {
+        "title": "Conforme HIPAA",
+        "description": "Sécurité de niveau entreprise avec cryptage de bout en bout et certifications de conformité."
+      },
+      "latency": {
+        "title": "Latence Ultra-Faible",
+        "description": "Traitement en temps réel inférieur à 50 ms pour une navigation chirurgicale réactive."
+      }
+    },
+    "ctaTitle": "Prêt à Transformer Votre Pratique Chirurgicale?",
+    "ctaDescription": "Rejoignez des centaines d'hôpitaux et d'institutions de santé de premier plan qui utilisent Percisio pour offrir de meilleurs résultats aux patients."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "project": "The Project",
+    "procedure": "The Procedure",
+    "technology": "The Technology",
+    "videos": "Videos",
+    "documentation": "Documentation",
+    "contact": "Contact",
+    "features": "Features",
+    "caseStudies": "Case Studies",
+    "blog": "Blog",
+    "about": "About",
+    "team": "Team",
+    "faq": "FAQ",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "company": "Company"
+  },
+  "hero": {
+    "tagline": "a new standard for medicine",
+    "title": "Percisio",
+    "subtitle": "PERCISIO is a cutting-edge solution designed to simplify medical procedures",
+    "description": "Computer vision-powered medical assistance system that supports practitioners in various medical applications",
+    "cta": {
+      "primary": "Schedule a Live Demo",
+      "secondary": "View Case Studies",
+      "demo": "Schedule a Live Demo"
+    }
+  },
+  "features": {
+    "title": "Key Features",
+    "subtitle": "Advanced medical technology at your fingertips",
+    "tracking": {
+      "title": "Instrument Tracking",
+      "description": "Tracks medical instruments during procedures with precision"
+    },
+    "lightweight": {
+      "title": "Lightweight & Mobile",
+      "description": "Portable solution that can be used anywhere"
+    },
+    "userFriendly": {
+      "title": "User-Friendly",
+      "description": "Intuitive interface designed for medical professionals"
+    },
+    "compatible": {
+      "title": "Multi-Tool Compatible",
+      "description": "Works with ultrasound probes, clinical needles, and more"
+    },
+    "interventional": {
+      "title": "Versatile Applications",
+      "description": "Supports interventional and non-interventional medicine"
+    },
+    "vision": {
+      "title": "Computer Vision",
+      "description": "Powered by advanced computer vision technology"
+    }
+  },
+  "applications": {
+    "title": "Medical Applications",
+    "subtitle": "Supporting various medical procedures",
+    "controls": "Controls",
+    "percutaneous": "Percutaneous Interventions",
+    "biopsy": "Biopsy",
+    "infiltration": "Infiltration",
+    "puncture": "Puncture",
+    "drainage": "Drainage"
+  },
+  "footer": {
+    "description": "Percisio - A new standard for medicine. Advanced computer vision-powered medical assistance system.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "followUs": "Follow Us",
+    "allRightsReserved": "All rights reserved",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Schedule a Live Demo",
+    "contactUs": "Contact Us",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "backToHome": "Back to Home"
+  },
+  "home": {
+    "badge": "Trusted by over 500 hospitals worldwide",
+    "title": "Precision Guidance for Every Image-Guided Procedure",
+    "subtitle": "Percisio turns CT, MRI, and ultrasound data into real-time holographic road-maps, empowering clinicians to reach targets with <3 mm accuracy while cutting procedure times by up to 40%.",
+    "ctaPrimary": "Schedule a Live Demo",
+    "ctaSecondary": "See How It Works",
+    "stats": {
+      "hospitals": "Hospitals Worldwide",
+      "surgeries": "Successful Surgeries",
+      "uptime": "System Uptime",
+      "support": "Expert Support"
+    },
+    "featuresTitle": "Precision at Every Step",
+    "featuresSubtitle": "Our comprehensive platform combines cutting-edge technology with intuitive design to enhance surgical outcomes and patient safety.",
+    "features": {
+      "precision": {
+        "title": "Precision",
+        "description": "≤ 2 mm mean guidance error on needle trajectory (measured on test bench or anatomical phantom)."
+      },
+      "prepTime": {
+        "title": "Preparation Time",
+        "description": "< 3 minutes between power on and complete calibration (observed on user workflow)."
+      },
+      "rxReduction": {
+        "title": "Reduction of RX Exposure",
+        "description": "– 40% fewer control images needed. Immediate clinical impact: less radiation, smoother procedures."
+      }
+    },
+    "ctaTitle": "Ready to Transform Your Surgical Practice?",
+    "ctaDescription": "Join hundreds of leading hospitals and healthcare institutions using Percisio to deliver better patient outcomes."
+  }
+}

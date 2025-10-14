@@ -1,0 +1,44 @@
+# Node modules
+node_modules
+
+# Build output
+.next
+out
+dist
+build
+
+# Logs
+*.log
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# Public/static assets
+public/**/*.svg
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.gif
+public/**/*.ico
+
+# Next.js cache
+.next/cache
+
+# Coverage reports
+coverage
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+
+# Lock files (optional, if generated in CI or multi-package setups)
+pnpm-lock.yaml
+yarn.lock
+package-lock.json

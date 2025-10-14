@@ -1,103 +1,275 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
+import { Button } from '@/components/ui/button';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { AnimatedSection } from '@/components/shared/animated-section';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { useTranslations } from '@/lib/hooks/use-translations';
+import { Brain, Users, Zap, Shield, Activity, Eye, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+const Scene3D = dynamic(
+  () => import('@/components/3d/scene-wrapper').then((mod) => mod.SceneWrapper),
+  { ssr: false }
+);
+const MedicalDevice = dynamic(
+  () => import('@/components/3d/medical-device').then((mod) => mod.MedicalDevice),
+  { ssr: false }
+);
+const FloatingParticles = dynamic(
+  () => import('@/components/3d/floating-particles').then((mod) => mod.FloatingParticles),
+  { ssr: false }
+);
+
+// --- HERO SECTION ---
+function HeroSection({ t }: { t: any }) {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <section
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16"
+      aria-labelledby="hero-heading"
+    >
+      <div
+        className="via-background absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 opacity-30" aria-hidden="true">
+        <div className="h-full w-full">
+          <Scene3D cameraPosition={[0, 0, 8]}>
+            <MedicalDevice />
+            <FloatingParticles />
+          </Scene3D>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <Badge className="mb-4" variant="secondary">
+            {t('home.badge')}
+          </Badge>
+          <h1
+            id="hero-heading"
+            className="mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-5xl font-bold text-transparent md:text-7xl"
+          >
+            {t('home.title')}
+          </h1>
+          <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-xl md:text-2xl">
+            {t('home.subtitle')}
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Button size="lg" className="text-lg" asChild>
+              <Link href="/schedule" aria-label="Schedule a Live Demo">
+                {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg"
+              onClick={() => {
+                document
+                  .getElementById('features-section')
+                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              aria-label="Scroll to features section"
+            >
+              {t('home.ctaSecondary')}
+            </Button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// --- GLOBAL HEALTHCARE CHALLENGES SECTION ---
+function GlobalChallenges() {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const panels = [
+    {
+      title: 'Shortage of Skilled Professionals',
+      description:
+        'Healthcare systems worldwide are facing a growing shortage of trained professionals. PERCISIO bridges this gap by offering intuitive procedural guidance, empowering even non-experts to perform essential interventions safely and confidently.',
+    },
+    {
+      title: 'Limited Access to Operating Rooms',
+      description:
+        'Operating rooms for interventional procedures are often scarce or unavailable. PERCISIO provides a portable, easy-to-use system that allows critical medical procedures to start outside traditional operating rooms, wherever care is needed.',
+    },
+    {
+      title: 'Affordable and Accessible Innovation',
+      description:
+        'Designed with accessibility in mind, PERCISIO is an affordable medical device that brings interventional medicine within reach of more healthcare providers and patients worldwide.',
+    },
+  ];
+
+  return (
+    <section className="bg-secondary/20 py-24" aria-labelledby="challenges-heading">
+      <div ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <h2
+              id="challenges-heading"
+              className="mb-12 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+            >
+              Addressing Global Healthcare Challenges
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {panels.map((panel, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                >
+                  <Card className="border-border bg-background/80 h-full border p-6 text-left backdrop-blur-md transition-shadow hover:shadow-lg">
+                    <CardHeader className="mb-4 p-0">
+                      <CardTitle className="text-primary mb-2 text-xl font-semibold">
+                        {panel.title}
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground text-base leading-relaxed">
+                        {panel.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// --- VIDEO SECTION ---
+function VideoSection() {
+  return (
+    <section className="relative w-full overflow-hidden bg-black">
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-black/70"></div>
+      <motion.div
+        className="relative w-full pt-[56.25%]"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <iframe
+          className="absolute top-0 left-0 h-full w-full"
+          src="https://www.youtube.com/embed/AB-lq46epYU?autoplay=0&controls=1&rel=0&modestbranding=1"
+          title="Percisio - Roadmapping and Assisted Guidance in IR"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </motion.div>
+    </section>
+  );
+}
+
+// --- FEATURES SECTION
+function FeaturesSection({ t, features }: { t: any; features: any[] }) {
+  return (
+    <section id="features-section" className="py-20" aria-labelledby="features-heading">
+      <AnimatedSection>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 id="features-heading" className="mb-4 text-4xl font-bold md:text-5xl">
+              {t('home.featuresTitle')}
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
+              {t('home.featuresSubtitle')}
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {features.map((feature, index) => (
+              <AnimatedSection key={index} delay={index * 0.1}>
+                <Link href={feature.link} aria-label={`Learn more about ${t(feature.titleKey)}`}>
+                  <Card className="group h-full cursor-pointer transition-shadow hover:shadow-lg">
+                    <CardHeader>
+                      <div className="bg-primary/10 group-hover:bg-primary/20 mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors">
+                        <feature.icon className="text-primary h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <CardTitle>{t(feature.titleKey)}</CardTitle>
+                      <CardDescription className="text-base">{t(feature.descKey)}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+    </section>
+  );
+}
+
+// --- CTA SECTION ---
+function CTASection({ t }: { t: any }) {
+  return (
+    <section className="py-20" aria-labelledby="cta-heading">
+      <AnimatedSection>
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 id="cta-heading" className="mb-6 text-4xl font-bold md:text-5xl">
+            {t('home.ctaTitle')}
+          </h2>
+          <p className="text-muted-foreground mb-8 text-xl">{t('home.ctaDescription')}</p>
+          <Button size="lg" className="text-lg" asChild>
+            <Link href="/schedule" aria-label="Get started with Percisio">
+              {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+            </Link>
+          </Button>
+        </div>
+      </AnimatedSection>
+    </section>
+  );
+}
+
+// --- HOMEPAGE ---
+export default function HomePage() {
+  const { t } = useTranslations();
+
+  const features = [
+    {
+      icon: Brain,
+      titleKey: 'home.features.precision.title',
+      descKey: 'home.features.precision.description',
+      link: '/features/precision',
+    },
+    {
+      icon: Activity,
+      titleKey: 'home.features.prepTime.title',
+      descKey: 'home.features.prepTime.description',
+      link: '/features/preptime',
+    },
+    {
+      icon: Shield,
+      titleKey: 'home.features.rxReduction.title',
+      descKey: 'home.features.rxReduction.description',
+      link: '/features/rxreduction',
+    },
+  ];
+
+  return (
+    <div className="bg-background min-h-screen">
+      <Header />
+      <HeroSection t={t} />
+      <GlobalChallenges />
+      <VideoSection />
+      <FeaturesSection t={t} features={features} />
+      <CTASection t={t} />
+      <Footer />
     </div>
   );
 }
