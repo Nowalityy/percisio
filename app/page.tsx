@@ -12,17 +12,10 @@ import { useTranslations } from '@/lib/hooks/use-translations';
 import { Brain, Shield, Activity, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
-const Scene3D = dynamic(
-  () => import('@/components/3d/scene-wrapper').then((mod) => mod.SceneWrapper),
-  { ssr: false }
-);
-const MedicalDevice = dynamic(
-  () => import('@/components/3d/medical-device').then((mod) => mod.MedicalDevice),
-  { ssr: false }
-);
-const FloatingParticles = dynamic(
-  () => import('@/components/3d/floating-particles').then((mod) => mod.FloatingParticles),
+const ClientScene = dynamic(
+  () => import('@/components/3d/client-scene').then((mod) => mod.ClientScene),
   { ssr: false }
 );
 
@@ -38,12 +31,13 @@ function HeroSection({ t }: { t: (key: string) => string }) {
         aria-hidden="true"
       />
       <div className="absolute inset-0 opacity-30" aria-hidden="true">
-        <div className="h-full w-full">
-          <Scene3D cameraPosition={[0, 0, 8]}>
-            <MedicalDevice />
-            <FloatingParticles />
-          </Scene3D>
-        </div>
+        <Suspense
+          fallback={
+            <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
+          }
+        >
+          <ClientScene cameraPosition={[0, 0, 8]} />
+        </Suspense>
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
         <motion.div

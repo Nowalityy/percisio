@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function CaseStudiesPage() {
@@ -40,10 +41,11 @@ export default function CaseStudiesPage() {
                   <Card className="h-full transition-shadow hover:shadow-lg">
                     <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
                       {study.cover_image && (
-                        <img
+                        <Image
                           src={study.cover_image}
                           alt={study.company}
-                          className="h-full w-full object-cover"
+                          fill
+                          className="object-cover"
                         />
                       )}
                     </div>

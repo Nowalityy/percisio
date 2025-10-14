@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function BlogPage() {
@@ -46,10 +47,11 @@ export default function BlogPage() {
                   <Card className="h-full transition-shadow hover:shadow-lg">
                     <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
                       {post.cover_image && (
-                        <img
+                        <Image
                           src={post.cover_image}
                           alt={post.title_en}
-                          className="h-full w-full object-cover"
+                          fill
+                          className="object-cover"
                         />
                       )}
                     </div>

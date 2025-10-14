@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Play } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface VideoPlayerProps {
   youtubeId?: string;
@@ -38,15 +39,15 @@ export function VideoPlayer({
       >
         <div className="relative aspect-video">
           {defaultThumbnail && (
-            <img src={defaultThumbnail} alt={title} className="h-full w-full object-cover" />
+            <Image src={defaultThumbnail} alt={title} fill className="object-cover" />
           )}
           <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/60">
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="flex h-20 w-20 items-center justify-center rounded-full bg-primary shadow-lg"
+              className="bg-primary flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
             >
-              <Play className="ml-1 h-10 w-10 text-primary-foreground" />
+              <Play className="text-primary-foreground ml-1 h-10 w-10" />
             </motion.div>
           </div>
         </div>

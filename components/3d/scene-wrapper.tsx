@@ -1,7 +1,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
-import { Suspense, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import type { OrbitControls as OrbitControlsType } from 'three-stdlib';
 
@@ -29,20 +29,18 @@ export function SceneWrapper({
 
   return (
     <Canvas className="background3D h-full w-full">
-      <Suspense fallback={null}>
-        <PerspectiveCamera makeDefault position={cameraPosition} />
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-        <pointLight position={[-10, -10, -10]} />
-        {children}
-        <OrbitControls
-          ref={controlsRef}
-          enableZoom={enableZoom}
-          enablePan={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 4}
-        />
-      </Suspense>
+      <PerspectiveCamera makeDefault position={cameraPosition} />
+      <ambientLight intensity={0.5} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <pointLight position={[-10, -10, -10]} />
+      {children}
+      <OrbitControls
+        ref={controlsRef}
+        enableZoom={enableZoom}
+        enablePan={false}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 4}
+      />
     </Canvas>
   );
 }

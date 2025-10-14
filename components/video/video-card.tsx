@@ -1,9 +1,8 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { VideoPlayer } from './video-player';
-import { Clock, Eye } from 'lucide-react';
 
 interface VideoCardProps {
   title: string;
@@ -22,17 +21,8 @@ export function VideoCard({
   youtubeId,
   videoUrl,
   thumbnailUrl,
-  duration,
-  viewCount,
   category,
 }: VideoCardProps) {
-  const formatDuration = (seconds?: number) => {
-    if (!seconds) return null;
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${minutes}:${secs.toString().padStart(2, '0')}`;
-  };
-
   return (
     <Card className="overflow-hidden transition-shadow hover:shadow-lg">
       <VideoPlayer
