@@ -3,6 +3,7 @@
 import { Canvas } from '@react-three/fiber';
 import { Suspense, useRef, useEffect } from 'react';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import type { OrbitControls as OrbitControlsType } from 'three-stdlib';
 
 interface SceneWrapperProps {
   children: React.ReactNode;
@@ -15,7 +16,7 @@ export function SceneWrapper({
   cameraPosition = [0, 0, 5],
   enableZoom = false,
 }: SceneWrapperProps) {
-  const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<OrbitControlsType | null>(null);
 
   useEffect(() => {
     const controls = controlsRef.current;

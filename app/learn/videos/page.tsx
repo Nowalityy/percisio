@@ -159,8 +159,8 @@ export default function VideosPage() {
                 </div>
                 <h1 className="mb-6 text-4xl font-bold md:text-5xl">Video Demonstrations</h1>
                 <p className="text-muted-foreground text-xl">
-                  Explore our comprehensive video library showcasing PERCISIO's cutting-edge medical
-                  technology, from device overview to advanced augmented reality features.
+                  Explore our comprehensive video library showcasing PERCISIO&apos;s cutting-edge
+                  medical technology, from device overview to advanced augmented reality features.
                 </p>
               </div>
             </AnimatedSection>

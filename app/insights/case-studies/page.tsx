@@ -4,10 +4,22 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function CaseStudiesPage() {
-  const [caseStudies, setCaseStudies] = useState<any[]>([]);
+  const [caseStudies] = useState<
+    Array<{
+      id: number;
+      title: string;
+      description: string;
+      image: string;
+      category: string;
+      slug: string;
+      cover_image?: string;
+      company: string;
+      [key: string]: string | number | boolean | undefined; // Allow additional properties
+    }>
+  >([]);
 
   return (
     <div className="bg-background min-h-screen">

@@ -5,10 +5,27 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function BlogPage() {
-  const [posts, setPosts] = useState<any[]>([]);
+  const [posts] = useState<
+    Array<{
+      id: number;
+      title: string;
+      excerpt: string;
+      date: string;
+      author: string;
+      image: string;
+      slug_en: string;
+      cover_image?: string;
+      title_en: string;
+      category: string;
+      excerpt_en: string;
+      author_name: string;
+      published_at: string;
+      [key: string]: string | number | boolean | undefined; // Allow additional properties
+    }>
+  >([]);
 
   return (
     <div className="bg-background min-h-screen">

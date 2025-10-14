@@ -9,7 +9,7 @@ import { AnimatedSection } from '@/components/shared/animated-section';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslations } from '@/lib/hooks/use-translations';
-import { Brain, Users, Zap, Shield, Activity, Eye, ArrowRight } from 'lucide-react';
+import { Brain, Shield, Activity, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
@@ -27,7 +27,7 @@ const FloatingParticles = dynamic(
 );
 
 // --- HERO SECTION ---
-function HeroSection({ t }: { t: any }) {
+function HeroSection({ t }: { t: (key: string) => string }) {
   return (
     <section
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16"
@@ -178,7 +178,18 @@ function VideoSection() {
 }
 
 // --- FEATURES SECTION
-function FeaturesSection({ t, features }: { t: any; features: any[] }) {
+function FeaturesSection({
+  t,
+  features,
+}: {
+  t: (key: string) => string;
+  features: Array<{
+    icon: React.ComponentType<{ className?: string }>;
+    titleKey: string;
+    descKey: string;
+    link: string;
+  }>;
+}) {
   return (
     <section id="features-section" className="py-20" aria-labelledby="features-heading">
       <AnimatedSection>
@@ -216,7 +227,7 @@ function FeaturesSection({ t, features }: { t: any; features: any[] }) {
 }
 
 // --- CTA SECTION ---
-function CTASection({ t }: { t: any }) {
+function CTASection({ t }: { t: (key: string) => string }) {
   return (
     <section className="py-20" aria-labelledby="cta-heading">
       <AnimatedSection>

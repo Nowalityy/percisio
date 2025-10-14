@@ -8,10 +8,20 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function FAQPage() {
-  const [faqs, setFaqs] = useState<any[]>([]);
+  const [faqs] = useState<
+    Array<{
+      id: number;
+      question: string;
+      answer: string;
+      category: string;
+      question_en: string;
+      answer_en: string;
+      [key: string]: string | number | boolean | undefined; // Allow additional properties
+    }>
+  >([]);
 
   return (
     <div className="bg-background min-h-screen">

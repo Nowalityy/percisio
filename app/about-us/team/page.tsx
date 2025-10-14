@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { useTranslations } from '@/lib/hooks/use-translations';
 
 export default function TeamPage() {
-  const { t, locale } = useTranslations();
+  const { locale } = useTranslations();
 
   const teamMembers = [
     {

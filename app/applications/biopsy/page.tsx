@@ -1,8 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Button } from '@/components/ui/button';
 import { Activity } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 
@@ -40,16 +38,16 @@ export default function BiopsyPage() {
               </p>
               <p className="mb-6">
                 With PERCISIO Guidance, the operator visualizes the liver and the target nodule as a
-                3D holographic volume perfectly aligned with the patient's anatomy. The hologram
-                displays the planned needle path, the entry point, and the distance to the lesion,
-                enabling safe and intuitive guidance throughout the approach.
+                3D holographic volume perfectly aligned with the patient&apos;s anatomy. The
+                hologram displays the planned needle path, the entry point, and the distance to the
+                lesion, enabling safe and intuitive guidance throughout the approach.
               </p>
               <p className="mb-6">
                 If the target area is too small or too deep to guarantee full accuracy within
-                PERCISIO's certified precision range, the system can be used to guide the initial
-                trajectory and bring the needle as close as possible to the lesion. The practitioner
-                can then complete the final step under CT control, combining PERCISIO's spatial
-                guidance with conventional imaging for optimal precision.
+                PERCISIO&apos;s certified precision range, the system can be used to guide the
+                initial trajectory and bring the needle as close as possible to the lesion. The
+                practitioner can then complete the final step under CT control, combining
+                PERCISIO&apos;s spatial guidance with conventional imaging for optimal precision.
               </p>
               <p>
                 This hybrid workflow enhances diagnostic reliability, operator safety, and overall

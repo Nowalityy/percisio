@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 type Messages = {
-  [key: string]: any;
+  [key: string]: string | Messages;
 };
 
 export function useTranslations() {
@@ -39,7 +39,7 @@ export function useTranslations() {
 
   const t = (key: string): string => {
     const keys = key.split('.');
-    let value: any = messages;
+    let value: string | Messages = messages;
 
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {

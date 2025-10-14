@@ -125,8 +125,8 @@ export function Navigation() {
     },
   ];
 
-  const isActive = (sections: any[]) => {
-    return sections.some((section) => section.items.some((item: any) => pathname === item.href));
+  const isActive = (sections: Array<{ items: Array<{ href: string }> }>) => {
+    return sections.some((section) => section.items.some((item) => pathname === item.href));
   };
 
   return (

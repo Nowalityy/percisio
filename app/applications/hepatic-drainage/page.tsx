@@ -1,8 +1,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Button } from '@/components/ui/button';
 import { Activity } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 
@@ -43,10 +41,10 @@ export default function HepaticDrainagePage() {
               </div>
               <p className="mb-6">
                 The illustration shows a holographic volume precisely positioned over the abscess
-                area, together with a virtual needle path. These elements, included in the patient's
-                holographic overlay, provide all the essential data required for the accurate
-                execution of the procedure. The software also relies on depth information and the
-                target volume dimensions to authorize the intervention.
+                area, together with a virtual needle path. These elements, included in the
+                patient&apos;s holographic overlay, provide all the essential data required for the
+                accurate execution of the procedure. The software also relies on depth information
+                and the target volume dimensions to authorize the intervention.
               </p>
               <p className="mb-6">
                 PERCISIO only validates actions that remain within its certified precision range,

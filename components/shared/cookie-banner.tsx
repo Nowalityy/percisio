@@ -33,14 +33,15 @@ export function CookieBanner() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-2xl"
+          className="fixed right-4 bottom-4 left-4 z-50 mx-auto max-w-2xl"
         >
           <Card className="border-2 p-6 shadow-2xl">
             <h3 className="mb-2 text-lg font-semibold">Cookie Consent</h3>
-            <p className="mb-4 text-sm text-muted-foreground">
+            <p className="text-muted-foreground mb-4 text-sm">
               We use cookies to enhance your browsing experience, serve personalized content, and
-              analyze our traffic. By clicking "Accept All", you consent to our use of cookies.{' '}
-              <Link href="/legal/cookies" className="underline hover:text-primary">
+              analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of
+              cookies.{' '}
+              <Link href="/legal/cookies" className="hover:text-primary underline">
                 Read our Cookie Policy
               </Link>
             </p>
