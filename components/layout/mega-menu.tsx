@@ -128,7 +128,7 @@ export function MegaMenu() {
             {
               title: 'Careers',
               description: 'Join our team',
-              href: '/about-us/career',
+              href: '/about-us/careers',
             },
           ],
         },

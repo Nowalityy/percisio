@@ -1,6 +1,5 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import Link from 'next/link';
@@ -12,7 +11,7 @@ interface BlogPostPageProps {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
+  await params; // Acknowledge params to avoid unused variable warning
 
   // This would typically fetch the blog post data based on the slug
   // For now, we'll show a placeholder

@@ -150,22 +150,24 @@ function GlobalChallenges() {
 // --- VIDEO SECTION ---
 function VideoSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-black">
+    <section className="relative w-full overflow-hidden bg-black py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-black/70"></div>
       <motion.div
-        className="relative w-full pt-[56.25%]"
+        className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <iframe
-          className="absolute top-0 left-0 h-full w-full"
-          src="https://www.youtube.com/embed/AB-lq46epYU?autoplay=0&controls=1&rel=0&modestbranding=1"
-          title="Percisio - Roadmapping and Assisted Guidance in IR"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        <div className="xs:pt-[65%] relative w-full pt-[75%] sm:pt-[56.25%] md:pt-[50%] lg:pt-[45%] xl:pt-[40%] 2xl:pt-[35%]">
+          <iframe
+            className="absolute top-0 left-0 h-full w-full rounded-none shadow-xl sm:rounded-lg sm:shadow-2xl"
+            src="https://www.youtube.com/embed/AB-lq46epYU?autoplay=0&controls=1&rel=0&modestbranding=1"
+            title="Percisio - Roadmapping and Assisted Guidance in IR"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
       </motion.div>
     </section>
   );

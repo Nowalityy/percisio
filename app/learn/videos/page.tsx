@@ -84,7 +84,7 @@ export default function VideosPage() {
           description_en: 'A deep technical demonstration of Percisio.',
           description_fr: 'Une démonstration technique détaillée de Percisio.',
           slug: 'percisio-technical',
-          youtube_id: 'IW_lMfDVFwg,',
+          youtube_id: 'IW_lMfDVFwg',
           video_url: null,
           thumbnail_url: null,
           duration: 300,

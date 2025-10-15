@@ -1,8 +1,7 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Building, Calendar, User } from 'lucide-react';
+import { ArrowLeft, Building, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -12,7 +11,7 @@ interface CaseStudyPageProps {
 }
 
 export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
-  const { slug } = await params;
+  await params; // Acknowledge params to avoid unused variable warning
 
   // This would typically fetch the case study data based on the slug
   // For now, we'll show a placeholder

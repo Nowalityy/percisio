@@ -5,20 +5,20 @@ export function Footer() {
   const footerLinks = {
     product: [
       { name: 'Features', href: '/features/ai-visualization' },
-      { name: 'Videos', href: '/videos' },
-      { name: 'Case Studies', href: '/case-studies' },
-      { name: 'FAQ', href: '/faq' },
+      { name: 'Videos', href: '/learn/videos' },
+      { name: 'Case Studies', href: '/insights/case-studies' },
+      { name: 'FAQ', href: '/learn/faq' },
     ],
     company: [
-      { name: 'About', href: '/about' },
-      { name: 'Team', href: '/team' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Careers', href: '/about#careers' },
+      { name: 'About', href: '/about-us/about' },
+      { name: 'Team', href: '/about-us/team' },
+      { name: 'Blog', href: '/insights/blog' },
+      { name: 'Careers', href: '/about-us/careers' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/legal/privacy' },
-      { name: 'Terms of Service', href: '/legal/terms' },
-      { name: 'Cookie Policy', href: '/legal/cookies' },
+      { name: 'Privacy Policy', href: '/company/privacy' },
+      { name: 'Terms of Service', href: '/company/terms' },
+      { name: 'Cookie Policy', href: '/company/cookies' },
     ],
   };
 

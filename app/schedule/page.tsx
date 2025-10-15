@@ -1,47 +1,51 @@
 'use client';
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Calendar, Clock, User, Mail } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function SchedulePage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Load HubSpot Meetings script
+    const script = document.createElement('script');
+    script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup script on component unmount
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
-    <div className="mx-auto max-w-3xl px-4 py-20">
+    <div className="mx-auto max-w-4xl px-4 py-20">
+      <Button
+        variant="ghost"
+        onClick={() => router.back()}
+        className="mb-6 flex items-center gap-2"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back
+      </Button>
       <h1 className="mb-8 text-center text-4xl font-bold">Schedule a Live Demo</h1>
-      <Card>
-        <CardHeader>
-          <CardTitle>Book Your Personalized Demo</CardTitle>
-          <CardDescription>
-            Fill out the form below and our team will contact you to schedule your live demo.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="flex items-center space-x-2">
-              <User className="text-muted-foreground h-5 w-5" />
-              <Input placeholder="Your Name" />
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="text-muted-foreground h-5 w-5" />
-              <Input placeholder="Your Email" type="email" />
-            </div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Calendar className="text-muted-foreground h-5 w-5" />
-            <Input placeholder="Preferred Date" type="date" />
-          </div>
-          <div className="flex items-center space-x-2">
-            <Clock className="text-muted-foreground h-5 w-5" />
-            <Input placeholder="Preferred Time" type="time" />
-          </div>
-          <Textarea placeholder="Additional details or specific questions..." rows={4} />
-          <Button size="lg" className="w-full">
-            Submit Request
-          </Button>
-        </CardContent>
-      </Card>
+      <div className="bg-card rounded-lg border p-6">
+        <div className="mb-6 text-center">
+          <h2 className="mb-2 text-2xl font-semibold">Book Your Personalized Demo</h2>
+          <p className="text-muted-foreground">
+            Select a convenient time slot for your live demonstration of Percisio.
+          </p>
+        </div>
+        <div
+          className="meetings-iframe-container"
+          data-src="https://meetings-eu1.hubspot.com/benoit-marcot?embed=true"
+        ></div>
+      </div>
     </div>
   );
 }
