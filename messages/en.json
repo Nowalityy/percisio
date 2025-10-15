@@ -114,5 +114,78 @@
     },
     "ctaTitle": "Ready to Transform Your Surgical Practice?",
     "ctaDescription": "Join hundreds of leading hospitals and healthcare institutions using Percisio to deliver better patient outcomes."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about Percisio",
+    "categories": {
+      "general": "General",
+      "technology": "Technology",
+      "implementation": "Implementation",
+      "support": "Support & Training",
+      "pricing": "Pricing & Licensing"
+    },
+    "questions": {
+      "whatIsPercisio": {
+        "question": "What is Percisio?",
+        "answer": "Percisio is a cutting-edge medical assistance system powered by computer vision technology. It provides real-time guidance for image-guided procedures, helping clinicians achieve precision with ≤2mm accuracy while reducing procedure times by up to 40%."
+      },
+      "howDoesItWork": {
+        "question": "How does Percisio work?",
+        "answer": "Percisio uses advanced computer vision algorithms to track medical instruments in real-time. It creates holographic roadmaps from CT, MRI, and ultrasound data, providing clinicians with precise guidance during procedures through augmented reality visualization."
+      },
+      "whatProcedures": {
+        "question": "What procedures does Percisio support?",
+        "answer": "Percisio supports a wide range of percutaneous interventions including biopsies, infiltrations, punctures, and drainage procedures. It's compatible with ultrasound probes, clinical needles, and various other medical instruments."
+      },
+      "accuracy": {
+        "question": "What is the accuracy of Percisio?",
+        "answer": "Percisio achieves ≤2mm mean guidance error on needle trajectory, measured on test bench and anatomical phantoms. This high precision helps reduce the need for multiple attempts and control images."
+      },
+      "setupTime": {
+        "question": "How long does it take to set up Percisio?",
+        "answer": "The complete calibration process takes less than 3 minutes from power on to ready-to-use state. Our streamlined workflow ensures minimal preparation time without compromising accuracy."
+      },
+      "radiationReduction": {
+        "question": "How does Percisio reduce radiation exposure?",
+        "answer": "Percisio reduces the need for control images by 40%, significantly decreasing radiation exposure for both patients and medical staff. The precise guidance reduces the number of attempts needed for successful procedures."
+      },
+      "compatibility": {
+        "question": "Is Percisio compatible with existing equipment?",
+        "answer": "Yes, Percisio is designed to work with existing medical equipment. It's compatible with ultrasound systems, CT scanners, MRI machines, and various medical instruments commonly used in percutaneous procedures."
+      },
+      "training": {
+        "question": "What training is required for Percisio?",
+        "answer": "Percisio features an intuitive interface designed for medical professionals. We provide comprehensive training programs including hands-on workshops, online modules, and ongoing support to ensure successful implementation."
+      },
+      "maintenance": {
+        "question": "What maintenance does Percisio require?",
+        "answer": "Percisio requires minimal maintenance. Regular software updates are provided automatically, and our support team conducts periodic system checks to ensure optimal performance. Hardware maintenance is minimal due to our robust design."
+      },
+      "dataSecurity": {
+        "question": "How is patient data protected?",
+        "answer": "Percisio is HIPAA compliant with enterprise-level security. All data is encrypted end-to-end, and we follow strict privacy protocols to ensure patient information remains secure and confidential."
+      },
+      "pricing": {
+        "question": "How is Percisio priced?",
+        "answer": "Percisio pricing is based on your institution's specific needs and usage patterns. We offer flexible licensing options including per-procedure, annual subscriptions, and enterprise packages. Contact our sales team for a customized quote."
+      },
+      "support": {
+        "question": "What support is available?",
+        "answer": "We provide 24/7 technical support, regular software updates, comprehensive training programs, and ongoing consultation services. Our expert support team is available to help with any questions or issues."
+      },
+      "clinicalValidation": {
+        "question": "Is Percisio clinically validated?",
+        "answer": "Yes, Percisio has been extensively tested and validated in clinical settings. Our technology is trusted by over 500 hospitals worldwide and has been used in thousands of successful procedures."
+      },
+      "integration": {
+        "question": "How does Percisio integrate with hospital systems?",
+        "answer": "Percisio integrates seamlessly with existing hospital IT infrastructure, PACS systems, and electronic health records. Our team works closely with your IT department to ensure smooth integration and workflow optimization."
+      },
+      "future": {
+        "question": "What future developments are planned?",
+        "answer": "We continuously develop new features and applications based on clinical feedback. Upcoming developments include expanded procedure support, enhanced AI algorithms, and improved integration capabilities with emerging technologies."
+      }
+    }
   }
 }

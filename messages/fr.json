@@ -126,5 +126,78 @@
     },
     "ctaTitle": "Prêt à Transformer Votre Pratique Chirurgicale?",
     "ctaDescription": "Rejoignez des centaines d'hôpitaux et d'institutions de santé de premier plan qui utilisent Percisio pour offrir de meilleurs résultats aux patients."
+  },
+  "faq": {
+    "title": "Questions Fréquemment Posées",
+    "subtitle": "Trouvez des réponses aux questions courantes sur Percisio",
+    "categories": {
+      "general": "Général",
+      "technology": "Technologie",
+      "implementation": "Implémentation",
+      "support": "Support & Formation",
+      "pricing": "Tarification & Licences"
+    },
+    "questions": {
+      "whatIsPercisio": {
+        "question": "Qu'est-ce que Percisio ?",
+        "answer": "Percisio est un système d'assistance médicale de pointe alimenté par la technologie de vision par ordinateur. Il fournit un guidage en temps réel pour les procédures guidées par imagerie, aidant les cliniciens à atteindre une précision avec une exactitude ≤2mm tout en réduisant les temps de procédure jusqu'à 40%."
+      },
+      "howDoesItWork": {
+        "question": "Comment fonctionne Percisio ?",
+        "answer": "Percisio utilise des algorithmes de vision par ordinateur avancés pour suivre les instruments médicaux en temps réel. Il crée des cartes holographiques à partir des données CT, IRM et échographiques, fournissant aux cliniciens un guidage précis pendant les procédures grâce à la visualisation en réalité augmentée."
+      },
+      "whatProcedures": {
+        "question": "Quelles procédures Percisio supporte-t-il ?",
+        "answer": "Percisio supporte un large éventail d'interventions percutanées incluant les biopsies, infiltrations, ponctions et procédures de drainage. Il est compatible avec les sondes échographiques, aiguilles cliniques et divers autres instruments médicaux."
+      },
+      "accuracy": {
+        "question": "Quelle est la précision de Percisio ?",
+        "answer": "Percisio atteint une erreur de guidage moyenne ≤2mm sur la trajectoire de l'aiguille, mesurée sur banc d'essai et fantômes anatomiques. Cette haute précision aide à réduire le besoin de multiples tentatives et images de contrôle."
+      },
+      "setupTime": {
+        "question": "Combien de temps faut-il pour configurer Percisio ?",
+        "answer": "Le processus de calibration complet prend moins de 3 minutes de la mise sous tension à l'état prêt à utiliser. Notre flux de travail rationalisé assure un temps de préparation minimal sans compromettre la précision."
+      },
+      "radiationReduction": {
+        "question": "Comment Percisio réduit-il l'exposition aux radiations ?",
+        "answer": "Percisio réduit le besoin d'images de contrôle de 40%, diminuant significativement l'exposition aux radiations pour les patients et le personnel médical. Le guidage précis réduit le nombre de tentatives nécessaires pour des procédures réussies."
+      },
+      "compatibility": {
+        "question": "Percisio est-il compatible avec l'équipement existant ?",
+        "answer": "Oui, Percisio est conçu pour fonctionner avec l'équipement médical existant. Il est compatible avec les systèmes échographiques, scanners CT, machines IRM et divers instruments médicaux couramment utilisés dans les procédures percutanées."
+      },
+      "training": {
+        "question": "Quelle formation est requise pour Percisio ?",
+        "answer": "Percisio dispose d'une interface intuitive conçue pour les professionnels de santé. Nous fournissons des programmes de formation complets incluant des ateliers pratiques, modules en ligne et support continu pour assurer une implémentation réussie."
+      },
+      "maintenance": {
+        "question": "Quelle maintenance Percisio nécessite-t-il ?",
+        "answer": "Percisio nécessite une maintenance minimale. Les mises à jour logicielles régulières sont fournies automatiquement, et notre équipe de support effectue des vérifications système périodiques pour assurer des performances optimales. La maintenance matérielle est minimale grâce à notre conception robuste."
+      },
+      "dataSecurity": {
+        "question": "Comment les données des patients sont-elles protégées ?",
+        "answer": "Percisio est conforme HIPAA avec une sécurité de niveau entreprise. Toutes les données sont cryptées de bout en bout, et nous suivons des protocoles de confidentialité stricts pour assurer que les informations des patients restent sécurisées et confidentielles."
+      },
+      "pricing": {
+        "question": "Comment Percisio est-il tarifé ?",
+        "answer": "La tarification de Percisio est basée sur les besoins spécifiques de votre institution et les modèles d'utilisation. Nous offrons des options de licence flexibles incluant par-procédure, abonnements annuels et packages entreprise. Contactez notre équipe commerciale pour un devis personnalisé."
+      },
+      "support": {
+        "question": "Quel support est disponible ?",
+        "answer": "Nous fournissons un support technique 24/7, des mises à jour logicielles régulières, des programmes de formation complets et des services de consultation continus. Notre équipe de support expert est disponible pour aider avec toute question ou problème."
+      },
+      "clinicalValidation": {
+        "question": "Percisio est-il cliniquement validé ?",
+        "answer": "Oui, Percisio a été largement testé et validé dans des contextes cliniques. Notre technologie est approuvée par plus de 500 hôpitaux dans le monde et a été utilisée dans des milliers de procédures réussies."
+      },
+      "integration": {
+        "question": "Comment Percisio s'intègre-t-il avec les systèmes hospitaliers ?",
+        "answer": "Percisio s'intègre parfaitement avec l'infrastructure IT hospitalière existante, les systèmes PACS et les dossiers médicaux électroniques. Notre équipe travaille étroitement avec votre département IT pour assurer une intégration fluide et l'optimisation du flux de travail."
+      },
+      "future": {
+        "question": "Quels développements futurs sont planifiés ?",
+        "answer": "Nous développons continuellement de nouvelles fonctionnalités et applications basées sur les retours cliniques. Les développements à venir incluent un support de procédure étendu, des algorithmes IA améliorés et des capacités d'intégration améliorées avec les technologies émergentes."
+      }
+    }
   }
 }

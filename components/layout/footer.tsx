@@ -36,7 +36,7 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <Link
-                href="https://www.linkedin.com/yourprofile"
+                href="https://www.linkedin.com/percisio"
                 className="text-muted-foreground hover:text-primary"
               >
                 <Linkedin className="h-5 w-5" />
