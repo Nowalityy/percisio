@@ -119,3 +119,6 @@ select {
   z-index: -1;
   pointer-events: none;
 }
+
+/* Import global animations */
+@import '../components/ui/global-animations.css';

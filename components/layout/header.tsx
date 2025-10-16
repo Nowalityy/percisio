@@ -53,43 +53,66 @@ export function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2" aria-label="Percisio Home">
-              <div
-                className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600"
-                aria-hidden="true"
-              />
-              <span className="text-xl font-bold">Percisio</span>
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Link href="/" className="flex items-center space-x-2" aria-label="Percisio Home">
+                <motion.div
+                  className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600"
+                  aria-hidden="true"
+                  whileHover={{ rotate: 5 }}
+                  transition={{ duration: 0.2 }}
+                />
+                <span className="text-xl font-bold">Percisio</span>
+              </Link>
+            </motion.div>
           </div>
 
           <MegaMenu />
 
           <div className="hidden items-center space-x-4 md:flex">
             <LanguageSwitcher />
-            <Button className="w-full" asChild>
-              <Link href="/schedule" aria-label="Schedule a Live Demo">
-                Schedule a Live Demo
-              </Link>
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button className="w-full transition-all duration-200 hover:shadow-lg hover:shadow-primary/20" asChild>
+                <Link href="/schedule" aria-label="Schedule a Live Demo">
+                  Schedule a Live Demo
+                </Link>
+              </Button>
+            </motion.div>
           </div>
 
           <div className="flex items-center space-x-2 lg:hidden">
             <LanguageSwitcher />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-menu"
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              )}
-              <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
-            </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-menu"
+                className="transition-all duration-200"
+              >
+                <motion.div
+                  animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {mobileMenuOpen ? (
+                    <X className="h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Menu className="h-6 w-6" aria-hidden="true" />
+                  )}
+                </motion.div>
+                <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
+              </Button>
+            </motion.div>
           </div>
         </div>
       </nav>

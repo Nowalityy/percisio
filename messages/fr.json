@@ -76,6 +76,56 @@
     "termsOfService": "Conditions d'Utilisation",
     "cookiePolicy": "Politique des Cookies"
   },
+  "legal": {
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "lastUpdated": "Dernière mise à jour",
+      "sections": {
+        "acceptance": {
+          "title": "Acceptation des Conditions",
+          "content": "En accédant et en utilisant la plateforme d'assistance médicale Percisio, vous acceptez et convenez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces Conditions, vous ne pouvez pas accéder ou utiliser le Service."
+        },
+        "description": {
+          "title": "Description du Service",
+          "content": "Percisio est un système d'assistance médicale alimenté par vision par ordinateur conçu pour soutenir les professionnels de santé dans les procédures guidées par imagerie. Le Service fournit un guidage en temps réel pour les interventions percutanées incluant biopsies, infiltrations, ponctions et procédures de drainage."
+        },
+        "medicalDisclaimer": {
+          "title": "Avertissement Médical et Responsabilité Professionnelle",
+          "content": "Percisio est un outil conçu pour assister les professionnels médicaux et n'est pas destiné à remplacer le jugement médical professionnel, le diagnostic ou le traitement. Les décisions médicales finales restent la responsabilité exclusive du prestataire de soins de santé agréé."
+        },
+        "contact": {
+          "title": "Informations de Contact",
+          "content": "Si vous avez des questions concernant ces Conditions d'Utilisation, veuillez nous contacter à legal@percisio.com"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "lastUpdated": "Dernière mise à jour",
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "content": "Percisio s'engage à protéger la confidentialité et la sécurité de vos informations personnelles et informations de santé protégées (PHI). Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lors de l'utilisation de notre plateforme d'assistance médicale."
+        },
+        "informationCollection": {
+          "title": "Informations que Nous Collectons",
+          "content": "Nous collectons des informations personnelles, des informations de santé protégées (PHI) et des informations techniques pour fournir et améliorer nos services d'assistance médicale."
+        },
+        "hipaaCompliance": {
+          "title": "Conformité HIPAA et Protection des PHI",
+          "content": "Percisio est conçu pour se conformer à HIPAA et autres réglementations de confidentialité des soins de santé applicables. Nous mettons en place des garanties administratives, physiques et techniques appropriées pour protéger les PHI."
+        },
+        "dataSecurity": {
+          "title": "Sécurité des Données",
+          "content": "Nous mettons en place des mesures de sécurité complètes incluant le cryptage de bout en bout, les contrôles d'accès, la sécurité réseau et des audits réguliers pour protéger vos informations."
+        },
+        "contact": {
+          "title": "Informations de Contact",
+          "content": "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à privacy@percisio.com"
+        }
+      }
+    }
+  },
   "common": {
     "learnMore": "En Savoir Plus",
     "getStarted": "Commencer",

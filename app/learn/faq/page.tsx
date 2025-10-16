@@ -9,8 +9,14 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { HoverCard } from '@/components/ui/hover-card';
 import { useTranslations } from '@/lib/hooks/use-translations';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Search, HelpCircle, ThumbsUp, ThumbsDown, Filter, ArrowLeft } from 'lucide-react';
 
 interface FAQItem {
   id: string;
@@ -47,18 +53,56 @@ const faqCategories: { [key: string]: FAQItem[] } = {
 
 export default function FAQPage() {
   const { t } = useTranslations();
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [feedback, setFeedback] = useState<{[key: string]: 'helpful' | 'not-helpful' | null}>({});
 
   const allFAQs = Object.values(faqCategories).flat();
-  const filteredFAQs = selectedCategory === 'all' 
-    ? allFAQs 
-    : faqCategories[selectedCategory] || [];
+  
+  const filteredFAQs = useMemo(() => {
+    let filtered = selectedCategory === 'all' 
+      ? allFAQs 
+      : faqCategories[selectedCategory] || [];
+
+    if (searchTerm) {
+      filtered = filtered.filter(faq => {
+        const question = t(`faq.questions.${faq.id}.question`).toLowerCase();
+        const answer = t(`faq.questions.${faq.id}.answer`).toLowerCase();
+        return question.includes(searchTerm.toLowerCase()) || 
+               answer.includes(searchTerm.toLowerCase());
+      });
+    }
+
+    return filtered;
+  }, [selectedCategory, searchTerm, allFAQs, t]);
+
+  const handleFeedback = (faqId: string, type: 'helpful' | 'not-helpful') => {
+    setFeedback(prev => ({ ...prev, [faqId]: type }));
+  };
 
   return (
     <div className="bg-background min-h-screen">
       <Header />
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          {/* Back Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <Button
+              variant="ghost"
+              onClick={() => router.back()}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back
+            </Button>
+          </motion.div>
+
           <div className="mb-16 text-center">
             <h1 className="mb-6 text-5xl font-bold md:text-6xl">
               {t('faq.title')}
@@ -68,73 +112,208 @@ export default function FAQPage() {
             </p>
           </div>
 
-          {/* Category Filter */}
-          <div className="mb-8 flex flex-wrap justify-center gap-2">
-            <Badge
-              variant={selectedCategory === 'all' ? 'default' : 'outline'}
-              className="cursor-pointer px-4 py-2 text-sm"
-              onClick={() => setSelectedCategory('all')}
-            >
-              All
-            </Badge>
-            {Object.keys(faqCategories).map((category) => (
-              <Badge
-                key={category}
-                variant={selectedCategory === category ? 'default' : 'outline'}
-                className="cursor-pointer px-4 py-2 text-sm"
-                onClick={() => setSelectedCategory(category)}
+          {/* Search and Filter Section */}
+          <motion.div 
+            className="mb-8 space-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Search Bar */}
+            <div className="relative max-w-md mx-auto">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search FAQs..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 pr-4"
+              />
+            </div>
+
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center gap-2">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {t(`faq.categories.${category}`)}
-              </Badge>
-            ))}
-          </div>
+                <Badge
+                  variant={selectedCategory === 'all' ? 'default' : 'outline'}
+                  className="cursor-pointer px-4 py-2 text-sm transition-all duration-200 hover:shadow-md"
+                  onClick={() => setSelectedCategory('all')}
+                >
+                  <Filter className="mr-2 h-3 w-3" />
+                  All
+                </Badge>
+              </motion.div>
+              {Object.keys(faqCategories).map((category, index) => (
+                <motion.div
+                  key={category}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Badge
+                    variant={selectedCategory === category ? 'default' : 'outline'}
+                    className="cursor-pointer px-4 py-2 text-sm transition-all duration-200 hover:shadow-md"
+                    onClick={() => setSelectedCategory(category)}
+                  >
+                    {t(`faq.categories.${category}`)}
+                  </Badge>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
           {/* FAQ Accordion */}
-          <Accordion type="single" collapsible className="w-full">
-            {filteredFAQs.map((faq, index) => (
-              <AccordionItem key={faq.id} value={`item-${index}`}>
-                <AccordionTrigger className="text-left hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <Badge variant="secondary" className="text-xs">
-                      {t(`faq.categories.${faq.category}`)}
-                    </Badge>
-                    <span className="font-medium">
-                      {t(`faq.questions.${faq.id}.question`)}
-                    </span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pl-4">
-                  <div className="prose prose-sm max-w-none">
-                    {t(`faq.questions.${faq.id}.answer`)}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <AnimatePresence mode="wait">
+            {filteredFAQs.length > 0 ? (
+              <motion.div
+                key="faq-list"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Accordion type="single" collapsible className="w-full space-y-4">
+                  {filteredFAQs.map((faq, index) => (
+                    <motion.div
+                      key={faq.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <HoverCard hoverContent="Click to expand">
+                        <AccordionItem value={`item-${index}`} className="border rounded-lg px-4">
+                          <AccordionTrigger className="text-left hover:no-underline py-6">
+                            <div className="flex items-center gap-3">
+                              <motion.div
+                                whileHover={{ scale: 1.1 }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <Badge variant="secondary" className="text-xs">
+                                  {t(`faq.categories.${faq.category}`)}
+                                </Badge>
+                              </motion.div>
+                              <span className="font-medium">
+                                {t(`faq.questions.${faq.id}.question`)}
+                              </span>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="text-muted-foreground pb-6">
+                            <div className="prose prose-sm max-w-none mb-4">
+                              {t(`faq.questions.${faq.id}.answer`)}
+                            </div>
+                            
+                            {/* Feedback Section */}
+                            <motion.div 
+                              className="flex items-center gap-2 pt-4 border-t"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ delay: 0.2 }}
+                            >
+                              <span className="text-sm text-muted-foreground">Was this helpful?</span>
+                              <div className="flex gap-1">
+                                <motion.button
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.9 }}
+                                  onClick={() => handleFeedback(faq.id, 'helpful')}
+                                  className={`p-1 rounded transition-colors ${
+                                    feedback[faq.id] === 'helpful' 
+                                      ? 'text-green-600 bg-green-50' 
+                                      : 'text-muted-foreground hover:text-green-600'
+                                  }`}
+                                >
+                                  <ThumbsUp className="h-4 w-4" />
+                                </motion.button>
+                                <motion.button
+                                  whileHover={{ scale: 1.1 }}
+                                  whileTap={{ scale: 0.9 }}
+                                  onClick={() => handleFeedback(faq.id, 'not-helpful')}
+                                  className={`p-1 rounded transition-colors ${
+                                    feedback[faq.id] === 'not-helpful' 
+                                      ? 'text-red-600 bg-red-50' 
+                                      : 'text-muted-foreground hover:text-red-600'
+                                  }`}
+                                >
+                                  <ThumbsDown className="h-4 w-4" />
+                                </motion.button>
+                              </div>
+                            </motion.div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </HoverCard>
+                    </motion.div>
+                  ))}
+                </Accordion>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="no-results"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="text-center py-12"
+              >
+                <HelpCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-semibold mb-2">No FAQs found</h3>
+                <p className="text-muted-foreground">
+                  Try adjusting your search terms or browse all categories.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Contact CTA */}
-          <div className="mt-16 rounded-lg bg-muted/50 p-8 text-center">
-            <h3 className="mb-4 text-2xl font-semibold">
+          <motion.div 
+            className="mt-16 rounded-lg bg-muted/50 p-8 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.h3 
+              className="mb-4 text-2xl font-semibold"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
               Still have questions?
-            </h3>
-            <p className="mb-6 text-muted-foreground">
+            </motion.h3>
+            <motion.p 
+              className="mb-6 text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
               Can&apos;t find the answer you&apos;re looking for? Our expert team is here to help.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <a
+            </motion.p>
+            <motion.div 
+              className="flex flex-col gap-4 sm:flex-row sm:justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.a
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-200 hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Contact Support
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="/schedule"
-                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:shadow-md"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Schedule a Demo
-              </a>
-            </div>
-          </div>
+              </motion.a>
+            </motion.div>
+          </motion.div>
         </div>
       </main>
       <Footer />

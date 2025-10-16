@@ -2,14 +2,17 @@
 
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AnimatedSection } from '@/components/shared/animated-section';
+import { AnimatedCard } from '@/components/ui/animated-card';
+import { AnimatedButton } from '@/components/ui/animated-button';
+import { HoverCard } from '@/components/ui/hover-card';
+import { ProgressiveDisclosure } from '@/components/ui/progressive-disclosure';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslations } from '@/lib/hooks/use-translations';
-import { Brain, Shield, Activity, ArrowRight } from 'lucide-react';
+import { Brain, Shield, Activity, ArrowRight, Play, CheckCircle, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
@@ -58,12 +61,13 @@ function HeroSection({ t }: { t: (key: string) => string }) {
             {t('home.subtitle')}
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="text-lg" asChild>
+            <AnimatedButton delay={0.2} size="lg" className="text-lg" asChild>
               <Link href="/schedule" aria-label="Schedule a Live Demo">
                 {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
-            </Button>
-            <Button
+            </AnimatedButton>
+            <AnimatedButton 
+              delay={0.4}
               size="lg"
               variant="outline"
               className="text-lg"
@@ -75,7 +79,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
               aria-label="Scroll to features section"
             >
               {t('home.ctaSecondary')}
-            </Button>
+            </AnimatedButton>
           </div>
         </motion.div>
       </div>
@@ -201,21 +205,113 @@ function FeaturesSection({
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <AnimatedSection key={index} delay={index * 0.1}>
+              <HoverCard 
+                key={index}
+                delay={index * 0.1}
+                hoverContent={`Learn more about ${t(feature.titleKey)}`}
+              >
                 <Link href={feature.link} aria-label={`Learn more about ${t(feature.titleKey)}`}>
-                  <Card className="group h-full cursor-pointer transition-shadow hover:shadow-lg">
+                  <AnimatedCard 
+                    delay={index * 0.1}
+                    hoverScale={1.05}
+                    className="group h-full cursor-pointer"
+                  >
                     <CardHeader>
-                      <div className="bg-primary/10 group-hover:bg-primary/20 mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors">
+                      <motion.div 
+                        className="bg-primary/10 group-hover:bg-primary/20 mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors"
+                        whileHover={{ rotate: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
                         <feature.icon className="text-primary h-6 w-6" aria-hidden="true" />
-                      </div>
+                      </motion.div>
                       <CardTitle>{t(feature.titleKey)}</CardTitle>
                       <CardDescription className="text-base">{t(feature.descKey)}</CardDescription>
                     </CardHeader>
-                  </Card>
+                  </AnimatedCard>
                 </Link>
-              </AnimatedSection>
+              </HoverCard>
             ))}
           </div>
+        </div>
+      </AnimatedSection>
+    </section>
+  );
+}
+
+// --- PROGRESSIVE DISCLOSURE SECTION ---
+function ProgressiveFeaturesSection() {
+  const additionalFeatures = [
+    {
+      icon: Users,
+      title: "Multi-User Collaboration",
+      description: "Enable real-time collaboration between medical teams with shared visualization and annotation tools."
+    },
+    {
+      icon: Award,
+      title: "Clinical Validation",
+      description: "Extensively tested and validated in clinical settings with proven results across multiple institutions."
+    },
+    {
+      icon: CheckCircle,
+      title: "Quality Assurance",
+      description: "Built-in quality checks and validation protocols ensure consistent and reliable performance."
+    },
+    {
+      icon: Play,
+      title: "Training Modules",
+      description: "Comprehensive training programs and interactive modules to ensure successful implementation."
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-muted/20" aria-labelledby="more-features-heading">
+      <AnimatedSection>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-16 text-center">
+            <h2 id="more-features-heading" className="mb-4 text-4xl font-bold md:text-5xl">
+              Discover More Features
+            </h2>
+            <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
+              Explore additional capabilities that make Percisio the comprehensive solution for modern healthcare.
+            </p>
+          </div>
+
+          <ProgressiveDisclosure 
+            title="Advanced Features & Capabilities"
+            defaultOpen={false}
+            maxItems={2}
+            className="max-w-4xl mx-auto"
+          >
+            {additionalFeatures.map((feature, index) => (
+              <HoverCard 
+                key={index}
+                delay={index * 0.1}
+                hoverContent={`Learn more about ${feature.title}`}
+              >
+                <AnimatedCard 
+                  delay={index * 0.1}
+                  hoverScale={1.02}
+                  className="group cursor-pointer"
+                >
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <motion.div 
+                        className="bg-primary/10 group-hover:bg-primary/20 flex h-10 w-10 items-center justify-center rounded-lg transition-colors"
+                        whileHover={{ rotate: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <feature.icon className="text-primary h-5 w-5" />
+                      </motion.div>
+                      <div>
+                        <CardTitle className="text-lg">{feature.title}</CardTitle>
+                        <CardDescription className="text-sm">{feature.description}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </AnimatedCard>
+              </HoverCard>
+            ))}
+          </ProgressiveDisclosure>
         </div>
       </AnimatedSection>
     </section>
@@ -232,11 +328,11 @@ function CTASection({ t }: { t: (key: string) => string }) {
             {t('home.ctaTitle')}
           </h2>
           <p className="text-muted-foreground mb-8 text-xl">{t('home.ctaDescription')}</p>
-          <Button size="lg" className="text-lg" asChild>
+          <AnimatedButton delay={0.2} size="lg" className="text-lg" asChild>
             <Link href="/schedule" aria-label="Get started with Percisio">
               {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Link>
-          </Button>
+          </AnimatedButton>
         </div>
       </AnimatedSection>
     </section>
@@ -275,6 +371,7 @@ export default function HomePage() {
       <GlobalChallenges />
       <VideoSection />
       <FeaturesSection t={t} features={features} />
+      <ProgressiveFeaturesSection />
       <CTASection t={t} />
       <Footer />
     </div>

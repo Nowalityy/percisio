@@ -76,6 +76,56 @@
     "termsOfService": "Terms of Service",
     "cookiePolicy": "Cookie Policy"
   },
+  "legal": {
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated",
+      "sections": {
+        "acceptance": {
+          "title": "Acceptance of Terms",
+          "content": "By accessing and using Percisio's medical assistance platform, you accept and agree to be bound by these Terms of Service. If you do not agree to these Terms, you may not access or use the Service."
+        },
+        "description": {
+          "title": "Description of Service",
+          "content": "Percisio is a computer vision-powered medical assistance system designed to support healthcare professionals in image-guided procedures. The Service provides real-time guidance for percutaneous interventions including biopsies, infiltrations, punctures, and drainage procedures."
+        },
+        "medicalDisclaimer": {
+          "title": "Medical Disclaimer and Professional Responsibility",
+          "content": "Percisio is a tool designed to assist medical professionals and is not intended to replace professional medical judgment, diagnosis, or treatment. Final medical decisions remain the sole responsibility of the licensed healthcare provider."
+        },
+        "contact": {
+          "title": "Contact Information",
+          "content": "If you have any questions about these Terms of Service, please contact us at legal@percisio.com"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated",
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "content": "Percisio is committed to protecting the privacy and security of your personal information and protected health information (PHI). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our medical assistance platform."
+        },
+        "informationCollection": {
+          "title": "Information We Collect",
+          "content": "We collect personal information, protected health information (PHI), and technical information to provide and improve our medical assistance services."
+        },
+        "hipaaCompliance": {
+          "title": "HIPAA Compliance and PHI Protection",
+          "content": "Percisio is designed to comply with HIPAA and other applicable healthcare privacy regulations. We implement appropriate administrative, physical, and technical safeguards to protect PHI."
+        },
+        "dataSecurity": {
+          "title": "Data Security",
+          "content": "We implement comprehensive security measures including end-to-end encryption, access controls, network security, and regular audits to protect your information."
+        },
+        "contact": {
+          "title": "Contact Information",
+          "content": "If you have any questions about this Privacy Policy, please contact us at privacy@percisio.com"
+        }
+      }
+    }
+  },
   "common": {
     "learnMore": "Learn More",
     "getStarted": "Schedule a Live Demo",
