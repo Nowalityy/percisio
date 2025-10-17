@@ -8,7 +8,6 @@ import { AnimatedSection } from '@/components/shared/animated-section';
 import { AnimatedCard } from '@/components/ui/animated-card';
 import { AnimatedButton } from '@/components/ui/animated-button';
 import { HoverCard } from '@/components/ui/hover-card';
-import { ProgressiveDisclosure } from '@/components/ui/progressive-disclosure';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useTranslations } from '@/lib/hooks/use-translations';
@@ -66,7 +65,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
                 {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
             </AnimatedButton>
-            <AnimatedButton 
+            <AnimatedButton
               delay={0.4}
               size="lg"
               variant="outline"
@@ -205,19 +204,19 @@ function FeaturesSection({
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <HoverCard 
+              <HoverCard
                 key={index}
                 delay={index * 0.1}
                 hoverContent={`Learn more about ${t(feature.titleKey)}`}
               >
                 <Link href={feature.link} aria-label={`Learn more about ${t(feature.titleKey)}`}>
-                  <AnimatedCard 
+                  <AnimatedCard
                     delay={index * 0.1}
                     hoverScale={1.05}
                     className="group h-full cursor-pointer"
                   >
                     <CardHeader>
-                      <motion.div 
+                      <motion.div
                         className="bg-primary/10 group-hover:bg-primary/20 mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors"
                         whileHover={{ rotate: 5 }}
                         transition={{ duration: 0.2 }}
@@ -238,82 +237,118 @@ function FeaturesSection({
   );
 }
 
-// --- PROGRESSIVE DISCLOSURE SECTION ---
-function ProgressiveFeaturesSection() {
+// --- ADDITIONAL FEATURES SECTION ---
+function AdditionalFeaturesSection() {
   const additionalFeatures = [
     {
       icon: Users,
-      title: "Multi-User Collaboration",
-      description: "Enable real-time collaboration between medical teams with shared visualization and annotation tools."
+      title: 'Multi-User Collaboration',
+      description:
+        'Enable real-time collaboration between medical teams with shared visualization and annotation tools.',
+      color: 'from-blue-500 to-cyan-500',
     },
     {
       icon: Award,
-      title: "Clinical Validation",
-      description: "Extensively tested and validated in clinical settings with proven results across multiple institutions."
+      title: 'Clinical Validation',
+      description:
+        'Extensively tested and validated in clinical settings with proven results across multiple institutions.',
+      color: 'from-green-500 to-emerald-500',
     },
     {
       icon: CheckCircle,
-      title: "Quality Assurance",
-      description: "Built-in quality checks and validation protocols ensure consistent and reliable performance."
+      title: 'Quality Assurance',
+      description:
+        'Built-in quality checks and validation protocols ensure consistent and reliable performance.',
+      color: 'from-purple-500 to-violet-500',
     },
     {
       icon: Play,
-      title: "Training Modules",
-      description: "Comprehensive training programs and interactive modules to ensure successful implementation."
-    }
+      title: 'Training Modules',
+      description:
+        'Comprehensive training programs and interactive modules to ensure successful implementation.',
+      color: 'from-orange-500 to-red-500',
+    },
+    {
+      icon: Brain,
+      title: 'AI-Powered Insights',
+      description:
+        'Advanced machine learning algorithms provide intelligent recommendations and predictive analytics.',
+      color: 'from-indigo-500 to-blue-500',
+    },
+    {
+      icon: Shield,
+      title: 'Data Security',
+      description:
+        'Enterprise-grade security protocols ensure patient data protection and regulatory compliance.',
+      color: 'from-teal-500 to-green-500',
+    },
   ];
 
   return (
-    <section className="py-20 bg-muted/20" aria-labelledby="more-features-heading">
-      <AnimatedSection>
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <h2 id="more-features-heading" className="mb-4 text-4xl font-bold md:text-5xl">
-              Discover More Features
-            </h2>
-            <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-              Explore additional capabilities that make Percisio the comprehensive solution for modern healthcare.
-            </p>
-          </div>
-
-          <ProgressiveDisclosure 
-            title="Advanced Features & Capabilities"
-            defaultOpen={false}
-            maxItems={2}
-            className="max-w-4xl mx-auto"
+    <section
+      className="from-muted/20 to-background bg-gradient-to-b py-20"
+      aria-labelledby="more-features-heading"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <motion.h2
+            id="more-features-heading"
+            className="mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            {additionalFeatures.map((feature, index) => (
-              <HoverCard 
-                key={index}
-                delay={index * 0.1}
-                hoverContent={`Learn more about ${feature.title}`}
-              >
-                <AnimatedCard 
-                  delay={index * 0.1}
-                  hoverScale={1.02}
-                  className="group cursor-pointer"
-                >
+            Discover More Features
+          </motion.h2>
+          <motion.p
+            className="text-muted-foreground mx-auto max-w-3xl text-xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Explore additional capabilities that make Percisio the comprehensive solution for modern
+            healthcare.
+          </motion.p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {additionalFeatures.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <HoverCard delay={index * 0.1} hoverContent={`Learn more about ${feature.title}`}>
+                <Card className="group h-full cursor-pointer transition-all duration-300 hover:shadow-lg">
                   <CardHeader>
-                    <div className="flex items-center gap-4">
-                      <motion.div 
-                        className="bg-primary/10 group-hover:bg-primary/20 flex h-10 w-10 items-center justify-center rounded-lg transition-colors"
-                        whileHover={{ rotate: 5 }}
+                    <div className="flex items-start gap-4">
+                      <motion.div
+                        className={`bg-gradient-to-r ${feature.color} flex h-12 w-12 items-center justify-center rounded-xl shadow-lg`}
+                        whileHover={{ rotate: 5, scale: 1.1 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <feature.icon className="text-primary h-5 w-5" />
+                        <feature.icon className="h-6 w-6 text-white" />
                       </motion.div>
-                      <div>
-                        <CardTitle className="text-lg">{feature.title}</CardTitle>
-                        <CardDescription className="text-sm">{feature.description}</CardDescription>
+                      <div className="flex-1">
+                        <CardTitle className="group-hover:text-primary text-lg transition-colors">
+                          {feature.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm leading-relaxed">
+                          {feature.description}
+                        </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
-                </AnimatedCard>
+                </Card>
               </HoverCard>
-            ))}
-          </ProgressiveDisclosure>
+            </motion.div>
+          ))}
         </div>
-      </AnimatedSection>
+      </div>
     </section>
   );
 }
@@ -371,7 +406,7 @@ export default function HomePage() {
       <GlobalChallenges />
       <VideoSection />
       <FeaturesSection t={t} features={features} />
-      <ProgressiveFeaturesSection />
+      <AdditionalFeaturesSection />
       <CTASection t={t} />
       <Footer />
     </div>
