@@ -14,7 +14,7 @@ import { useTranslations } from '@/lib/hooks/use-translations';
 import { Brain, Shield, Activity, ArrowRight, Play, CheckCircle, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useState } from 'react';
 
 const ClientScene = dynamic(
   () => import('@/components/3d/client-scene').then((mod) => mod.ClientScene),
@@ -31,9 +31,55 @@ const LazyAdditionalFeaturesSection = lazy(() =>
   Promise.resolve({ default: AdditionalFeaturesSection })
 );
 
+// YouTube Facade for performance optimization
+function YouTubeFacade() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isIntersecting, setIsIntersecting] = useState(false);
+  const { ref } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+    onChange: (inView) => setIsIntersecting(inView),
+  });
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
+  return (
+    <div ref={ref} className="absolute top-0 left-0 h-full w-full">
+      {!isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center rounded-none bg-black sm:rounded-lg">
+          <div className="text-center text-white">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-red-600">
+              <Play className="ml-1 h-8 w-8" />
+            </div>
+            <p className="text-sm">Click to load video</p>
+          </div>
+        </div>
+      )}
+      {isIntersecting && (
+        <iframe
+          className="absolute top-0 left-0 h-full w-full rounded-none shadow-xl sm:rounded-lg sm:shadow-2xl"
+          src="https://www.youtube.com/embed/zgXU63Wfcu4?si=F_3CYGn7XbQhCpet&rel=0&modestbranding=1"
+          title="Percisio - An overview of Percisio's cutting-edge technology"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+          onLoad={handleLoad}
+        />
+      )}
+    </div>
+  );
+}
+
 // --- HERO SECTION ---
 function HeroSection({ t }: { t: (key: string) => string }) {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+    rootMargin: '50px',
+  });
 
   return (
     <section
@@ -59,8 +105,15 @@ function HeroSection({ t }: { t: (key: string) => string }) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          style={{ willChange: 'transform, opacity' }}
+          transition={{
+            duration: 0.6,
+            ease: 'easeOut',
+            type: 'tween',
+          }}
+          style={{
+            willChange: 'transform, opacity',
+            transform: 'translateZ(0)', // Force GPU acceleration
+          }}
         >
           <Badge className="mb-4" variant="secondary">
             {t('home.badge')}
@@ -103,7 +156,11 @@ function HeroSection({ t }: { t: (key: string) => string }) {
 
 // --- GLOBAL HEALTHCARE CHALLENGES SECTION ---
 function GlobalChallenges() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+    rootMargin: '50px',
+  });
   const panels = [
     {
       title: 'Shortage of Skilled Professionals',
@@ -146,7 +203,12 @@ function GlobalChallenges() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.1,
+                    ease: 'easeOut',
+                    type: 'tween',
+                  }}
                 >
                   <Card className="border-border bg-background/80 h-full border p-4 text-left backdrop-blur-md transition-shadow hover:shadow-lg sm:p-6">
                     <CardHeader className="mb-4 p-0">
@@ -181,15 +243,7 @@ function VideoSection() {
         viewport={{ once: true }}
       >
         <div className="relative w-full pt-[56.25%] sm:pt-[50%] md:pt-[45%] lg:pt-[40%] xl:pt-[35%]">
-          <iframe
-            className="absolute top-0 left-0 h-full w-full rounded-none shadow-xl sm:rounded-lg sm:shadow-2xl"
-            src="https://www.youtube.com/embed/zgXU63Wfcu4?si=F_3CYGn7XbQhCpet&rel=0&modestbranding=1"
-            title="Percisio - An overview of Percisio's cutting-edge technology"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          />
+          <YouTubeFacade />
         </div>
       </motion.div>
     </section>
