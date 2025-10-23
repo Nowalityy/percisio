@@ -14,7 +14,7 @@ import { useTranslations } from '@/lib/hooks/use-translations';
 import { Brain, Shield, Activity, ArrowRight, Play, CheckCircle, Users, Award } from 'lucide-react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 
 const ClientScene = dynamic(
   () => import('@/components/3d/client-scene').then((mod) => mod.ClientScene),
@@ -26,46 +26,56 @@ const ClientScene = dynamic(
   }
 );
 
+// Lazy load heavy components
+const LazyAdditionalFeaturesSection = lazy(() =>
+  Promise.resolve({ default: AdditionalFeaturesSection })
+);
+
 // --- HERO SECTION ---
 function HeroSection({ t }: { t: (key: string) => string }) {
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16 sm:pt-20"
       aria-labelledby="hero-heading"
     >
       <div
         className="via-background absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 opacity-30" aria-hidden="true">
-        <Suspense
-          fallback={
-            <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
-          }
-        >
-          <ClientScene cameraPosition={[0, 0, 3]} />
-        </Suspense>
+      <div ref={ref} className="absolute inset-0 opacity-30" aria-hidden="true">
+        {inView && (
+          <Suspense
+            fallback={
+              <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
+            }
+          >
+            <ClientScene cameraPosition={[0, 0, 3]} />
+          </Suspense>
+        )}
       </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          style={{ willChange: 'transform, opacity' }}
         >
           <Badge className="mb-4" variant="secondary">
             {t('home.badge')}
           </Badge>
           <h1
             id="hero-heading"
-            className="mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-5xl font-bold text-transparent md:text-7xl"
+            className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl font-bold text-transparent sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
           >
             {t('home.title')}
           </h1>
-          <p className="text-muted-foreground mx-auto mb-8 max-w-3xl text-xl md:text-2xl">
+          <p className="text-muted-foreground mx-auto mb-6 max-w-3xl text-base sm:mb-8 sm:text-lg md:text-xl lg:text-2xl">
             {t('home.subtitle')}
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <AnimatedButton delay={0.2} size="lg" className="text-lg" asChild>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+            <AnimatedButton delay={0.2} size="lg" className="text-base sm:text-lg" asChild>
               <Link href="/schedule" aria-label="Schedule a Live Demo">
                 {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
               </Link>
@@ -74,7 +84,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
               delay={0.4}
               size="lg"
               variant="outline"
-              className="text-lg"
+              className="text-base sm:text-lg"
               onClick={() => {
                 document
                   .getElementById('features-section')
@@ -113,34 +123,37 @@ function GlobalChallenges() {
   ];
 
   return (
-    <section className="bg-secondary/20 py-24" aria-labelledby="challenges-heading">
+    <section
+      className="bg-secondary/20 py-12 sm:py-16 md:py-20 lg:py-24"
+      aria-labelledby="challenges-heading"
+    >
       <div ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <h2
               id="challenges-heading"
-              className="mb-12 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+              className="mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl lg:text-5xl"
             >
               Addressing Global Healthcare Challenges
             </h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
               {panels.map((panel, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
                 >
-                  <Card className="border-border bg-background/80 h-full border p-6 text-left backdrop-blur-md transition-shadow hover:shadow-lg">
+                  <Card className="border-border bg-background/80 h-full border p-4 text-left backdrop-blur-md transition-shadow hover:shadow-lg sm:p-6">
                     <CardHeader className="mb-4 p-0">
-                      <CardTitle className="text-primary mb-2 text-xl font-semibold">
+                      <CardTitle className="text-primary mb-2 text-lg font-semibold sm:text-xl">
                         {panel.title}
                       </CardTitle>
-                      <CardDescription className="text-muted-foreground text-base leading-relaxed">
+                      <CardDescription className="text-muted-foreground text-sm leading-relaxed sm:text-base">
                         {panel.description}
                       </CardDescription>
                     </CardHeader>
@@ -158,22 +171,24 @@ function GlobalChallenges() {
 // --- VIDEO SECTION ---
 function VideoSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-black py-8 sm:py-12 md:py-16 lg:py-20">
+    <section className="relative w-full overflow-hidden bg-black py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20">
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-black/70"></div>
       <motion.div
         className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        viewport={{ once: true }}
       >
-        <div className="xs:pt-[65%] relative w-full pt-[75%] sm:pt-[56.25%] md:pt-[50%] lg:pt-[45%] xl:pt-[40%] 2xl:pt-[35%]">
+        <div className="relative w-full pt-[56.25%] sm:pt-[50%] md:pt-[45%] lg:pt-[40%] xl:pt-[35%]">
           <iframe
             className="absolute top-0 left-0 h-full w-full rounded-none shadow-xl sm:rounded-lg sm:shadow-2xl"
-            src="https://www.youtube.com/embed/zgXU63Wfcu4?si=F_3CYGn7XbQhCpet"
+            src="https://www.youtube.com/embed/zgXU63Wfcu4?si=F_3CYGn7XbQhCpet&rel=0&modestbranding=1"
             title="Percisio - An overview of Percisio's cutting-edge technology"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            loading="lazy"
           />
         </div>
       </motion.div>
@@ -195,19 +210,26 @@ function FeaturesSection({
   }>;
 }) {
   return (
-    <section id="features-section" className="py-20" aria-labelledby="features-heading">
+    <section
+      id="features-section"
+      className="py-12 sm:py-16 md:py-20"
+      aria-labelledby="features-heading"
+    >
       <AnimatedSection>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-16 text-center">
-            <h2 id="features-heading" className="mb-4 text-4xl font-bold md:text-5xl">
+          <div className="mb-12 text-center sm:mb-14 md:mb-16">
+            <h2
+              id="features-heading"
+              className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+            >
               {t('home.featuresTitle')}
             </h2>
-            <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
+            <p className="text-muted-foreground mx-auto max-w-3xl text-base sm:text-lg md:text-xl">
               {t('home.featuresSubtitle')}
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
               <HoverCard
                 key={index}
@@ -221,15 +243,16 @@ function FeaturesSection({
                     className="group h-full cursor-pointer"
                   >
                     <CardHeader>
-                      <motion.div
-                        className="bg-primary/10 group-hover:bg-primary/20 mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors"
-                        whileHover={{ rotate: 5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <feature.icon className="text-primary h-6 w-6" aria-hidden="true" />
-                      </motion.div>
+                      <div className="bg-primary/10 group-hover:bg-primary/20 mb-3 flex h-10 w-10 items-center justify-center rounded-lg transition-colors sm:mb-4 sm:h-12 sm:w-12">
+                        <feature.icon
+                          className="text-primary h-5 w-5 sm:h-6 sm:w-6"
+                          aria-hidden="true"
+                        />
+                      </div>
                       <CardTitle>{t(feature.titleKey)}</CardTitle>
-                      <CardDescription className="text-base">{t(feature.descKey)}</CardDescription>
+                      <CardDescription className="text-sm sm:text-base">
+                        {t(feature.descKey)}
+                      </CardDescription>
                     </CardHeader>
                   </AnimatedCard>
                 </Link>
@@ -291,14 +314,14 @@ function AdditionalFeaturesSection() {
 
   return (
     <section
-      className="from-muted/20 to-background bg-gradient-to-b py-20"
+      className="from-muted/20 to-background bg-gradient-to-b py-12 sm:py-16 md:py-20"
       aria-labelledby="more-features-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center sm:mb-14 md:mb-16">
           <motion.h2
             id="more-features-heading"
-            className="mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+            className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent sm:mb-6 sm:text-3xl md:text-4xl lg:text-5xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -307,7 +330,7 @@ function AdditionalFeaturesSection() {
             Discover More Features
           </motion.h2>
           <motion.p
-            className="text-muted-foreground mx-auto max-w-3xl text-xl"
+            className="text-muted-foreground mx-auto max-w-3xl text-base sm:text-lg md:text-xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -318,31 +341,29 @@ function AdditionalFeaturesSection() {
           </motion.p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {additionalFeatures.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.05, ease: 'easeOut' }}
               viewport={{ once: true }}
             >
               <HoverCard delay={index * 0.1} hoverContent={`Learn more about ${feature.title}`}>
                 <Card className="group h-full cursor-pointer transition-all duration-300 hover:shadow-lg">
                   <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <motion.div
-                        className={`bg-gradient-to-r ${feature.color} flex h-12 w-12 items-center justify-center rounded-xl shadow-lg`}
-                        whileHover={{ rotate: 5, scale: 1.1 }}
-                        transition={{ duration: 0.2 }}
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div
+                        className={`bg-gradient-to-r ${feature.color} flex h-10 w-10 items-center justify-center rounded-xl shadow-lg sm:h-12 sm:w-12`}
                       >
-                        <feature.icon className="h-6 w-6 text-white" />
-                      </motion.div>
+                        <feature.icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />
+                      </div>
                       <div className="flex-1">
-                        <CardTitle className="group-hover:text-primary text-lg transition-colors">
+                        <CardTitle className="group-hover:text-primary text-base transition-colors sm:text-lg">
                           {feature.title}
                         </CardTitle>
-                        <CardDescription className="text-sm leading-relaxed">
+                        <CardDescription className="text-xs leading-relaxed sm:text-sm">
                           {feature.description}
                         </CardDescription>
                       </div>
@@ -361,14 +382,19 @@ function AdditionalFeaturesSection() {
 // --- CTA SECTION ---
 function CTASection({ t }: { t: (key: string) => string }) {
   return (
-    <section className="py-20" aria-labelledby="cta-heading">
+    <section className="py-12 sm:py-16 md:py-20" aria-labelledby="cta-heading">
       <AnimatedSection>
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 id="cta-heading" className="mb-6 text-4xl font-bold md:text-5xl">
+          <h2
+            id="cta-heading"
+            className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl md:text-4xl lg:text-5xl"
+          >
             {t('home.ctaTitle')}
           </h2>
-          <p className="text-muted-foreground mb-8 text-xl">{t('home.ctaDescription')}</p>
-          <AnimatedButton delay={0.2} size="lg" className="text-lg" asChild>
+          <p className="text-muted-foreground mb-6 text-base sm:mb-8 sm:text-lg md:text-xl">
+            {t('home.ctaDescription')}
+          </p>
+          <AnimatedButton delay={0.2} size="lg" className="text-base sm:text-lg" asChild>
             <Link href="/schedule" aria-label="Get started with Percisio">
               {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Link>
@@ -411,7 +437,9 @@ export default function HomePage() {
       <GlobalChallenges />
       <VideoSection />
       <FeaturesSection t={t} features={features} />
-      <AdditionalFeaturesSection />
+      <Suspense fallback={<div className="py-12 sm:py-16 md:py-20" />}>
+        <LazyAdditionalFeaturesSection />
+      </Suspense>
       <CTASection t={t} />
       <Footer />
     </div>
