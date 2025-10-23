@@ -18,7 +18,12 @@ import { Suspense } from 'react';
 
 const ClientScene = dynamic(
   () => import('@/components/3d/client-scene').then((mod) => mod.ClientScene),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
+    ),
+  }
 );
 
 // --- HERO SECTION ---
