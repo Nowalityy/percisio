@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations } from '@/lib/hooks/use-translations';
 
 export default function TeamPage() {
@@ -20,6 +21,7 @@ export default function TeamPage() {
           ? 'Ingénieur de formation, spécialisé en gestion de projets IT et Industrie 4.0. Expertise en réalité augmentée/virtuelle et science des données.'
           : 'Engineer by background, specialized in IT project management and Industry 4.0. Expertise in augmented/virtual reality and data science.',
       linkedin: 'https://www.linkedin.com/in/fr%C3%A9d%C3%A9ric-lesage-08a4a622/',
+      image: '/team/fred_l.jpg',
     },
     {
       id: 2,
@@ -30,6 +32,7 @@ export default function TeamPage() {
           ? 'Ingénieur de formation, spécialiste IT freelance. Expertise en blockchain et technologies émergentes.'
           : 'Engineer by training, freelance IT specialist. Expertise in blockchain and emerging technologies.',
       linkedin: 'https://www.linkedin.com/in/bmarcot/',
+      image: '/team/benoit.jpg',
     },
     {
       id: 3,
@@ -40,6 +43,7 @@ export default function TeamPage() {
           ? 'Formation en ingénierie, spécialiste en Industrie 4.0, cobotique, robotique, fabrication et électronique.'
           : 'Engineering background, specialist in Industry 4.0, cobotics, robotics, manufacturing, and electronics.',
       linkedin: 'https://www.linkedin.com/in/nicolasg-l/',
+      image: '/team/nicolas_g.jpg',
     },
     {
       id: 4,
@@ -49,6 +53,7 @@ export default function TeamPage() {
         locale === 'fr'
           ? "Médecin nucléaire, spécialiste en exposition aux rayons X. Membre d'EURADOS."
           : 'Nuclear physician, specialist in X-ray exposure. Member of EURADOS.',
+      image: null, // No photo available for Bernard Landry
     },
     {
       id: 5,
@@ -59,6 +64,7 @@ export default function TeamPage() {
           ? 'Alternant en développement web, spécialisé en développement front-end et back-end. Compétent dans la création de designs web responsive et optimisés.'
           : 'Alternant in web development, specialized in front-end and back-end development. Skilled in creating responsive and optimized web designs.',
       linkedin: 'https://www.linkedin.com/in/nikola-milosavljevic-397806327/',
+      image: '/team/nikola_m.png',
     },
   ];
 
@@ -82,7 +88,19 @@ export default function TeamPage() {
             {teamMembers.map((member) => (
               <Card key={member.id} className="overflow-hidden transition-shadow hover:shadow-lg">
                 <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
-                  <div className="text-6xl font-bold text-cyan-600/30">{member.name.charAt(0)}</div>
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={`${member.name} - ${member.role}`}
+                      width={300}
+                      height={300}
+                      className="h-full w-full object-cover"
+                    />
+                  ) : (
+                    <div className="text-6xl font-bold text-cyan-600/30">
+                      {member.name.charAt(0)}
+                    </div>
+                  )}
                 </div>
                 <CardHeader>
                   <CardTitle className="text-xl">{member.name}</CardTitle>

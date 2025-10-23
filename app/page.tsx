@@ -38,7 +38,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
             <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
           }
         >
-          <ClientScene cameraPosition={[0, 0, 8]} />
+          <ClientScene cameraPosition={[0, 0, 3]} />
         </Suspense>
       </div>
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
@@ -164,8 +164,8 @@ function VideoSection() {
         <div className="xs:pt-[65%] relative w-full pt-[75%] sm:pt-[56.25%] md:pt-[50%] lg:pt-[45%] xl:pt-[40%] 2xl:pt-[35%]">
           <iframe
             className="absolute top-0 left-0 h-full w-full rounded-none shadow-xl sm:rounded-lg sm:shadow-2xl"
-            src="https://www.youtube.com/embed/AB-lq46epYU?autoplay=0&controls=1&rel=0&modestbranding=1"
-            title="Percisio - Roadmapping and Assisted Guidance in IR"
+            src="https://www.youtube.com/embed/zgXU63Wfcu4?si=F_3CYGn7XbQhCpet"
+            title="Percisio - An overview of Percisio's cutting-edge technology"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

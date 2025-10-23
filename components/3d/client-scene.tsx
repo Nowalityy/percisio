@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { SceneWrapper } from './scene-wrapper';
-import { MedicalDevice } from './medical-device';
+import { GLBModel } from './glb-model';
 import { FloatingParticles } from './floating-particles';
 
 interface ClientSceneProps {
@@ -22,7 +22,7 @@ export function ClientScene({ cameraPosition = [0, 0, 8] }: ClientSceneProps) {
 
   return (
     <SceneWrapper cameraPosition={cameraPosition}>
-      <MedicalDevice />
+      <GLBModel />
       <FloatingParticles />
     </SceneWrapper>
   );
