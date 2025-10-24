@@ -8,7 +8,7 @@ export default function CookiesPage() {
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h1 className="mb-8 text-4xl font-bold md:text-5xl">Cookie Policy</h1>
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className="prose prose-lg max-w-none">
             <p className="lead">Last updated: {new Date().toLocaleDateString()}</p>
             <h2>1. What Are Cookies</h2>
             <p>

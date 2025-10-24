@@ -18,6 +18,7 @@ import {
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function GuidancePage() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
@@ -70,68 +71,66 @@ export default function GuidancePage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <h2 className="mb-6 text-4xl font-bold md:text-5xl">The Power of Computer Vision</h2>
+              <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
+                PERCISIO is powered by computer vision, providing you with a state-of-the-art
+                assistance system that actively tracks medical instruments during procedures.
+              </p>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
-              <div>
-                <Card className="h-full">
-                  <CardHeader>
-                    <div className="mb-4 flex items-center gap-3">
-                      <Eye className="text-primary h-6 w-6" />
-                      <CardTitle className="text-2xl">Advanced Computer Vision</CardTitle>
-                    </div>
-                    <CardDescription className="text-lg">
-                      PERCISIO is powered by computer vision, providing you with a state-of-the-art
-                      assistance system.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground leading-relaxed">
-                      This technology actively tracks medical instruments during procedures to
-                      support practitioners in both interventional and non-interventional medicine.
-                      Thanks to this support system, performing a medical procedure with PERCISIO
-                      becomes effortless.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+            <div className="grid gap-8 lg:grid-cols-3">
+              <Card>
+                <CardHeader>
+                  <div className="mb-4 flex items-center gap-3">
+                    <Eye className="text-primary h-6 w-6" />
+                    <CardTitle className="text-2xl">Advanced Computer Vision</CardTitle>
+                  </div>
+                  <CardDescription className="text-lg">
+                    This technology supports practitioners in both interventional and
+                    non-interventional medicine.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    Thanks to this support system, performing a medical procedure with PERCISIO
+                    becomes effortless, enhancing both safety and efficiency.
+                  </p>
+                </CardContent>
+              </Card>
 
-              <div className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Target className="h-5 w-5" />
-                      Real-time Tracking
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Advanced computer vision technology actively tracks medical instruments during
-                      procedures, providing continuous support for practitioners.
-                    </p>
-                  </CardContent>
-                </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="h-5 w-5" />
+                    Real-time Tracking
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Advanced computer vision technology actively tracks medical instruments during
+                    procedures, providing continuous support for practitioners.
+                  </p>
+                </CardContent>
+              </Card>
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Shield className="h-5 w-5" />
-                      Effortless Procedures
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
-                      Thanks to this support system, performing a medical procedure with PERCISIO
-                      becomes effortless, enhancing both safety and efficiency.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Shield className="h-5 w-5" />
+                    Effortless Procedures
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Thanks to this support system, performing a medical procedure with PERCISIO
+                    becomes effortless, enhancing both safety and efficiency.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
 
-        {/* Unmatched Versatility Section */}
+        {/* Medical Applications Gallery Section */}
         <section ref={ref} className="py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.div
@@ -141,7 +140,7 @@ export default function GuidancePage() {
             >
               <div className="mb-16 text-center">
                 <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-                  Unmatched Versatility and Application
+                  Medical Applications in Practice
                 </h2>
                 <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
                   PERCISIO is built to assist practitioners across various applications, from
@@ -149,8 +148,89 @@ export default function GuidancePage() {
                 </p>
               </div>
 
+              {/* Professional Medical Gallery */}
+              <div className="mb-16">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                  {/* Needle Guidance Procedure */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <div className="relative overflow-hidden rounded-lg shadow-lg">
+                      <Image
+                        src="/guidance_image/body_probe_needle-4.jpg"
+                        alt="PERCISIO Needle Guidance Procedure"
+                        width={400}
+                        height={300}
+                        className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <h3 className="text-lg font-semibold">Needle Guidance</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Precise needle placement with real-time tracking
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Abscess Treatment 1 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <div className="relative overflow-hidden rounded-lg shadow-lg">
+                      <Image
+                        src="/guidance_image/abscess1.jpg"
+                        alt="PERCISIO Abscess Treatment Procedure"
+                        width={400}
+                        height={300}
+                        className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <h3 className="text-lg font-semibold">Abscess Treatment</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Guided drainage procedures with enhanced precision
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Abscess Treatment 2 */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    className="group"
+                  >
+                    <div className="relative overflow-hidden rounded-lg shadow-lg">
+                      <Image
+                        src="/guidance_image/abscess2.jpg"
+                        alt="PERCISIO Advanced Abscess Treatment"
+                        width={400}
+                        height={300}
+                        className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <h3 className="text-lg font-semibold">Advanced Treatment</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Complex procedures with computer vision support
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Essential Procedures List */}
               <div className="mb-12">
-                <Card className="h-full">
+                <Card className="mx-auto max-w-4xl">
                   <CardHeader>
                     <div className="mb-4 flex items-center gap-3">
                       <Layers className="text-primary h-6 w-6" />

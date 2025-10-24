@@ -86,7 +86,10 @@ export default function TeamPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
-              <Card key={member.id} className="overflow-hidden transition-shadow hover:shadow-lg">
+              <Card
+                key={member.id}
+                className="card-hover fade-in-up flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg"
+              >
                 <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
                   {member.image ? (
                     <Image
@@ -102,23 +105,27 @@ export default function TeamPage() {
                     </div>
                   )}
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl">{member.name}</CardTitle>
-                  <p className="text-primary font-medium">{member.role}</p>
+                <CardHeader className="flex-shrink-0">
+                  <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                  <p className="text-primary text-center font-medium">{member.role}</p>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{member.bio}</p>
+                <CardContent className="flex flex-1 flex-col justify-between">
+                  <p className="text-muted-foreground mb-4 text-center text-sm leading-relaxed">
+                    {member.bio}
+                  </p>
                   {member.linkedin && (
-                    <Link
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary inline-flex items-center text-sm hover:underline"
-                      aria-label={`${member.name} LinkedIn profile`}
-                    >
-                      <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />
-                      LinkedIn
-                    </Link>
+                    <div className="mt-auto flex justify-center">
+                      <Link
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary inline-flex items-center text-sm hover:underline"
+                        aria-label={`${member.name} LinkedIn profile`}
+                      >
+                        <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />
+                        LinkedIn
+                      </Link>
+                    </div>
                   )}
                 </CardContent>
               </Card>

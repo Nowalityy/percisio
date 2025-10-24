@@ -75,80 +75,79 @@ function YouTubeFacade() {
 
 // --- HERO SECTION ---
 function HeroSection({ t }: { t: (key: string) => string }) {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-    rootMargin: '50px',
-  });
-
   return (
     <section
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16 sm:pt-20"
+      className="relative flex min-h-screen items-center py-16 sm:py-20 lg:py-24"
       aria-labelledby="hero-heading"
     >
-      <div
-        className="via-background absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-600/10"
-        aria-hidden="true"
-      />
-      <div ref={ref} className="absolute inset-0 opacity-30" aria-hidden="true">
-        {inView && (
-          <Suspense
-            fallback={
-              <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
-            }
-          >
-            <ClientScene cameraPosition={[0, 0, 3]} />
-          </Suspense>
-        )}
-      </div>
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            ease: 'easeOut',
-            type: 'tween',
-          }}
-          style={{
-            willChange: 'transform, opacity',
-            transform: 'translateZ(0)', // Force GPU acceleration
-          }}
-        >
-          <Badge className="mb-4" variant="secondary">
-            {t('home.badge')}
-          </Badge>
-          <h1
-            id="hero-heading"
-            className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl font-bold text-transparent sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
-          >
-            {t('home.title')}
-          </h1>
-          <p className="text-muted-foreground mx-auto mb-6 max-w-3xl text-base sm:mb-8 sm:text-lg md:text-xl lg:text-2xl">
-            {t('home.subtitle')}
-          </p>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-            <AnimatedButton delay={0.2} size="lg" className="text-base sm:text-lg" asChild>
-              <Link href="/schedule" aria-label="Schedule a Live Demo">
-                {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-              </Link>
-            </AnimatedButton>
-            <AnimatedButton
-              delay={0.4}
-              size="lg"
-              variant="outline"
-              className="text-base sm:text-lg"
-              onClick={() => {
-                document
-                  .getElementById('features-section')
-                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+          {/* Left side - Text content */}
+          <div className="text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: 'easeOut',
+                type: 'tween',
               }}
-              aria-label="Scroll to features section"
+              className="fade-in-up"
             >
-              {t('home.ctaSecondary')}
-            </AnimatedButton>
+              <h1
+                id="hero-heading"
+                className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl font-bold text-transparent sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl"
+              >
+                {t('home.title')}
+              </h1>
+              <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base sm:mb-8 sm:text-lg md:text-xl lg:mx-0">
+                {t('home.subtitle')}
+              </p>
+              <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+                <AnimatedButton delay={0.2} size="lg" className="text-base sm:text-lg" asChild>
+                  <Link href="/schedule" aria-label="Schedule a Live Demo">
+                    {t('home.ctaPrimary')}{' '}
+                    <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+                  </Link>
+                </AnimatedButton>
+                <AnimatedButton
+                  delay={0.4}
+                  size="lg"
+                  variant="outline"
+                  className="text-base sm:text-lg"
+                  onClick={() => {
+                    document
+                      .getElementById('features-section')
+                      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }}
+                  aria-label="Scroll to features section"
+                >
+                  {t('home.ctaSecondary')}
+                </AnimatedButton>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+
+          {/* Right side - Image */}
+          <div className="flex justify-center lg:justify-end">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: 'easeOut',
+                delay: 0.2,
+              }}
+              className="fade-in-right img-fade-in relative"
+            >
+              <img
+                src="/cam_percisio.png"
+                alt="PERCISIO Medical Device"
+                className="h-auto max-w-full rounded-lg shadow-xl sm:max-w-md lg:max-w-lg"
+              />
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -181,7 +180,7 @@ function GlobalChallenges() {
 
   return (
     <section
-      className="bg-secondary/20 py-12 sm:py-16 md:py-20 lg:py-24"
+      className="bg-secondary/20 section-fade-in py-12 sm:py-16 md:py-20 lg:py-24"
       aria-labelledby="challenges-heading"
     >
       <div ref={ref}>
@@ -210,7 +209,7 @@ function GlobalChallenges() {
                     type: 'tween',
                   }}
                 >
-                  <Card className="border-border bg-background/80 h-full border p-4 text-left backdrop-blur-md transition-shadow hover:shadow-lg sm:p-6">
+                  <Card className="border-border bg-background/80 card-hover fade-in-up h-full border p-4 text-left backdrop-blur-md transition-shadow hover:shadow-lg sm:p-6">
                     <CardHeader className="mb-4 p-0">
                       <CardTitle className="text-primary mb-2 text-lg font-semibold sm:text-xl">
                         {panel.title}
@@ -233,7 +232,7 @@ function GlobalChallenges() {
 // --- VIDEO SECTION ---
 function VideoSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-black py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20">
+    <section className="section-fade-in relative w-full overflow-hidden bg-black py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20">
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-black/70"></div>
       <motion.div
         className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
@@ -242,7 +241,7 @@ function VideoSection() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
-        <div className="relative w-full pt-[56.25%] sm:pt-[50%] md:pt-[45%] lg:pt-[40%] xl:pt-[35%]">
+        <div className="relative w-full pt-[65%] sm:pt-[60%] md:pt-[55%] lg:pt-[50%] xl:pt-[45%]">
           <YouTubeFacade />
         </div>
       </motion.div>
@@ -405,7 +404,7 @@ function AdditionalFeaturesSection() {
               viewport={{ once: true }}
             >
               <HoverCard delay={index * 0.1} hoverContent={`Learn more about ${feature.title}`}>
-                <Card className="group h-full cursor-pointer transition-all duration-300 hover:shadow-lg">
+                <Card className="group card-hover fade-in-up h-full cursor-pointer transition-all duration-300 hover:shadow-lg">
                   <CardHeader>
                     <div className="flex items-start gap-3 sm:gap-4">
                       <div

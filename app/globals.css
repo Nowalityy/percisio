@@ -1,25 +1,25 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #fafafa;
-  --color-card: #0a0a0a;
-  --color-card-foreground: #fafafa;
-  --color-popover: #0a0a0a;
-  --color-popover-foreground: #fafafa;
-  --color-primary: #fafafa;
-  --color-primary-foreground: #0a0a0a;
-  --color-secondary: #262626;
-  --color-secondary-foreground: #fafafa;
-  --color-muted: #262626;
-  --color-muted-foreground: #a3a3a3;
-  --color-accent: #262626;
-  --color-accent-foreground: #fafafa;
-  --color-destructive: #7f1d1d;
-  --color-destructive-foreground: #fafafa;
-  --color-border: #262626;
-  --color-input: #262626;
-  --color-ring: #d4d4d8;
+  --color-background: #f1f5f9;
+  --color-foreground: #0a0a0a;
+  --color-card: #f8fafc;
+  --color-card-foreground: #0a0a0a;
+  --color-popover: #f8fafc;
+  --color-popover-foreground: #0a0a0a;
+  --color-primary: #0a0a0a;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #e2e8f0;
+  --color-secondary-foreground: #0a0a0a;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #64748b;
+  --color-accent: #e2e8f0;
+  --color-accent-foreground: #0a0a0a;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #cbd5e1;
+  --color-input: #cbd5e1;
+  --color-ring: #0a0a0a;
   --color-chart-1: #3b82f6;
   --color-chart-2: #10b981;
   --color-chart-3: #f59e0b;
@@ -29,25 +29,25 @@
 }
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --card: #0a0a0a;
-  --card-foreground: #fafafa;
-  --popover: #0a0a0a;
-  --popover-foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #0a0a0a;
-  --secondary: #262626;
-  --secondary-foreground: #fafafa;
-  --muted: #262626;
-  --muted-foreground: #a3a3a3;
-  --accent: #262626;
-  --accent-foreground: #fafafa;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #fafafa;
-  --border: #262626;
-  --input: #262626;
-  --ring: #d4d4d8;
+  --background: #f1f5f9;
+  --foreground: #0a0a0a;
+  --card: #f8fafc;
+  --card-foreground: #0a0a0a;
+  --popover: #f8fafc;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #ffffff;
+  --secondary: #e2e8f0;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #e2e8f0;
+  --accent-foreground: #0a0a0a;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #cbd5e1;
+  --input: #cbd5e1;
+  --ring: #0a0a0a;
   --chart-1: #3b82f6;
   --chart-2: #10b981;
   --chart-3: #f59e0b;
@@ -82,7 +82,174 @@ body {
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
+}
+
+/* Force light mode - Simplified approach */
+html,
+body {
+  background-color: #f1f5f9 !important;
+  color: #0a0a0a !important;
+}
+
+/* Override any dark mode classes */
+.dark,
+[data-theme='dark'],
+[data-theme='dark'],
+.dark-mode,
+[class*='dark'] {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+}
+
+/* Force all backgrounds to be light */
+.bg-background {
+  background-color: #f1f5f9 !important;
+}
+
+.bg-card {
+  background-color: #f8fafc !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-muted {
+  background-color: #f1f5f9 !important;
+}
+
+.bg-secondary,
+.bg-accent {
+  background-color: #e2e8f0 !important;
+}
+
+.bg-popover {
+  background-color: #f8fafc !important;
+}
+
+/* Force all text to be dark */
+.text-foreground,
+.text-primary,
+.text-black,
+.text-card-foreground,
+.text-popover-foreground,
+.text-primary-foreground {
+  color: #0a0a0a !important;
+}
+
+/* Override any dark backgrounds */
+.bg-black,
+.bg-gray-900,
+.bg-gray-800,
+.bg-slate-900,
+.bg-zinc-900 {
+  background-color: #ffffff !important;
+}
+
+/* Override any light text on dark backgrounds */
+.text-white,
+.text-gray-100,
+.text-gray-200 {
+  color: #0a0a0a !important;
+}
+
+/* Specific overrides for header and navigation */
+header,
+nav,
+.header,
+.navbar {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+}
+
+/* Override any backdrop blur that might be causing issues */
+.backdrop-blur-lg,
+.backdrop-blur {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Force all buttons to have light backgrounds */
+button,
+.btn,
+[role='button'],
+.button {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+  border-color: #e4e4e7 !important;
+}
+
+/* Override specific button variants */
+button[data-variant='default'],
+button[data-variant='primary'],
+.btn-primary,
+.btn-default {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+
+/* Override ghost buttons */
+button[data-variant='ghost'],
+.btn-ghost {
+  background-color: transparent !important;
+  color: #0a0a0a !important;
+  border-color: transparent !important;
+}
+
+/* Override outline buttons */
+button[data-variant='outline'],
+.btn-outline {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+  border-color: #e4e4e7 !important;
+}
+
+/* Override Tailwind button classes */
+.bg-primary {
+  background-color: #0a0a0a !important;
+}
+
+.text-primary-foreground {
+  color: #ffffff !important;
+}
+
+/* Force primary buttons to be dark with white text */
+button.bg-primary,
+a.bg-primary,
+.bg-primary {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+
+button.text-primary-foreground,
+a.text-primary-foreground,
+.text-primary-foreground {
+  color: #ffffff !important;
+}
+
+.bg-background {
+  background-color: #ffffff !important;
+}
+
+.text-accent-foreground {
+  color: #0a0a0a !important;
+}
+
+.bg-accent {
+  background-color: #f4f4f5 !important;
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: #262626 !important;
+}
+
+.hover\:bg-accent:hover {
+  background-color: #f4f4f5 !important;
+}
+
+.hover\:text-accent-foreground:hover {
+  color: #0a0a0a !important;
 }
 
 /* Test styles to ensure colors are working */
@@ -122,3 +289,172 @@ select {
 
 /* Import global animations */
 @import '../components/ui/global-animations.css';
+
+/* Professional fade-in animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Global fade-in classes */
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.fade-in-scale {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+/* Staggered animations */
+.fade-in-up:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.fade-in-up:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.fade-in-up:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.fade-in-up:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.fade-in-up:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.fade-in-up:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Enhanced scroll animations */
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Button animations */
+.btn-animate {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-animate:hover::before {
+  left: 100%;
+}
+
+/* Text reveal animations */
+.text-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+/* Image animations */
+.img-fade-in {
+  opacity: 0;
+  transform: scale(1.05);
+  animation: fadeInScale 0.8s ease-out forwards;
+}
+
+/* Section animations */
+.section-fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Enhanced focus states */
+.focus-visible:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  transition: outline 0.2s ease;
+}
+
+/* Smooth page transitions */
+.page-transition {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}

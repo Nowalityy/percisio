@@ -10,19 +10,15 @@ import { Badge } from '@/components/ui/badge';
 import { AnimatedCard } from '@/components/ui/animated-card';
 import { AnimatedButton } from '@/components/ui/animated-button';
 import { HoverCard } from '@/components/ui/hover-card';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
-  CheckCircle, 
+import {
+  Send,
+  CheckCircle,
   AlertCircle,
   Building2,
   Users,
   MessageSquare,
   Calendar,
-  ArrowRight
+  ArrowRight,
 } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -30,21 +26,23 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({ 
-    name: '', 
-    email: '', 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
     company: '',
     phone: '',
     subject: '',
     message: '',
-    inquiryType: 'general'
+    inquiryType: 'general',
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<{[key: string]: string}>({});
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const router = useRouter();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     // Clear error when user starts typing
@@ -54,73 +52,38 @@ export default function ContactPage() {
   };
 
   const validateForm = () => {
-    const newErrors: {[key: string]: string} = {};
-    
+    const newErrors: { [key: string]: string } = {};
+
     if (!formData.name.trim()) newErrors.name = 'Name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
     if (!formData.message.trim()) newErrors.message = 'Message is required';
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
-    
+
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     console.log('Form submitted:', formData);
     setSubmitted(true);
     setIsSubmitting(false);
   };
-
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: 'Email Us',
-      description: 'Send us an email and we\'ll respond within 24 hours',
-      contact: 'contact@percisio.com',
-      href: 'mailto:contact@percisio.com',
-      color: 'text-blue-600'
-    },
-    {
-      icon: Phone,
-      title: 'Call Us',
-      description: 'Speak directly with our team',
-      contact: '+33 1 23 45 67 89',
-      href: 'tel:+33123456789',
-      color: 'text-green-600'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      description: 'Come see us at our headquarters',
-      contact: 'Paris, France',
-      href: '#',
-      color: 'text-purple-600'
-    },
-    {
-      icon: Clock,
-      title: 'Business Hours',
-      description: 'We\'re here to help during business hours',
-      contact: 'Mon-Fri 9AM-6PM CET',
-      href: '#',
-      color: 'text-orange-600'
-    }
-  ];
 
   const inquiryTypes = [
     { value: 'general', label: 'General Inquiry' },
     { value: 'demo', label: 'Schedule a Demo' },
     { value: 'support', label: 'Technical Support' },
     { value: 'partnership', label: 'Partnership' },
-    { value: 'media', label: 'Media Inquiry' }
+    { value: 'media', label: 'Media Inquiry' },
   ];
 
   return (
@@ -129,7 +92,7 @@ export default function ContactPage() {
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
-          <motion.div 
+          <motion.div
             className="mb-16 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -138,52 +101,12 @@ export default function ContactPage() {
             <Badge className="mb-4" variant="secondary">
               Get in Touch
             </Badge>
-            <h1 className="mb-6 text-4xl font-bold md:text-5xl">
-              Contact Our Team
-            </h1>
+            <h1 className="mb-6 text-4xl font-bold md:text-5xl">Contact Our Team</h1>
             <p className="text-muted-foreground mx-auto max-w-2xl text-xl">
-              Ready to transform your medical practice? Our experts are here to help you get started with Percisio.
+              Ready to transform your medical practice? Our experts are here to help you get started
+              with Percisio.
             </p>
           </motion.div>
-
-          {/* Contact Methods Grid */}
-          <div className="mb-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {contactMethods.map((method, index) => (
-              <HoverCard 
-                key={index}
-                delay={index * 0.1}
-                hoverContent={`Click to ${method.title.toLowerCase()}`}
-              >
-                <AnimatedCard 
-                  delay={index * 0.1}
-                  hoverScale={1.02}
-                  className="h-full cursor-pointer"
-                >
-                  <CardHeader className="text-center">
-                    <motion.div 
-                      className={`${method.color} mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10`}
-                      whileHover={{ rotate: 5 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <method.icon className="h-6 w-6" />
-                    </motion.div>
-                    <CardTitle className="text-lg">{method.title}</CardTitle>
-                    <CardDescription className="text-sm">
-                      {method.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <a 
-                      href={method.href}
-                      className={`${method.color} font-medium hover:underline`}
-                    >
-                      {method.contact}
-                    </a>
-                  </CardContent>
-                </AnimatedCard>
-              </HoverCard>
-            ))}
-          </div>
 
           {/* Main Content Grid */}
           <div className="grid gap-12 lg:grid-cols-2">
@@ -211,24 +134,24 @@ export default function ContactPage() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
-                        className="text-center py-8"
+                        className="py-8 text-center"
                       >
-                        <CheckCircle className="h-16 w-16 text-green-600 mx-auto mb-4" />
-                        <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+                        <CheckCircle className="mx-auto mb-4 h-16 w-16 text-green-600" />
+                        <h3 className="mb-2 text-xl font-semibold">Message Sent!</h3>
                         <p className="text-muted-foreground mb-6">
                           Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                         </p>
-                        <AnimatedButton 
+                        <AnimatedButton
                           onClick={() => {
                             setSubmitted(false);
-                            setFormData({ 
-                              name: '', 
-                              email: '', 
+                            setFormData({
+                              name: '',
+                              email: '',
                               company: '',
                               phone: '',
                               subject: '',
                               message: '',
-                              inquiryType: 'general'
+                              inquiryType: 'general',
                             });
                           }}
                         >
@@ -254,10 +177,10 @@ export default function ContactPage() {
                               className={errors.name ? 'border-red-500' : ''}
                             />
                             {errors.name && (
-                              <motion.p 
+                              <motion.p
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-red-500 text-sm mt-1 flex items-center gap-1"
+                                className="mt-1 flex items-center gap-1 text-sm text-red-500"
                               >
                                 <AlertCircle className="h-3 w-3" />
                                 {errors.name}
@@ -274,10 +197,10 @@ export default function ContactPage() {
                               className={errors.email ? 'border-red-500' : ''}
                             />
                             {errors.email && (
-                              <motion.p 
+                              <motion.p
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="text-red-500 text-sm mt-1 flex items-center gap-1"
+                                className="mt-1 flex items-center gap-1 text-sm text-red-500"
                               >
                                 <AlertCircle className="h-3 w-3" />
                                 {errors.email}
@@ -306,7 +229,7 @@ export default function ContactPage() {
                             name="inquiryType"
                             value={formData.inquiryType}
                             onChange={handleChange}
-                            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                            className="border-input bg-background ring-offset-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2"
                           >
                             {inquiryTypes.map((type) => (
                               <option key={type.value} value={type.value}>
@@ -333,10 +256,10 @@ export default function ContactPage() {
                             className={errors.message ? 'border-red-500' : ''}
                           />
                           {errors.message && (
-                            <motion.p 
+                            <motion.p
                               initial={{ opacity: 0, y: -10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              className="text-red-500 text-sm mt-1 flex items-center gap-1"
+                              className="mt-1 flex items-center gap-1 text-sm text-red-500"
                             >
                               <AlertCircle className="h-3 w-3" />
                               {errors.message}
@@ -344,16 +267,16 @@ export default function ContactPage() {
                           )}
                         </div>
 
-                        <AnimatedButton 
-                          type="submit" 
-                          size="lg" 
+                        <AnimatedButton
+                          type="submit"
+                          size="lg"
                           className="w-full"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (
                             <motion.div
                               animate={{ rotate: 360 }}
-                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                               className="mr-2"
                             >
                               <Send className="h-4 w-4" />
@@ -384,13 +307,11 @@ export default function ContactPage() {
                     <Calendar className="h-5 w-5" />
                     Quick Actions
                   </CardTitle>
-                  <CardDescription>
-                    Common ways to get in touch with our team.
-                  </CardDescription>
+                  <CardDescription>Common ways to get in touch with our team.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <AnimatedButton 
-                    variant="outline" 
+                  <AnimatedButton
+                    variant="outline"
                     className="w-full justify-start"
                     asChild
                     delay={0.1}
@@ -401,9 +322,9 @@ export default function ContactPage() {
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Link>
                   </AnimatedButton>
-                  
-                  <AnimatedButton 
-                    variant="outline" 
+
+                  <AnimatedButton
+                    variant="outline"
                     className="w-full justify-start"
                     asChild
                     delay={0.2}
@@ -414,9 +335,9 @@ export default function ContactPage() {
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Link>
                   </AnimatedButton>
-                  
-                  <AnimatedButton 
-                    variant="outline" 
+
+                  <AnimatedButton
+                    variant="outline"
                     className="w-full justify-start"
                     asChild
                     delay={0.3}
@@ -437,37 +358,35 @@ export default function ContactPage() {
                     <Users className="h-5 w-5" />
                     Our Team
                   </CardTitle>
-                  <CardDescription>
-                    Meet the experts behind Percisio.
-                  </CardDescription>
+                  <CardDescription>Meet the experts behind Percisio.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Users className="h-5 w-5 text-primary" />
+                      <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full">
+                        <Users className="text-primary h-5 w-5" />
                       </div>
                       <div>
                         <p className="font-medium">Sales Team</p>
-                        <p className="text-sm text-muted-foreground">sales@percisio.com</p>
+                        <p className="text-muted-foreground text-sm">sales@percisio.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <Building2 className="h-5 w-5 text-primary" />
+                      <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full">
+                        <Building2 className="text-primary h-5 w-5" />
                       </div>
                       <div>
                         <p className="font-medium">Technical Support</p>
-                        <p className="text-sm text-muted-foreground">support@percisio.com</p>
+                        <p className="text-muted-foreground text-sm">support@percisio.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                        <MessageSquare className="h-5 w-5 text-primary" />
+                      <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full">
+                        <MessageSquare className="text-primary h-5 w-5" />
                       </div>
                       <div>
                         <p className="font-medium">Partnerships</p>
-                        <p className="text-sm text-muted-foreground">partnerships@percisio.com</p>
+                        <p className="text-muted-foreground text-sm">partnerships@percisio.com</p>
                       </div>
                     </div>
                   </div>
