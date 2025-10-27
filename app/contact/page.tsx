@@ -1,5 +1,21 @@
 'use client';
 
+// HubSpot Forms API declaration
+declare global {
+  interface Window {
+    hbspt: {
+      forms: {
+        create: (config: {
+          region: string;
+          portalId: string;
+          formId: string;
+          target: string;
+        }) => void;
+      };
+    };
+  }
+}
+
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,9 +26,37 @@ import { Building2, Users, MessageSquare, Calendar, ArrowRight, Linkedin } from 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useTranslations } from '@/lib/hooks/use-translations';
+import { useEffect } from 'react';
 
 export default function ContactPage() {
   const { locale } = useTranslations();
+
+  useEffect(() => {
+    // Check if script already exists
+    const existingScript = document.getElementById('hs-script-loader');
+    if (existingScript) {
+      return; // Script already loaded
+    }
+
+    const script = document.createElement('script');
+    script.src = 'https://js-eu1.hsforms.net/forms/embed/v2.js';
+    script.charset = 'utf-8';
+    script.type = 'text/javascript';
+    script.id = 'hs-script-loader';
+
+    script.onload = () => {
+      if (window.hbspt?.forms) {
+        window.hbspt.forms.create({
+          region: 'eu1',
+          portalId: '147085456',
+          formId: 'dd0cc51a-4aba-4ce6-ad4f-da34784ff7ff',
+          target: '#hs-form-container',
+        });
+      }
+    };
+
+    document.body.appendChild(script);
+  }, []);
 
   const teamMembers = [
     {
@@ -37,7 +81,6 @@ export default function ContactPage() {
 
   return (
     <div className="bg-background min-h-screen">
-      <script src="https://js-eu1.hsforms.net/forms/embed/147085456.js" defer></script>
       <Header />
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -67,23 +110,9 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <AnimatedCard delay={0.2}>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MessageSquare className="h-5 w-5" />
-                    Send us a Message
-                  </CardTitle>
-                  <CardDescription>
-                    Fill out the form below and we&apos;ll get back to you within 24 hours.
-                  </CardDescription>
-                </CardHeader>
                 <CardContent>
                   {/* HubSpot Form */}
-                  <div
-                    className="hs-form-frame"
-                    data-region="eu1"
-                    data-form-id="dd0cc51a-4aba-4ce6-ad4f-da34784ff7ff"
-                    data-portal-id="147085456"
-                  ></div>
+                  <div id="hs-form-container"></div>
                 </CardContent>
               </AnimatedCard>
             </motion.div>
@@ -165,7 +194,6 @@ export default function ContactPage() {
                         <div className="flex-1">
                           <p className="font-medium">{member.name}</p>
                           <p className="text-primary text-sm font-medium">{member.role}</p>
-                          <p className="text-muted-foreground mb-2 text-sm leading-relaxed"></p>
                           {member.linkedin && (
                             <Link
                               href={member.linkedin}
