@@ -64,7 +64,7 @@ export default function TeamPage() {
           ? 'Alternant en développement web, spécialisé en développement front-end et back-end. Compétent dans la création de designs web responsive et optimisés.'
           : 'Alternant in web development, specialized in front-end and back-end development. Skilled in creating responsive and optimized web designs.',
       linkedin: 'https://www.linkedin.com/in/nikola-milosavljevic-397806327/',
-      image: '/team/nikola_m.png',
+      image: '/team/nikola_m.jpg',
     },
   ];
 

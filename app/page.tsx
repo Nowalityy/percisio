@@ -232,16 +232,18 @@ function GlobalChallenges() {
 // --- VIDEO SECTION ---
 function VideoSection() {
   return (
-    <section className="section-fade-in relative w-full overflow-hidden bg-black py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20">
-      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-transparent to-black/70"></div>
+    <section className="section-fade-in relative w-full overflow-hidden py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20">
       <motion.div
-        className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         viewport={{ once: true }}
       >
-        <div className="relative w-full pt-[65%] sm:pt-[60%] md:pt-[55%] lg:pt-[50%] xl:pt-[45%]">
+        <div
+          className="relative w-full overflow-hidden rounded-lg shadow-xl"
+          style={{ aspectRatio: '16/9' }}
+        >
           <YouTubeFacade />
         </div>
       </motion.div>
