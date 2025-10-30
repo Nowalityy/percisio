@@ -2,7 +2,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Activity } from 'lucide-react';
-import type { Metadata } from 'next';
 import { useTranslations } from '@/lib/hooks/use-translations';
 
 // metadata removed for client component

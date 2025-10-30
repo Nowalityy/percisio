@@ -3,7 +3,6 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Target, Award, Globe, Zap, Users } from 'lucide-react';
-import type { Metadata } from 'next';
 import { useTranslations } from '@/lib/hooks/use-translations';
 
 // metadata removed to allow client component translations

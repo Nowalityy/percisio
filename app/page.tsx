@@ -3,7 +3,6 @@
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { AnimatedSection } from '@/components/shared/animated-section';
 import { AnimatedCard } from '@/components/ui/animated-card';
 import { AnimatedButton } from '@/components/ui/animated-button';
@@ -13,7 +12,6 @@ import { useInView } from 'react-intersection-observer';
 import { useTranslations } from '@/lib/hooks/use-translations';
 import { Brain, Shield, Activity, ArrowRight, Play, CheckCircle, Users, Award } from 'lucide-react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
 import { Suspense, lazy, useState } from 'react';
 
 type Panel = {
@@ -25,16 +23,6 @@ type TranslatedFeature = {
   title: string;
   description: string;
 };
-
-const ClientScene = dynamic(
-  () => import('@/components/3d/client-scene').then((mod) => mod.ClientScene),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="h-full w-full bg-gradient-to-br from-cyan-500/10 to-blue-600/10" />
-    ),
-  }
-);
 
 // Lazy load heavy components
 const LazyAdditionalFeaturesSection = lazy(() =>
@@ -291,15 +279,17 @@ function FeaturesSection({
                     hoverScale={1.05}
                     className="group h-full cursor-pointer"
                   >
-                    <CardHeader>
+                    <CardHeader className="flex h-full flex-col">
                       <div className="bg-primary/10 group-hover:bg-primary/20 mb-3 flex h-10 w-10 items-center justify-center rounded-lg transition-colors sm:mb-4 sm:h-12 sm:w-12">
                         <feature.icon
                           className="text-primary h-5 w-5 sm:h-6 sm:w-6"
                           aria-hidden="true"
                         />
                       </div>
-                      <CardTitle>{t(feature.titleKey)}</CardTitle>
-                      <CardDescription className="text-sm sm:text-base">
+                      <CardTitle className="min-h-[48px] sm:min-h-[56px]">
+                        {t(feature.titleKey)}
+                      </CardTitle>
+                      <CardDescription className="min-h-[72px] text-sm sm:min-h-[80px] sm:text-base">
                         {t(feature.descKey)}
                       </CardDescription>
                     </CardHeader>

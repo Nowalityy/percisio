@@ -4,20 +4,9 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-  Activity,
-  Eye,
-  Target,
-  Shield,
-  Monitor,
-  Layers,
-  ExternalLink,
-  Zap,
-  CheckCircle,
-} from 'lucide-react';
+import { Activity, Eye, Target, Shield, Monitor, Layers, Zap, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from '@/lib/hooks/use-translations';
 
