@@ -19,6 +19,7 @@ import {
   GraduationCap,
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 interface FormData {
   firstName: string;
@@ -39,6 +40,7 @@ interface FormData {
 
 export default function ApplyPage() {
   const router = useRouter();
+  const { t, getRaw } = useTranslations();
   const [formData, setFormData] = useState<FormData>({
     firstName: '',
     lastName: '',
@@ -117,6 +119,12 @@ export default function ApplyPage() {
     '3+ months notice',
   ];
 
+  // Prefer translated option arrays if provided
+  const positionsOptions = getRaw<string[]>('careersApply.options.positions') || positions;
+  const experienceOptions = getRaw<string[]>('careersApply.options.experience') || experienceLevels;
+  const availabilityI18nOptions =
+    getRaw<string[]>('careersApply.options.availability') || availabilityOptions;
+
   if (submitted) {
     return (
       <div className="bg-background min-h-screen">
@@ -138,16 +146,17 @@ export default function ApplyPage() {
                 />
               </svg>
             </div>
-            <h1 className="mb-4 text-3xl font-bold text-green-600">Application Submitted!</h1>
-            <p className="text-muted-foreground mb-8 text-lg">
-              Thank you for your interest in joining Percisio. We&apos;ve received your application
-              and will review it carefully. Our team will get back to you within 5-7 business days.
-            </p>
+            <h1 className="mb-4 text-3xl font-bold text-green-600">
+              {t('careersApply.submitted.title')}
+            </h1>
+            <p className="text-muted-foreground mb-8 text-lg">{t('careersApply.submitted.desc')}</p>
             <div className="space-y-4">
               <Button onClick={() => router.push('/about-us/careers')} variant="outline">
-                View Other Positions
+                {t('careersApply.submitted.viewPositions')}
               </Button>
-              <Button onClick={() => router.push('/')}>Back to Home</Button>
+              <Button onClick={() => router.push('/')}>
+                {t('careersApply.submitted.backHome')}
+              </Button>
             </div>
           </div>
         </main>
@@ -167,26 +176,21 @@ export default function ApplyPage() {
             className="mb-6 flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back
+            {t('careersApply.back')}
           </Button>
 
           <div className="mb-8 text-center">
-            <h1 className="mb-4 text-4xl font-bold md:text-5xl">Apply to Percisio</h1>
-            <p className="text-muted-foreground text-xl">
-              Join our innovative team and help shape the future of medical technology
-            </p>
+            <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t('careersApply.title')}</h1>
+            <p className="text-muted-foreground text-xl">{t('careersApply.subtitle')}</p>
           </div>
 
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Briefcase className="h-5 w-5" />
-                Application Form
+                {t('careersApply.form.title')}
               </CardTitle>
-              <CardDescription>
-                Please fill out all required fields. We&apos;ll review your application and get back
-                to you soon.
-              </CardDescription>
+              <CardDescription>{t('careersApply.form.desc')}</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -194,14 +198,14 @@ export default function ApplyPage() {
                 <div className="space-y-4">
                   <h3 className="flex items-center gap-2 text-lg font-semibold">
                     <User className="h-5 w-5" />
-                    Personal Information
+                    {t('careersApply.form.personal')}
                   </h3>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div className="flex items-center space-x-2">
                       <User className="text-muted-foreground h-5 w-5" />
                       <Input
                         name="firstName"
-                        placeholder="First Name"
+                        placeholder={t('careersApply.form.firstName')}
                         value={formData.firstName}
                         onChange={handleChange}
                         required
@@ -211,7 +215,7 @@ export default function ApplyPage() {
                       <User className="text-muted-foreground h-5 w-5" />
                       <Input
                         name="lastName"
-                        placeholder="Last Name"
+                        placeholder={t('careersApply.form.lastName')}
                         value={formData.lastName}
                         onChange={handleChange}
                         required
@@ -224,7 +228,7 @@ export default function ApplyPage() {
                       <Input
                         name="email"
                         type="email"
-                        placeholder="Email Address"
+                        placeholder={t('careersApply.form.email')}
                         value={formData.email}
                         onChange={handleChange}
                         required
@@ -235,7 +239,7 @@ export default function ApplyPage() {
                       <Input
                         name="phone"
                         type="tel"
-                        placeholder="Phone Number"
+                        placeholder={t('careersApply.form.phone')}
                         value={formData.phone}
                         onChange={handleChange}
                         required
@@ -246,7 +250,7 @@ export default function ApplyPage() {
                     <MapPin className="text-muted-foreground h-5 w-5" />
                     <Input
                       name="location"
-                      placeholder="Location (City, Country)"
+                      placeholder={t('careersApply.form.location')}
                       value={formData.location}
                       onChange={handleChange}
                       required
@@ -258,11 +262,13 @@ export default function ApplyPage() {
                 <div className="space-y-4">
                   <h3 className="flex items-center gap-2 text-lg font-semibold">
                     <Briefcase className="h-5 w-5" />
-                    Professional Information
+                    {t('careersApply.form.professional')}
                   </h3>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium">Position Applied For</label>
+                      <label className="mb-2 block text-sm font-medium">
+                        {t('careersApply.form.positionLabel')}
+                      </label>
                       <select
                         name="position"
                         value={formData.position}
@@ -270,8 +276,8 @@ export default function ApplyPage() {
                         className="border-input bg-background ring-offset-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2"
                         required
                       >
-                        <option value="">Select a position</option>
-                        {positions.map((position) => (
+                        <option value="">{t('careersApply.form.positionPlaceholder')}</option>
+                        {positionsOptions.map((position) => (
                           <option key={position} value={position}>
                             {position}
                           </option>
@@ -279,7 +285,9 @@ export default function ApplyPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="mb-2 block text-sm font-medium">Experience Level</label>
+                      <label className="mb-2 block text-sm font-medium">
+                        {t('careersApply.form.experienceLabel')}
+                      </label>
                       <select
                         name="experience"
                         value={formData.experience}
@@ -287,8 +295,8 @@ export default function ApplyPage() {
                         className="border-input bg-background ring-offset-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2"
                         required
                       >
-                        <option value="">Select experience level</option>
-                        {experienceLevels.map((level) => (
+                        <option value="">{t('careersApply.form.experiencePlaceholder')}</option>
+                        {experienceOptions.map((level) => (
                           <option key={level} value={level}>
                             {level}
                           </option>
@@ -300,7 +308,7 @@ export default function ApplyPage() {
                     <GraduationCap className="text-muted-foreground h-5 w-5" />
                     <Input
                       name="education"
-                      placeholder="Education Background"
+                      placeholder={t('careersApply.form.education')}
                       value={formData.education}
                       onChange={handleChange}
                       required
@@ -312,11 +320,13 @@ export default function ApplyPage() {
                 <div className="space-y-4">
                   <h3 className="flex items-center gap-2 text-lg font-semibold">
                     <FileText className="h-5 w-5" />
-                    Additional Information
+                    {t('careersApply.form.additional')}
                   </h3>
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium">Availability</label>
+                      <label className="mb-2 block text-sm font-medium">
+                        {t('careersApply.form.availabilityLabel')}
+                      </label>
                       <select
                         name="availability"
                         value={formData.availability}
@@ -324,8 +334,8 @@ export default function ApplyPage() {
                         className="border-input bg-background ring-offset-background focus:ring-ring w-full rounded-md border px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2"
                         required
                       >
-                        <option value="">When can you start?</option>
-                        {availabilityOptions.map((option) => (
+                        <option value="">{t('careersApply.form.availabilityPlaceholder')}</option>
+                        {availabilityI18nOptions.map((option) => (
                           <option key={option} value={option}>
                             {option}
                           </option>
@@ -335,7 +345,7 @@ export default function ApplyPage() {
                     <div className="flex items-center space-x-2">
                       <Input
                         name="salary"
-                        placeholder="Expected Salary (Optional)"
+                        placeholder={t('careersApply.form.salary')}
                         value={formData.salary}
                         onChange={handleChange}
                       />
@@ -344,13 +354,13 @@ export default function ApplyPage() {
                   <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <Input
                       name="linkedin"
-                      placeholder="LinkedIn Profile (Optional)"
+                      placeholder={t('careersApply.form.linkedin')}
                       value={formData.linkedin}
                       onChange={handleChange}
                     />
                     <Input
                       name="portfolio"
-                      placeholder="Portfolio/Website (Optional)"
+                      placeholder={t('careersApply.form.portfolio')}
                       value={formData.portfolio}
                       onChange={handleChange}
                     />
@@ -361,7 +371,7 @@ export default function ApplyPage() {
                 <div className="space-y-4">
                   <h3 className="flex items-center gap-2 text-lg font-semibold">
                     <Upload className="h-5 w-5" />
-                    Resume/CV
+                    {t('careersApply.form.resumeTitle')}
                   </h3>
                   <div className="border-muted-foreground/25 rounded-lg border-2 border-dashed p-6 text-center">
                     <input
@@ -375,10 +385,12 @@ export default function ApplyPage() {
                     <label htmlFor="resume-upload" className="cursor-pointer">
                       <Upload className="text-muted-foreground mx-auto mb-4 h-12 w-12" />
                       <p className="text-muted-foreground mb-2 text-sm">
-                        {formData.resume ? formData.resume.name : 'Click to upload your resume'}
+                        {formData.resume
+                          ? formData.resume.name
+                          : t('careersApply.form.resumeClick')}
                       </p>
                       <p className="text-muted-foreground text-xs">
-                        PDF, DOC, or DOCX files only (Max 10MB)
+                        {t('careersApply.form.resumeNote')}
                       </p>
                     </label>
                   </div>
@@ -386,10 +398,10 @@ export default function ApplyPage() {
 
                 {/* Cover Letter */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Cover Letter</h3>
+                  <h3 className="text-lg font-semibold">{t('careersApply.form.coverLetter')}</h3>
                   <Textarea
                     name="coverLetter"
-                    placeholder="Tell us why you want to join Percisio and what makes you a great fit for this role..."
+                    placeholder={t('careersApply.form.coverPlaceholder')}
                     value={formData.coverLetter}
                     onChange={handleChange}
                     rows={6}
@@ -400,7 +412,9 @@ export default function ApplyPage() {
                 {/* Submit Button */}
                 <div className="pt-6">
                   <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting Application...' : 'Submit Application'}
+                    {isSubmitting
+                      ? t('careersApply.form.submitting')
+                      : t('careersApply.form.submit')}
                   </Button>
                 </div>
               </form>

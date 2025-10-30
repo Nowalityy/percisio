@@ -24,7 +24,7 @@ export function VideoPlayer({
   const [isPlaying, setIsPlaying] = useState(autoplay);
 
   const embedUrl = youtubeId
-    ? `https://www.youtube.com/embed/${youtubeId}${isPlaying ? '?autoplay=1' : ''}`
+    ? `https://www.youtube-nocookie.com/embed/${youtubeId}${isPlaying ? '?autoplay=1' : ''}`
     : videoUrl;
 
   const defaultThumbnail = youtubeId
@@ -62,7 +62,9 @@ export function VideoPlayer({
           <iframe
             src={embedUrl}
             title={title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             className="h-full w-full"
           />

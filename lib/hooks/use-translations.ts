@@ -1,56 +1,67 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import en from '@/messages/en.json';
+import fr from '@/messages/fr.json';
 
-type Messages = {
-  [key: string]: string | Messages;
+type Messages = { [key: string]: string | Messages | unknown };
+
+const ALL: Record<'en' | 'fr', Messages> = {
+  en: en as Messages,
+  fr: fr as Messages,
 };
 
 export function useTranslations() {
-  const [locale, setLocale] = useState<'en' | 'fr'>('en');
-  const [messages, setMessages] = useState<Messages>({});
+  // Start with a safe synchronous default to avoid flashing keys
+  const [locale, setLocale] = useState<'en' | 'fr'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('preferredLanguage') as 'en' | 'fr' | null;
+      if (saved === 'en' || saved === 'fr') return saved;
+    }
+    return 'en';
+  });
+  const [messages, setMessages] = useState<Messages>(() => ALL['en']);
 
   useEffect(() => {
-    const loadMessages = async (lang: 'en' | 'fr') => {
-      try {
-        const msgs = await import(`@/messages/${lang}.json`);
-        setMessages(msgs.default);
-      } catch (error) {
-        console.error('Error loading messages:', error);
+    // Hydrate messages synchronously from bundled JSON to avoid any flash
+    const saved = (localStorage.getItem('preferredLanguage') as 'en' | 'fr' | null) || 'en';
+    setLocale(saved);
+    setMessages(ALL[saved] || ALL.en);
+
+    const handleLanguageChange = (e: Event) => {
+      const detail = (e as CustomEvent<'en' | 'fr'>).detail;
+      if (detail === 'en' || detail === 'fr') {
+        setLocale(detail);
+        setMessages(ALL[detail] || ALL.en);
       }
     };
 
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('preferredLanguage') as 'en' | 'fr';
-      const initialLocale = saved || 'en';
-      setLocale(initialLocale);
-      loadMessages(initialLocale);
-
-      const handleLanguageChange = (e: CustomEvent) => {
-        setLocale(e.detail);
-        loadMessages(e.detail);
-      };
-
-      window.addEventListener('languageChange', handleLanguageChange as EventListener);
-      return () =>
-        window.removeEventListener('languageChange', handleLanguageChange as EventListener);
-    }
+    window.addEventListener('languageChange', handleLanguageChange as EventListener);
+    return () =>
+      window.removeEventListener('languageChange', handleLanguageChange as EventListener);
   }, []);
 
-  const t = (key: string): string => {
-    const keys = key.split('.');
-    let value: string | Messages = messages;
-
+  const getByPath = (obj: unknown, path: string): unknown => {
+    const keys = path.split('.');
+    let value: unknown = obj as Messages;
     for (const k of keys) {
-      if (value && typeof value === 'object' && k in value) {
-        value = value[k];
+      if (value && typeof value === 'object' && k in (value as Record<string, unknown>)) {
+        value = (value as Record<string, unknown>)[k];
       } else {
-        return key;
+        return undefined;
       }
     }
+    return value;
+  };
 
+  const t = (key: string): string => {
+    const value = getByPath(messages, key);
     return typeof value === 'string' ? value : key;
   };
 
-  return { t, locale };
+  const getRaw = <T = unknown>(key: string): T | undefined => {
+    return getByPath(messages, key) as T | undefined;
+  };
+
+  return { t, locale, getRaw };
 }

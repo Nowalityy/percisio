@@ -6,9 +6,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 export default function SchedulePage() {
   const router = useRouter();
+  const { t } = useTranslations();
 
   useEffect(() => {
     // Load HubSpot Meetings script
@@ -36,15 +38,13 @@ export default function SchedulePage() {
             className="mb-6 flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back
+            {t('schedule.back')}
           </Button>
-          <h1 className="mb-8 text-center text-4xl font-bold">Schedule a Live Demo</h1>
+          <h1 className="mb-8 text-center text-4xl font-bold">{t('schedule.title')}</h1>
           <div className="bg-card rounded-lg border p-6">
             <div className="mb-6 text-center">
-              <h2 className="mb-2 text-2xl font-semibold">Book Your Personalized Demo</h2>
-              <p className="text-muted-foreground">
-                Select a convenient time slot for your live demonstration of Percisio.
-              </p>
+              <h2 className="mb-2 text-2xl font-semibold">{t('schedule.book')}</h2>
+              <p className="text-muted-foreground">{t('schedule.intro')}</p>
             </div>
             <div
               className="meetings-iframe-container"

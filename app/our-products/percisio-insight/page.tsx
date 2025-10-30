@@ -22,74 +22,26 @@ import {
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 export default function InsightPage() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { t, getRaw } = useTranslations();
 
-  const attachmentCategories = [
-    {
-      icon: Syringe,
-      title: 'Needles & Catheters',
-      items: [
-        'Biopsy needles',
-        'Percutaneous intervention needles',
-        'Epidural needles',
-        'Central venous catheters',
-      ],
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      icon: Stethoscope,
-      title: 'Ultrasound Probes',
-      items: ['Linear probe', 'Convex probe'],
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
-      icon: Scissors,
-      title: 'Surgical Instruments',
-      items: ['Laparoscopic tools', 'Electrosurgical probes'],
-      color: 'from-purple-500 to-violet-500',
-    },
-    {
-      icon: Radio,
-      title: 'Endoscopic & Minimally Invasive Instruments',
-      items: ['Endoscopic tools', 'Minimally invasive devices'],
-      color: 'from-orange-500 to-red-500',
-    },
-    {
-      icon: Zap,
-      title: 'Radiation & Laser Therapy Devices',
-      items: ['Radiation therapy tools', 'Laser therapy devices'],
-      color: 'from-indigo-500 to-blue-500',
-    },
-  ];
+  const categoriesRaw =
+    getRaw<Array<{ title: string; items: string[]; color: string }>>(
+      'insight.attachmentCategories'
+    ) || [];
+  const iconMap = [Syringe, Stethoscope, Scissors, Radio, Zap];
+  const attachmentCategories = categoriesRaw.map((c, idx) => ({
+    icon: iconMap[idx] || Syringe,
+    ...c,
+  }));
 
-  const keyFeatures = [
-    {
-      icon: Target,
-      title: 'Millimetric Precision',
-      description:
-        'Tests performed on the 3D abdominal phantom demonstrate that the tracking system ensures millimetric precision.',
-    },
-    {
-      icon: Zap,
-      title: 'Real-time Tracking',
-      description:
-        'Each attachment module is equipped with an electronic system designed to provide real-time spatial tracking.',
-    },
-    {
-      icon: Smartphone,
-      title: 'Lightweight Design',
-      description:
-        'Every attachment module is light enough to not disturb the practitioner during the operation.',
-    },
-    {
-      icon: Package,
-      title: 'Portable Setup',
-      description:
-        'The Percisio setup is lighter than any comparable product and can be easily transported in a small bag.',
-    },
-  ];
+  const keyFeaturesRaw =
+    getRaw<Array<{ title: string; description: string }>>('insight.keyFeaturesList') || [];
+  const keyIcons = [Target, Zap, Smartphone, Package];
+  const keyFeatures = keyFeaturesRaw.map((f, idx) => ({ icon: keyIcons[idx] || Target, ...f }));
 
   return (
     <div className="bg-background min-h-screen">
@@ -104,14 +56,12 @@ export default function InsightPage() {
               transition={{ duration: 0.8 }}
             >
               <Activity className="text-primary mx-auto mb-6 h-20 w-20" />
-              <h1 className="mb-6 text-5xl font-bold md:text-6xl">Percisio Insight</h1>
+              <h1 className="mb-6 text-5xl font-bold md:text-6xl">{t('insight.hero.title')}</h1>
               <Badge className="mb-4" variant="secondary">
-                A smart tracking system for any medical device
+                {t('insight.hero.badge')}
               </Badge>
               <p className="text-muted-foreground mx-auto mb-8 max-w-4xl text-xl leading-relaxed">
-                PERCISIO comes with a comprehensive set of attachment modules, each equipped with an
-                electronic system designed to provide real-time spatial tracking. The following
-                illustration shows the needle module used for percutaneous procedures.
+                {t('insight.hero.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -121,9 +71,11 @@ export default function InsightPage() {
         <section className="bg-muted/20 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
-              <h2 className="mb-6 text-4xl font-bold md:text-5xl">Key Features</h2>
+              <h2 className="mb-6 text-4xl font-bold md:text-5xl">
+                {t('insight.keyFeatures.title')}
+              </h2>
               <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                Advanced tracking technology for precise medical procedures
+                {t('insight.keyFeatures.subtitle')}
               </p>
             </div>
 
@@ -164,9 +116,11 @@ export default function InsightPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="mb-16 text-center">
-                <h2 className="mb-6 text-4xl font-bold md:text-5xl">Testing & Validation</h2>
+                <h2 className="mb-6 text-4xl font-bold md:text-5xl">
+                  {t('insight.testing.title')}
+                </h2>
                 <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                  Validated using industry-standard phantoms for accurate testing
+                  {t('insight.testing.subtitle')}
                 </p>
               </div>
 
@@ -176,19 +130,17 @@ export default function InsightPage() {
                     <CardHeader>
                       <div className="mb-4 flex items-center gap-3">
                         <Target className="text-primary h-6 w-6" />
-                        <CardTitle className="text-2xl">Sun Nuclear Abdominal Phantoms</CardTitle>
+                        <CardTitle className="text-2xl">
+                          {t('insight.testing.sunNuclear.title')}
+                        </CardTitle>
                       </div>
                       <CardDescription className="text-lg">
-                        Tests performed on the 3D abdominal phantom demonstrate that the tracking
-                        system ensures millimetric precision, which can be enhanced with any type of
-                        ultrasound probe.
+                        {t('insight.testing.sunNuclear.description')}
                       </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <p className="text-muted-foreground leading-relaxed">
-                        The <strong>Multi-Modality Abdominal Biopsy Phantoms</strong> are suitable
-                        for CT, MRI and Ultrasound, providing simplified abdominal phantoms suitable
-                        for training and demonstrating image-guided needle biopsy navigation tools.
+                        {t('insight.testing.multiModality')}
                       </p>
                       <div className="grid gap-4 md:grid-cols-2">
                         <div>
@@ -196,9 +148,13 @@ export default function InsightPage() {
                             Triple Modality 3D Abdominal Phantom
                           </h4>
                           <div className="flex flex-wrap gap-2">
-                            <Badge variant="outline">26 x 19 x 12.5 cm</Badge>
-                            <Badge variant="outline">11 lbs (5 kg)</Badge>
-                            <Badge variant="outline">Re-usable</Badge>
+                            {(getRaw<string[]>('insight.testing.sunNuclear.badgesLeft') || []).map(
+                              (b, i) => (
+                                <Badge variant="outline" key={i}>
+                                  {b}
+                                </Badge>
+                              )
+                            )}
                           </div>
                         </div>
                         <div>
@@ -206,9 +162,13 @@ export default function InsightPage() {
                             Image-Guided Abdominal Biopsy Phantom
                           </h4>
                           <div className="flex flex-wrap gap-2">
-                            <Badge variant="outline">28 x 20 x 12.5 cm</Badge>
-                            <Badge variant="outline">12.1 lbs (5.5 kg)</Badge>
-                            <Badge variant="outline">12 masses (5-12 mm)</Badge>
+                            {(getRaw<string[]>('insight.testing.sunNuclear.badgesRight') || []).map(
+                              (b, i) => (
+                                <Badge variant="outline" key={i}>
+                                  {b}
+                                </Badge>
+                              )
+                            )}
                           </div>
                         </div>
                       </div>
@@ -218,7 +178,7 @@ export default function InsightPage() {
                         rel="noopener noreferrer"
                         className="text-primary hover:text-primary/80 inline-flex items-center gap-2 transition-colors"
                       >
-                        Learn more about Sun Nuclear Phantoms
+                        {t('insight.testing.sunNuclear.link')}
                         <ExternalLink className="h-4 w-4" />
                       </Link>
                     </CardContent>
@@ -230,14 +190,12 @@ export default function InsightPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <CheckCircle className="h-5 w-5" />
-                        Precision Testing
+                        {t('insight.testing.cards.0.title')}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground leading-relaxed">
-                        Tests performed on the 3D abdominal phantom demonstrate that the tracking
-                        system ensures millimetric precision, which can be enhanced with any type of
-                        ultrasound probe.
+                        {t('insight.testing.cards.0.description')}
                       </p>
                     </CardContent>
                   </Card>
@@ -246,13 +204,12 @@ export default function InsightPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Lightbulb className="h-5 w-5" />
-                        Enhanced Performance
+                        {t('insight.testing.cards.1.title')}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground leading-relaxed">
-                        Improve performance of freehand abdominal biopsies and validate automated
-                        biopsy systems with comprehensive tracking capabilities.
+                        {t('insight.testing.cards.1.description')}
                       </p>
                     </CardContent>
                   </Card>
@@ -267,10 +224,10 @@ export default function InsightPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-                Compatible Medical Instruments
+                {t('insight.compatible.title')}
               </h2>
               <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                Attachments can fit a wide range of medical instruments
+                {t('insight.compatible.subtitle')}
               </p>
             </div>
 
@@ -318,9 +275,9 @@ export default function InsightPage() {
         <section className="py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
-              <h2 className="mb-6 text-4xl font-bold md:text-5xl">The Setup</h2>
+              <h2 className="mb-6 text-4xl font-bold md:text-5xl">{t('insight.setup.title')}</h2>
               <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                Redefining medical procedures with portable, lightweight technology
+                {t('insight.setup.subtitle')}
               </p>
             </div>
 
@@ -330,20 +287,19 @@ export default function InsightPage() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Package className="h-6 w-6" />
-                      Portable Design
+                      {t('insight.setup.portable.title')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground leading-relaxed">
-                      The Percisio setup is lighter than any comparable product and can be easily
-                      transported in a small bag from one room to another or even outside the
-                      hospital.
+                      {t('insight.setup.portable.description')}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="outline">Lightweight</Badge>
-                      <Badge variant="outline">Portable</Badge>
-                      <Badge variant="outline">Easy transport</Badge>
-                      <Badge variant="outline">Small bag size</Badge>
+                      {(getRaw<string[]>('insight.setup.portable.badges') || []).map((b, i) => (
+                        <Badge variant="outline" key={i}>
+                          {b}
+                        </Badge>
+                      ))}
                     </div>
                   </CardContent>
                 </Card>
@@ -354,13 +310,12 @@ export default function InsightPage() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Shield className="h-5 w-5" />
-                      New Standard
+                      {t('insight.setup.standard.title')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
-                      This new standard redefines medical procedures for various applications and
-                      helps reduce congestion in critical services.
+                      {t('insight.setup.standard.description')}
                     </p>
                   </CardContent>
                 </Card>
@@ -369,13 +324,12 @@ export default function InsightPage() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Activity className="h-5 w-5" />
-                      Wide Applications
+                      {t('insight.setup.applications.title')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground leading-relaxed">
-                      Suitable for various medical applications including biopsies, percutaneous
-                      interventions, surgical procedures, and therapeutic treatments.
+                      {t('insight.setup.applications.description')}
                     </p>
                   </CardContent>
                 </Card>

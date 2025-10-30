@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 interface MegaMenuItem {
   title: string;
@@ -24,45 +25,45 @@ interface NavItem {
 }
 
 export function MegaMenu() {
+  const { t } = useTranslations();
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   const navigation: NavItem[] = [
     {
-      label: 'Solutions',
+      label: t('nav.solutions'),
       sections: [
         {
-          title: 'Our Products',
+          title: t('nav.project'),
           items: [
             {
-              title: 'Percisio Guidance',
-              description: 'Real-time 3D navigation and roadmapping for image-guided interventions',
+              title: t('nav.percisioGuidance'),
+              description: t('nav.percisioGuidanceDesc'),
               href: '/our-products/percisio-guidance',
             },
             {
-              title: 'Percisio Insight',
-              description:
-                'Advanced analytics and clinical decision support powered by patient data',
+              title: t('nav.percisioInsight'),
+              description: t('nav.percisioInsightDesc'),
               href: '/our-products/percisio-insight',
             },
           ],
         },
         {
-          title: 'By Application',
+          title: t('nav.byApplication'),
           items: [
             {
-              title: 'Hepatic Drainage',
-              description: 'A classic of interventional radiology',
+              title: t('nav.hepaticDrainage'),
+              description: t('nav.hepaticDrainageDesc'),
               href: '/applications/hepatic-drainage',
             },
             {
-              title: 'Biopsy',
-              description: 'End-to-end guidance for minimally invasive biopsies',
+              title: t('nav.biopsy'),
+              description: t('nav.biopsyDesc'),
               href: '/applications/biopsy',
             },
             {
-              title: 'Pleural Drainage',
-              description: 'Quick and efficient drainage of pleural fluid',
+              title: t('nav.pleuralDrainage'),
+              description: t('nav.pleuralDrainageDesc'),
               href: '/applications/pleural-drainage',
             },
           ],
@@ -70,39 +71,31 @@ export function MegaMenu() {
       ],
     },
     {
-      label: 'Resources',
+      label: t('nav.resources'),
       sections: [
         {
-          title: 'Learn',
+          title: t('nav.resources'),
           items: [
+            { title: t('nav.videos'), description: t('nav.videosDesc'), href: '/learn/videos' },
             {
-              title: 'Videos',
-              description: 'Product demos and tutorials',
-              href: '/learn/videos',
-            },
-            {
-              title: 'Documentation',
-              description: 'Technical guides and API docs',
+              title: t('nav.documentation'),
+              description: t('nav.documentationDesc'),
               href: '/learn/documentation',
             },
-            {
-              title: 'FAQ',
-              description: 'Common questions answered',
-              href: '/learn/faq',
-            },
+            { title: t('nav.faq'), description: t('nav.faqDesc'), href: '/learn/faq' },
           ],
         },
         {
-          title: 'Insights',
+          title: t('nav.insights'),
           items: [
             {
-              title: 'Case Studies',
-              description: 'Real-world success stories',
+              title: t('nav.caseStudies'),
+              description: t('nav.caseStudiesDesc'),
               href: '/insights/case-studies',
             },
             {
-              title: 'Blog',
-              description: 'Latest news and insights',
+              title: t('nav.blog'),
+              description: t('nav.blogDesc'),
               href: '/insights/blog',
             },
           ],
@@ -110,40 +103,36 @@ export function MegaMenu() {
       ],
     },
     {
-      label: 'Company',
+      label: t('nav.company'),
       sections: [
         {
-          title: 'About Us',
+          title: t('nav.about'),
           items: [
+            { title: t('nav.about'), description: t('nav.aboutDesc'), href: '/about-us/about' },
             {
-              title: 'About Percisio',
-              description: 'Our mission and vision',
-              href: '/about-us/about',
-            },
-            {
-              title: 'Team',
-              description: 'Meet the experts',
+              title: t('nav.team'),
+              description: t('nav.teamDesc'),
               href: '/about-us/team',
             },
             {
-              title: 'Careers',
-              description: 'Join our team',
+              title: t('nav.careers'),
+              description: t('nav.careersDesc'),
               href: '/about-us/careers',
             },
           ],
         },
         {
-          title: 'Legal',
+          title: t('nav.legal'),
           items: [
-            { title: 'Terms of Service', href: '/legal/terms' },
-            { title: 'Privacy Policy', href: '/legal/privacy' },
-            { title: 'Cookie Policy', href: '/legal/cookies' },
+            { title: t('nav.termsOfService'), href: '/legal/terms' },
+            { title: t('nav.privacyPolicy'), href: '/legal/privacy' },
+            { title: t('nav.cookiePolicy'), href: '/legal/cookies' },
           ],
         },
       ],
     },
     {
-      label: 'Contact',
+      label: t('nav.contact'),
       href: '/contact',
     },
   ];

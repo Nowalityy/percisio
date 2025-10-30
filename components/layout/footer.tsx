@@ -1,24 +1,28 @@
+'use client';
+
 import Link from 'next/link';
 import { Twitter, Linkedin, Youtube, Facebook } from 'lucide-react';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 export function Footer() {
+  const { t } = useTranslations();
   const footerLinks = {
     product: [
-      { name: 'Features', href: '/features/ai-visualization' },
-      { name: 'Videos', href: '/learn/videos' },
-      { name: 'Case Studies', href: '/insights/case-studies' },
-      { name: 'FAQ', href: '/learn/faq' },
+      { name: t('nav.percisioGuidance'), href: '/our-products/percisio-guidance' },
+      { name: t('footer.videos'), href: '/learn/videos' },
+      { name: t('footer.caseStudies'), href: '/insights/case-studies' },
+      { name: t('footer.faq'), href: '/learn/faq' },
     ],
     company: [
-      { name: 'About', href: '/about-us/about' },
-      { name: 'Team', href: '/about-us/team' },
-      { name: 'Blog', href: '/insights/blog' },
-      { name: 'Careers', href: '/about-us/careers' },
+      { name: t('footer.about'), href: '/about-us/about' },
+      { name: t('footer.team'), href: '/about-us/team' },
+      { name: t('footer.blog'), href: '/insights/blog' },
+      { name: t('footer.careers'), href: '/about-us/careers' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/company/privacy' },
-      { name: 'Terms of Service', href: '/company/terms' },
-      { name: 'Cookie Policy', href: '/company/cookies' },
+      { name: t('footer.privacyPolicy'), href: '/legal/privacy' },
+      { name: t('footer.termsOfService'), href: '/legal/terms' },
+      { name: t('footer.cookiePolicy'), href: '/legal/cookies' },
     ],
   };
 
@@ -31,33 +35,41 @@ export function Footer() {
               <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600" />
               <span className="text-xl font-bold">Percisio</span>
             </Link>
-            <p className="text-muted-foreground mb-4 text-sm">
-              Advanced surgical visualization and AR technology for precision medicine.
-            </p>
+            <p className="text-muted-foreground mb-4 text-sm">{t('footer.description')}</p>
             <div className="flex space-x-4">
               <Link
-                href="https://www.linkedin.com/percisio"
-                className="text-muted-foreground hover:text-primary"
+                href="https://twitter.com"
+                className="text-muted-foreground hover:text-foreground"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/percisio/"
+                className="text-muted-foreground hover:text-foreground"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
                 href="https://www.youtube.com/@PERCISIO"
-                className="text-muted-foreground hover:text-primary"
+                className="text-muted-foreground hover:text-foreground"
+                aria-label="YouTube"
               >
                 <Youtube className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary">
+              <Link
+                href="https://facebook.com"
+                className="text-muted-foreground hover:text-foreground"
+                aria-label="Facebook"
+              >
                 <Facebook className="h-5 w-5" />
               </Link>
             </div>
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold">Product</h3>
+            <h3 className="mb-4 font-semibold">{t('footer.product')}</h3>
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
@@ -73,7 +85,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold">Company</h3>
+            <h3 className="mb-4 font-semibold">{t('footer.company')}</h3>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -89,7 +101,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="mb-4 font-semibold">Legal</h3>
+            <h3 className="mb-4 font-semibold">{t('footer.legal')}</h3>
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
@@ -107,7 +119,7 @@ export function Footer() {
 
         <div className="border-border mt-8 border-t pt-8 text-center">
           <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Percisio. All rights reserved.
+            © {new Date().getFullYear()} Percisio. {t('footer.allRightsReserved')}
           </p>
         </div>
       </div>

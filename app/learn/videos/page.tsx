@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/footer';
 import { VideoCard } from '@/components/video/video-card';
 import { AnimatedSection } from '@/components/shared/animated-section';
 import { Play } from 'lucide-react';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 interface Video {
   id: string;
@@ -24,6 +25,7 @@ interface Video {
 }
 
 export default function VideosPage() {
+  const { t } = useTranslations();
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [locale, setLocale] = useState<'en' | 'fr'>('en');
@@ -132,10 +134,10 @@ export default function VideosPage() {
   }, []);
 
   const categories = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'technical', label: 'Technical' },
-    { id: 'features', label: 'Features' },
-    { id: 'ar-demo', label: 'AR Demo' },
+    { id: 'overview', label: t('videos.categories.overview') },
+    { id: 'technical', label: t('videos.categories.technical') },
+    { id: 'features', label: t('videos.categories.features') },
+    { id: 'ar-demo', label: t('videos.categories.arDemo') },
   ];
 
   const videosByCategory = categories
@@ -157,18 +159,15 @@ export default function VideosPage() {
                 <div className="bg-primary/10 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full">
                   <Play className="text-primary h-8 w-8" />
                 </div>
-                <h1 className="mb-6 text-4xl font-bold md:text-5xl">Video Demonstrations</h1>
-                <p className="text-muted-foreground text-xl">
-                  Explore our comprehensive video library showcasing PERCISIO&apos;s cutting-edge
-                  medical technology, from device overview to advanced augmented reality features.
-                </p>
+                <h1 className="mb-6 text-4xl font-bold md:text-5xl">{t('videos.title')}</h1>
+                <p className="text-muted-foreground text-xl">{t('videos.intro')}</p>
               </div>
             </AnimatedSection>
 
             {loading ? (
               <div className="py-16 text-center">
                 <div className="border-primary inline-block h-12 w-12 animate-spin rounded-full border-b-2"></div>
-                <p className="text-muted-foreground mt-4">Loading videos...</p>
+                <p className="text-muted-foreground mt-4">{t('videos.loading')}</p>
               </div>
             ) : (
               <>
@@ -199,9 +198,7 @@ export default function VideosPage() {
 
                 {videos.length === 0 && !loading && (
                   <div className="py-16 text-center">
-                    <p className="text-muted-foreground text-xl">
-                      No videos available at the moment.
-                    </p>
+                    <p className="text-muted-foreground text-xl">{t('videos.empty')}</p>
                   </div>
                 )}
               </>
@@ -228,7 +225,7 @@ export default function VideosPage() {
                         ? `https://www.youtube.com/watch?v=${video.youtube_id}`
                         : video.video_url,
                       embedUrl: video.youtube_id
-                        ? `https://www.youtube.com/embed/${video.youtube_id}`
+                        ? `https://www.youtube-nocookie.com/embed/${video.youtube_id}`
                         : video.video_url,
                     })),
                   }),

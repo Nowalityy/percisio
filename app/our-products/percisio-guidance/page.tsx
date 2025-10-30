@@ -19,28 +19,15 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 export default function GuidancePage() {
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+  const { t, getRaw } = useTranslations();
 
-  const applications = [
-    {
-      title: 'Biopsy',
-      description: 'Precise tissue sampling with real-time guidance',
-    },
-    {
-      title: 'Infiltration',
-      description: 'Accurate injection procedures with visual support',
-    },
-    {
-      title: 'Puncture',
-      description: 'Safe needle placement with continuous monitoring',
-    },
-    {
-      title: 'Drainage',
-      description: 'Efficient fluid removal with guided access',
-    },
-  ];
+  const applications = (getRaw<Array<{ title: string; description: string }>>(
+    'guidance.essential.applications'
+  ) || []) as Array<{ title: string; description: string }>;
 
   return (
     <div className="bg-background min-h-screen">
@@ -55,12 +42,12 @@ export default function GuidancePage() {
               transition={{ duration: 0.8 }}
             >
               <Activity className="text-primary mx-auto mb-6 h-20 w-20" />
-              <h1 className="mb-6 text-5xl font-bold md:text-6xl">PERCISIO Guidance</h1>
+              <h1 className="mb-6 text-5xl font-bold md:text-6xl">{t('guidance.hero.title')}</h1>
               <Badge className="mb-4" variant="secondary">
-                A new standard for medicine
+                {t('guidance.hero.badge')}
               </Badge>
               <p className="text-muted-foreground mx-auto mb-8 max-w-4xl text-xl leading-relaxed">
-                Introducing PERCISIO Guidance, a new standard for medicine.
+                {t('guidance.hero.subtitle')}
               </p>
             </motion.div>
           </div>
@@ -70,10 +57,11 @@ export default function GuidancePage() {
         <section className="bg-muted/20 py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
-              <h2 className="mb-6 text-4xl font-bold md:text-5xl">The Power of Computer Vision</h2>
+              <h2 className="mb-6 text-4xl font-bold md:text-5xl">
+                {t('guidance.powerVision.title')}
+              </h2>
               <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                PERCISIO is powered by computer vision, providing you with a state-of-the-art
-                assistance system that actively tracks medical instruments during procedures.
+                {t('guidance.powerVision.description')}
               </p>
             </div>
 
@@ -82,17 +70,17 @@ export default function GuidancePage() {
                 <CardHeader>
                   <div className="mb-4 flex items-center gap-3">
                     <Eye className="text-primary h-6 w-6" />
-                    <CardTitle className="text-2xl">Advanced Computer Vision</CardTitle>
+                    <CardTitle className="text-2xl">
+                      {t('guidance.powerVision.cards.0.title')}
+                    </CardTitle>
                   </div>
                   <CardDescription className="text-lg">
-                    This technology supports practitioners in both interventional and
-                    non-interventional medicine.
+                    {t('guidance.powerVision.cards.0.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground leading-relaxed">
-                    Thanks to this support system, performing a medical procedure with PERCISIO
-                    becomes effortless, enhancing both safety and efficiency.
+                    {t('guidance.powerVision.cards.2.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -101,13 +89,12 @@ export default function GuidancePage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Target className="h-5 w-5" />
-                    Real-time Tracking
+                    {t('guidance.powerVision.cards.1.title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
-                    Advanced computer vision technology actively tracks medical instruments during
-                    procedures, providing continuous support for practitioners.
+                    {t('guidance.powerVision.cards.1.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -116,13 +103,12 @@ export default function GuidancePage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Shield className="h-5 w-5" />
-                    Effortless Procedures
+                    {t('guidance.powerVision.cards.2.title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground leading-relaxed">
-                    Thanks to this support system, performing a medical procedure with PERCISIO
-                    becomes effortless, enhancing both safety and efficiency.
+                    {t('guidance.powerVision.cards.2.description')}
                   </p>
                 </CardContent>
               </Card>
@@ -140,11 +126,10 @@ export default function GuidancePage() {
             >
               <div className="mb-16 text-center">
                 <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-                  Medical Applications in Practice
+                  {t('guidance.gallery.title')}
                 </h2>
                 <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                  PERCISIO is built to assist practitioners across various applications, from
-                  controls to critical percutaneous interventions.
+                  {t('guidance.gallery.description')}
                 </p>
               </div>
 
@@ -169,9 +154,11 @@ export default function GuidancePage() {
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <h3 className="text-lg font-semibold">Needle Guidance</h3>
+                      <h3 className="text-lg font-semibold">
+                        {t('guidance.gallery.items.0.title')}
+                      </h3>
                       <p className="text-muted-foreground text-sm">
-                        Precise needle placement with real-time tracking
+                        {t('guidance.gallery.items.0.description')}
                       </p>
                     </div>
                   </motion.div>
@@ -194,9 +181,11 @@ export default function GuidancePage() {
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <h3 className="text-lg font-semibold">Abscess Treatment</h3>
+                      <h3 className="text-lg font-semibold">
+                        {t('guidance.gallery.items.1.title')}
+                      </h3>
                       <p className="text-muted-foreground text-sm">
-                        Guided drainage procedures with enhanced precision
+                        {t('guidance.gallery.items.1.description')}
                       </p>
                     </div>
                   </motion.div>
@@ -219,9 +208,11 @@ export default function GuidancePage() {
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <h3 className="text-lg font-semibold">Advanced Treatment</h3>
+                      <h3 className="text-lg font-semibold">
+                        {t('guidance.gallery.items.2.title')}
+                      </h3>
                       <p className="text-muted-foreground text-sm">
-                        Complex procedures with computer vision support
+                        {t('guidance.gallery.items.2.description')}
                       </p>
                     </div>
                   </motion.div>
@@ -234,10 +225,10 @@ export default function GuidancePage() {
                   <CardHeader>
                     <div className="mb-4 flex items-center gap-3">
                       <Layers className="text-primary h-6 w-6" />
-                      <CardTitle className="text-2xl">Essential Procedures</CardTitle>
+                      <CardTitle className="text-2xl">{t('guidance.essential.title')}</CardTitle>
                     </div>
                     <CardDescription className="text-lg">
-                      This indispensable tool supports essential procedures such as:
+                      {t('guidance.essential.intro')}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -264,10 +255,10 @@ export default function GuidancePage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-16 text-center">
               <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-                Seamless Integration and Flexibility
+                {t('guidance.integration.title')}
               </h2>
               <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-                We understand the need for adaptability in the clinical setting.
+                {t('guidance.integration.description')}
               </p>
             </div>
 
@@ -283,12 +274,13 @@ export default function GuidancePage() {
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-blue-500/10">
                       <Zap className="h-8 w-8 text-blue-500" />
                     </div>
-                    <CardTitle className="text-xl">Extensive Compatibility</CardTitle>
+                    <CardTitle className="text-xl">
+                      {t('guidance.integration.cards.0.title')}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-base leading-relaxed">
-                      PERCISIO can be integrated with an extensive array of tools, ensuring
-                      compatibility with your current inventory.
+                      {t('guidance.integration.cards.0.description')}
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -305,12 +297,13 @@ export default function GuidancePage() {
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
                       <Monitor className="h-8 w-8 text-green-500" />
                     </div>
-                    <CardTitle className="text-xl">Universal Support</CardTitle>
+                    <CardTitle className="text-xl">
+                      {t('guidance.integration.cards.1.title')}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-base leading-relaxed">
-                      Whether you are using ultrasound probes or various clinical needles, PERCISIO
-                      works right alongside you.
+                      {t('guidance.integration.cards.1.description')}
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -327,12 +320,13 @@ export default function GuidancePage() {
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-purple-500/10">
                       <Activity className="h-8 w-8 text-purple-500" />
                     </div>
-                    <CardTitle className="text-xl">Modern Design</CardTitle>
+                    <CardTitle className="text-xl">
+                      {t('guidance.integration.cards.2.title')}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <CardDescription className="text-base leading-relaxed">
-                      Beyond its technical sophistication, PERCISIO is designed for the modern
-                      practice: it is lightweight, mobile, and user-friendly.
+                      {t('guidance.integration.cards.2.description')}
                     </CardDescription>
                   </CardContent>
                 </Card>
@@ -342,10 +336,9 @@ export default function GuidancePage() {
             <div className="mt-16 text-center">
               <Card className="mx-auto max-w-4xl">
                 <CardContent className="py-12">
-                  <h3 className="mb-6 text-3xl font-bold">Adopt PERCISIO Today</h3>
+                  <h3 className="mb-6 text-3xl font-bold">{t('guidance.integration.ctaTitle')}</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    The solution that brings simplicity and technological advancement to the
-                    forefront of your medical procedures.
+                    {t('guidance.integration.ctaDescription')}
                   </p>
                 </CardContent>
               </Card>

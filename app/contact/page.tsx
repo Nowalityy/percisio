@@ -85,7 +85,7 @@ export default function ContactPage() {
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
-          <motion.div
+          <motion.div 
             className="mb-16 text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,8 +134,8 @@ export default function ContactPage() {
                   <CardDescription>Common ways to get in touch with our team.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <AnimatedButton
-                    variant="outline"
+                  <AnimatedButton 
+                    variant="outline" 
                     className="w-full justify-start"
                     asChild
                     delay={0.1}
@@ -146,9 +146,9 @@ export default function ContactPage() {
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Link>
                   </AnimatedButton>
-
-                  <AnimatedButton
-                    variant="outline"
+                  
+                  <AnimatedButton 
+                    variant="outline" 
                     className="w-full justify-start"
                     asChild
                     delay={0.2}
@@ -159,9 +159,9 @@ export default function ContactPage() {
                       <ArrowRight className="ml-auto h-4 w-4" />
                     </Link>
                   </AnimatedButton>
-
-                  <AnimatedButton
-                    variant="outline"
+                  
+                  <AnimatedButton 
+                    variant="outline" 
                     className="w-full justify-start"
                     asChild
                     delay={0.3}
@@ -190,7 +190,7 @@ export default function ContactPage() {
                       <div key={member.id} className="flex items-start gap-3">
                         <div className="bg-primary/10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full">
                           <Users className="text-primary h-5 w-5" />
-                        </div>
+                      </div>
                         <div className="flex-1">
                           <p className="font-medium">{member.name}</p>
                           <p className="text-primary text-sm font-medium">{member.role}</p>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                               LinkedIn
                             </Link>
                           )}
-                        </div>
+                    </div>
                       </div>
                     ))}
                   </div>

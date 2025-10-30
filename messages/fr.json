@@ -4,250 +4,955 @@
     "procedure": "La Procédure",
     "technology": "La Technologie",
     "videos": "Vidéos",
+    "videosDesc": "Démonstrations de produits et tutoriels",
     "documentation": "Documentation",
+    "documentationDesc": "Guides techniques et documentation API",
     "contact": "Contact",
     "features": "Fonctionnalités",
     "caseStudies": "Études de Cas",
+    "caseStudiesDesc": "Exemples concrets de réussites",
     "blog": "Blog",
-    "about": "À Propos",
+    "blogDesc": "Dernières actualités et analyses",
+    "about": "À propos",
+    "aboutDesc": "Notre mission et notre vision",
     "team": "Équipe",
+    "teamDesc": "Rencontrez les experts",
     "faq": "FAQ",
+    "faqDesc": "Questions fréquentes",
     "solutions": "Solutions",
     "resources": "Ressources",
-    "company": "Entreprise"
+    "insights": "Analyses",
+    "company": "Entreprise",
+    "legal": "Mentions légales",
+    "percisioGuidance": "Percisio Guidance",
+    "percisioGuidanceDesc": "Navigation 3D en temps réel et planification pour les interventions guidées par l’image",
+    "percisioInsight": "Percisio Insight",
+    "percisioInsightDesc": "Analyses avancées et aide à la décision clinique basées sur les données patient",
+    "hepaticDrainage": "Drainage hépatique",
+    "hepaticDrainageDesc": "Un classique de la radiologie interventionnelle",
+    "pleuralDrainage": "Drainage pleural",
+    "pleuralDrainageDesc": "Drainage rapide et efficace du liquide pleural",
+    "biopsy": "Biopsie",
+    "biopsyDesc": "Guidage complet pour les biopsies mini-invasives",
+    "careers": "Carrières",
+    "careersDesc": "Rejoignez notre équipe",
+    "termsOfService": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "cookiePolicy": "Politique relative aux cookies",
+    "byApplication": "Par application"
+  },
+  "cookies": {
+    "title": "Politique relative aux cookies",
+    "lastUpdated": "Dernière mise à jour",
+    "sections": {
+      "what": {
+        "title": "Qu’est‑ce qu’un cookie ?",
+        "content": "Les cookies sont de petits fichiers texte enregistrés sur votre appareil lorsque vous visitez notre site. Ils nous aident à vous offrir une meilleure expérience."
+      },
+      "types": {
+        "title": "Types de cookies utilisés",
+        "essential": {
+          "title": "Cookies essentiels",
+          "content": "Nécessaires au bon fonctionnement du site, notamment pour l’authentification et la sécurité."
+        },
+        "analytics": {
+          "title": "Cookies d’analyse",
+          "content": "Nous aident à comprendre comment les visiteurs interagissent avec le site en collectant et en rapportant des informations de manière anonyme."
+        },
+        "preference": {
+          "title": "Cookies de préférence",
+          "content": "Permettent au site de mémoriser vos choix et d’offrir des fonctionnalités améliorées."
+        }
+      },
+      "managing": {
+        "title": "Gestion des cookies",
+        "content": "Vous pouvez contrôler et/ou supprimer les cookies comme vous le souhaitez. Vous pouvez supprimer tous les cookies présents sur votre appareil et paramétrer la plupart des navigateurs pour empêcher leur dépôt."
+      },
+      "contact": {
+        "title": "Nous contacter",
+        "content": "Pour toute question concernant l’utilisation des cookies, veuillez nous écrire à hello@percisio.com"
+      }
+    }
   },
   "hero": {
-    "tagline": "une nouvelle norme pour la médecine",
+    "tagline": "un nouveau standard pour la médecine",
     "title": "Percisio",
     "subtitle": "PERCISIO est une solution de pointe conçue pour simplifier les procédures médicales",
-    "description": "Système d'assistance médicale alimenté par vision par ordinateur qui soutient les praticiens dans diverses applications médicales",
+    "description": "Système d’assistance médicale basé sur la vision par ordinateur, soutenant les praticiens dans diverses applications médicales",
     "cta": {
-      "primary": "Commencer",
-      "secondary": "Voir les Études de Cas",
-      "demo": "Demander une Démo"
+      "primary": "Planifier une démonstration en direct",
+      "secondary": "Voir les études de cas",
+      "demo": "Planifier une démonstration en direct"
     }
   },
   "features": {
-    "title": "Fonctionnalités Clés",
+    "title": "Fonctionnalités clés",
     "subtitle": "Technologie médicale avancée à portée de main",
     "tracking": {
-      "title": "Suivi des Instruments",
+      "title": "Suivi des instruments",
       "description": "Suit les instruments médicaux pendant les procédures avec précision"
     },
     "lightweight": {
-      "title": "Léger et Mobile",
+      "title": "Léger et mobile",
       "description": "Solution portable utilisable partout"
     },
     "userFriendly": {
-      "title": "Facile à Utiliser",
+      "title": "Facile à utiliser",
       "description": "Interface intuitive conçue pour les professionnels de santé"
     },
     "compatible": {
-      "title": "Multi-Outils Compatible",
-      "description": "Fonctionne avec les sondes échographiques, aiguilles cliniques et plus"
+      "title": "Compatible multi-outils",
+      "description": "Fonctionne avec des sondes échographiques, des aiguilles cliniques et plus encore"
     },
     "interventional": {
-      "title": "Applications Polyvalentes",
-      "description": "Supporte la médecine interventionnelle et non-interventionnelle"
+      "title": "Applications polyvalentes",
+      "description": "Soutient la médecine interventionnelle et non interventionnelle"
     },
     "vision": {
-      "title": "Vision par Ordinateur",
-      "description": "Alimenté par une technologie de vision par ordinateur avancée"
+      "title": "Vision par ordinateur",
+      "description": "Propulsé par une technologie de vision par ordinateur avancée"
     }
   },
   "applications": {
-    "title": "Applications Médicales",
-    "subtitle": "Soutien de diverses procédures médicales",
+    "title": "Applications médicales",
+    "subtitle": "Soutien à diverses procédures médicales",
     "controls": "Contrôles",
-    "percutaneous": "Interventions Percutanées",
+    "percutaneous": "Interventions percutanées",
     "biopsy": "Biopsie",
     "infiltration": "Infiltration",
     "puncture": "Ponction",
     "drainage": "Drainage"
   },
   "footer": {
-    "description": "Percisio - Une nouvelle norme pour la médecine. Système d'assistance médicale avancé alimenté par vision par ordinateur.",
+    "description": "Percisio - Un nouveau standard pour la médecine. Système d’assistance médicale avancé basé sur la vision par ordinateur.",
     "product": "Produit",
     "company": "Entreprise",
-    "legal": "Légal",
-    "followUs": "Suivez-Nous",
+    "legal": "Mentions légales",
+    "followUs": "Suivez-nous",
     "allRightsReserved": "Tous droits réservés",
-    "privacyPolicy": "Politique de Confidentialité",
-    "termsOfService": "Conditions d'Utilisation",
-    "cookiePolicy": "Politique des Cookies"
+    "privacyPolicy": "Politique de confidentialité",
+    "termsOfService": "Conditions d'utilisation",
+    "cookiePolicy": "Politique relative aux cookies",
+    "about": "À propos",
+    "team": "Équipe",
+    "blog": "Blog",
+    "careers": "Carrières",
+    "videos": "Vidéos",
+    "caseStudies": "Études de cas",
+    "faq": "FAQ"
   },
   "legal": {
     "terms": {
-      "title": "Conditions d'Utilisation",
+      "title": "Conditions d'utilisation",
       "lastUpdated": "Dernière mise à jour",
       "sections": {
         "acceptance": {
-          "title": "Acceptation des Conditions",
-          "content": "En accédant et en utilisant la plateforme d'assistance médicale Percisio, vous acceptez et convenez d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces Conditions, vous ne pouvez pas accéder ou utiliser le Service."
+          "title": "Acceptation des conditions",
+          "content": "En accédant et en utilisant la plateforme d’assistance médicale Percisio, vous acceptez d’être lié par ces conditions d’utilisation. Si vous n’acceptez pas ces conditions, vous ne pouvez pas accéder ni utiliser le service."
         },
         "description": {
-          "title": "Description du Service",
-          "content": "Percisio est un système d'assistance médicale alimenté par vision par ordinateur conçu pour soutenir les professionnels de santé dans les procédures guidées par imagerie. Le Service fournit un guidage en temps réel pour les interventions percutanées incluant biopsies, infiltrations, ponctions et procédures de drainage."
+          "title": "Description du service",
+          "content": "Percisio est un système d’assistance médicale basé sur la vision par ordinateur, conçu pour soutenir les professionnels de santé dans les procédures guidées par l’image. Le service fournit une aide en temps réel pour les interventions percutanées, y compris les biopsies, infiltrations, ponctions et drainages."
+        },
+        "deviceCompliance": {
+          "title": "Classification du dispositif médical et conformité réglementaire",
+          "content1": "Percisio est classé comme dispositif médical et soumis aux réglementations applicables. Les utilisateurs doivent veiller au respect de toutes les réglementations locales, nationales et internationales encadrant l’utilisation des dispositifs médicaux dans leur juridiction.",
+          "content2": "Les utilisateurs sont responsables d’obtenir les autorisations, certifications ou agréments nécessaires à l’utilisation du service dans leur contexte clinique."
+        },
+        "useLicense": {
+          "title": "Licence d’utilisation et restrictions",
+          "intro": "Sous réserve des présentes, Percisio vous accorde une licence limitée, non exclusive et non transférable pour utiliser le service à des fins médicales légitimes. Cette licence ne vous confère aucun droit de :",
+          "items": [
+            "Modifier, rétro‑concevoir ou créer des œuvres dérivées du service",
+            "Distribuer, sous‑licencier ou transférer le service à des tiers",
+            "Utiliser le service à des fins illégales ou non autorisées",
+            "Tenter d’accéder sans autorisation à une partie du service"
+          ]
+        },
+        "userResponsibilities": {
+          "title": "Responsabilités et qualifications de l’utilisateur",
+          "intro": "Vous déclarez et garantissez que :",
+          "items": [
+            "Vous êtes un professionnel de santé qualifié, dûment formé et habilité",
+            "Vous disposez des qualifications nécessaires pour réaliser les actes médicaux envisagés avec le service",
+            "Vous utiliserez le service conformément aux standards médicaux et aux bonnes pratiques applicables",
+            "Vous préserverez la confidentialité de vos identifiants et assumez la responsabilité des activités réalisées via votre compte",
+            "Vous respecterez l’ensemble des lois, réglementations et normes professionnelles applicables"
+          ]
         },
         "medicalDisclaimer": {
-          "title": "Avertissement Médical et Responsabilité Professionnelle",
-          "content": "Percisio est un outil conçu pour assister les professionnels médicaux et n'est pas destiné à remplacer le jugement médical professionnel, le diagnostic ou le traitement. Les décisions médicales finales restent la responsabilité exclusive du prestataire de soins de santé agréé."
+          "title": "Avertissement médical et responsabilité professionnelle",
+          "content": "Percisio est un outil conçu pour assister les professionnels de santé et ne remplace pas le jugement médical, le diagnostic ou le traitement. Les décisions médicales finales relèvent exclusivement du professionnel de santé agréé."
+        },
+        "dataSecurity": {
+          "title": "Sécurité des données et confidentialité",
+          "content1": "Le service est conçu pour respecter les réglementations applicables en matière de protection des données (y compris HIPAA si applicable). Toutefois, les utilisateurs doivent s’assurer que leur utilisation est conforme aux lois et réglementations en vigueur dans leur juridiction.",
+          "content2": "Les utilisateurs doivent recueillir le consentement approprié des patients avant d’utiliser le service et mettre en place des mesures de protection adaptées."
+        },
+        "ipRights": {
+          "title": "Droits de propriété intellectuelle",
+          "content1": "Le service et l’ensemble des droits de propriété intellectuelle associés (logiciels, algorithmes, interfaces, documentations) sont la propriété de Percisio et protégés par les lois applicables.",
+          "content2": "Vous ne pouvez pas utiliser les marques, logos ou autres éléments propriétaires de Percisio sans autorisation écrite préalable."
+        },
+        "limitationLiability": {
+          "title": "Limitation de responsabilité",
+          "items": [
+            "Pertes de bénéfices, de données ou d’opportunités",
+            "Faute médicale ou événements indésirables",
+            "Dommages ou pannes d’équipement",
+            "Réclamations de tiers liées à votre utilisation du service"
+          ],
+          "footer": "En tout état de cause, la responsabilité totale de Percisio ne saurait excéder le montant que vous avez payé pour le service au cours des douze (12) mois précédant la réclamation."
+        },
+        "indemnification": {
+          "title": "Indemnisation",
+          "intro": "Vous vous engagez à indemniser et dégager de toute responsabilité Percisio, ainsi que ses dirigeants, directeurs, employés et agents, pour tout dommage, perte ou dépense résultant :",
+          "items": [
+            "De votre utilisation du service en violation des présentes",
+            "De toute violation des lois ou réglementations applicables",
+            "D’actes ou d’omissions fautifs ou négligents de votre part",
+            "De tout acte médical réalisé à l’aide du service"
+          ]
+        },
+        "availability": {
+          "title": "Disponibilité et modifications du service",
+          "content1": "Percisio se réserve le droit de modifier, suspendre ou interrompre le service à tout moment et sans préavis. Nous ne garantissons ni la disponibilité continue ni l’absence d’erreurs ou d’interruptions.",
+          "content2": "Nous pouvons mettre à jour les présentes conditions. La poursuite de l’utilisation du service après ces modifications vaut acceptation des conditions mises à jour."
+        },
+        "termination": {
+          "title": "Résiliation",
+          "content": "Chaque partie peut mettre fin aux présentes à tout moment. À la résiliation, votre droit d’utiliser le service cesse immédiatement ; vous devez cesser toute utilisation et retourner ou détruire les supports associés."
+        },
+        "governingLaw": {
+          "title": "Droit applicable et règlement des litiges",
+          "content": "Les présentes sont régies et interprétées conformément au droit de [Juridiction], à l’exclusion des règles de conflits de lois. Tout litige sera tranché par arbitrage conformément aux règles de [Organisme d’arbitrage]."
+        },
+        "severability": {
+          "title": "Divisibilité",
+          "content": "Si une disposition des présentes est jugée invalide ou inapplicable, les autres dispositions demeurent pleinement en vigueur."
         },
         "contact": {
-          "title": "Informations de Contact",
-          "content": "Si vous avez des questions concernant ces Conditions d'Utilisation, veuillez nous contacter à legal@percisio.com"
+          "title": "Informations de contact",
+          "content": "Pour toute question concernant ces conditions d’utilisation, veuillez nous contacter à hello@percisio.com"
         }
       }
     },
     "privacy": {
-      "title": "Politique de Confidentialité",
+      "title": "Politique de confidentialité",
       "lastUpdated": "Dernière mise à jour",
       "sections": {
         "introduction": {
           "title": "Introduction",
-          "content": "Percisio s'engage à protéger la confidentialité et la sécurité de vos informations personnelles et informations de santé protégées (PHI). Cette Politique de Confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lors de l'utilisation de notre plateforme d'assistance médicale."
+          "content1": "Percisio (« nous », « notre » ou « nos ») s’engage à protéger la confidentialité et la sécurité de vos informations personnelles et de vos données de santé protégées (PHI). La présente politique de confidentialité explique comment nous collectons, utilisons, divulguons et protégeons vos informations lorsque vous utilisez notre plateforme d’assistance médicale et les services associés.",
+          "content2": "Cette politique de confidentialité s’applique à tous les utilisateurs des services Percisio, y compris les professionnels de santé, les établissements médicaux et les patients dont les données peuvent être traitées via notre plateforme."
         },
         "informationCollection": {
-          "title": "Informations que Nous Collectons",
-          "content": "Nous collectons des informations personnelles, des informations de santé protégées (PHI) et des informations techniques pour fournir et améliorer nos services d'assistance médicale."
+          "title": "Informations que nous collectons",
+          "personal": {
+            "title": "2.1 Informations personnelles",
+            "intro": "Nous pouvons collecter les types d’informations personnelles suivants :",
+            "items": [
+              "Informations de compte : nom, adresse e‑mail, qualifications professionnelles, affiliation institutionnelle et coordonnées",
+              "Informations professionnelles : numéros d’agrément, spécialités, certifications et qualifications",
+              "Données d’utilisation : informations sur votre interaction avec la plateforme (heures de connexion, utilisation des fonctionnalités, performances du système)",
+              "Données de communication : échanges avec notre support, retours et demandes de service"
+            ]
+          },
+          "phi": {
+            "title": "2.2 Données de santé protégées (PHI)",
+            "intro": "Dans le cadre de nos services d’assistance médicale, nous pouvons traiter des PHI, notamment :",
+            "items": [
+              "Données d’imagerie médicale (CT, IRM, échographie)",
+              "Informations liées aux procédures et notes cliniques",
+              "Identifiants patients et données démographiques (si nécessaires au contexte clinique)",
+              "Résultats de traitement et issues des procédures"
+            ]
+          },
+          "technical": {
+            "title": "2.3 Informations techniques",
+            "intro": "Nous collectons automatiquement certaines informations techniques, notamment :",
+            "items": [
+              "Informations sur l’appareil (caractéristiques matérielles, système d’exploitation, navigateur)",
+              "Informations réseau (adresse IP, type de connexion, données de localisation)",
+              "Mesures de performance système et journaux d’erreurs",
+              "Données de sécurité et d’authentification"
+            ]
+          }
+        },
+        "useInformation": {
+          "title": "3. Comment nous utilisons vos informations",
+          "serviceProvision": {
+            "title": "3.1 Fourniture du service",
+            "intro": "Nous utilisons vos informations pour :",
+            "items": [
+              "Fournir et maintenir notre plateforme d’assistance médicale",
+              "Traiter les données d’imagerie et fournir un guidage en temps réel",
+              "Authentifier les utilisateurs et gérer l’accès à la plateforme",
+              "Fournir un support technique et un service client",
+              "Assurer la sécurité du système et prévenir les accès non autorisés"
+            ]
+          },
+          "qualityImprovement": {
+            "title": "3.2 Amélioration de la qualité",
+            "intro": "Nous pouvons utiliser des données désidentifiées pour :",
+            "items": [
+              "Améliorer nos algorithmes et les performances du système",
+              "Mener des activités de recherche et développement",
+              "Générer des analyses et statistiques anonymisées",
+              "Améliorer l’expérience utilisateur et les fonctionnalités de la plateforme"
+            ]
+          },
+          "legalCompliance": {
+            "title": "3.3 Conformité légale et réglementaire",
+            "intro": "Nous utilisons vos informations pour :",
+            "items": [
+              "Nous conformer aux lois et réglementations applicables",
+              "Répondre aux demandes légales et décisions de justice",
+              "Maintenir des journaux d’audit et des dossiers de conformité",
+              "Protéger nos droits et intérêts"
+            ]
+          }
         },
         "hipaaCompliance": {
-          "title": "Conformité HIPAA et Protection des PHI",
-          "content": "Percisio est conçu pour se conformer à HIPAA et autres réglementations de confidentialité des soins de santé applicables. Nous mettons en place des garanties administratives, physiques et techniques appropriées pour protéger les PHI."
+          "title": "4. Conformité HIPAA et protection des PHI",
+          "content": "Conformité HIPAA : Percisio est conçu pour se conformer à la loi HIPAA et aux autres réglementations applicables en matière de confidentialité des soins. Nous mettons en œuvre des mesures administratives, physiques et techniques appropriées pour protéger les PHI.",
+          "safeguards": {
+            "title": "4.1 Mesures de protection",
+            "items": [
+              "Mesures administratives : politiques de confidentialité, formation du personnel et contrôles d’accès",
+              "Mesures physiques : centres de données sécurisés, contrôles d’accès et protections environnementales",
+              "Mesures techniques : chiffrement, transmission sécurisée, contrôles d’accès et journaux d’audit"
+            ]
+          },
+          "baas": {
+            "title": "4.2 Accords de sous‑traitance (BAA)",
+            "content": "Lorsque requis, nous concluons des Business Associate Agreements (BAA) avec les entités concernées afin d’assurer un traitement conforme des PHI."
+          }
+        },
+        "sharing": {
+          "title": "5. Partage et divulgation des informations",
+          "limited": {
+            "title": "5.1 Partage limité",
+            "intro": "Nous ne vendons, ne louons ni n’échangeons vos informations personnelles ou PHI. Nous ne partageons des informations que dans les cas suivants :",
+            "items": [
+              "Avec votre consentement : lorsque vous nous autorisez explicitement à partager vos informations",
+              "Fournisseurs de services : avec des prestataires tiers de confiance, soumis à des obligations strictes de confidentialité",
+              "Exigences légales : lorsque la loi, une décision de justice ou une autorité réglementaire l’exige",
+              "Situations d’urgence : pour protéger la santé et la sécurité des personnes"
+            ]
+          },
+          "deidentified": {
+            "title": "5.2 Données désidentifiées",
+            "content": "Nous pouvons partager des données agrégées et désidentifiées, impossibles à relier à des individus, à des fins de recherche, d’analyses et d’amélioration."
+          }
         },
         "dataSecurity": {
-          "title": "Sécurité des Données",
-          "content": "Nous mettons en place des mesures de sécurité complètes incluant le cryptage de bout en bout, les contrôles d'accès, la sécurité réseau et des audits réguliers pour protéger vos informations."
+          "title": "6. Sécurité des données",
+          "intro": "Nous mettons en place des mesures de sécurité complètes pour protéger vos informations, notamment :",
+          "items": [
+            "Chiffrement : chiffrement de bout en bout des données en transit et au repos",
+            "Contrôles d’accès : authentification multifacteur et contrôles d’accès basés sur les rôles",
+            "Sécurité réseau : pare‑feu, détection d’intrusion et architecture réseau sécurisée",
+            "Audits réguliers : évaluations de sécurité continues et tests de vulnérabilité",
+            "Formation du personnel : formations régulières sur la confidentialité et la sécurité"
+          ]
+        },
+        "dataRetention": {
+          "title": "7. Conservation des données",
+          "intro": "Nous conservons vos informations uniquement le temps nécessaire à la fourniture de nos services et au respect de nos obligations légales :",
+          "items": [
+            "Informations de compte : conservées tant que votre compte est actif puis pendant une période raisonnable",
+            "PHI : conservées conformément aux réglementations de santé applicables et aux exigences des établissements",
+            "Données techniques : conservées à des fins de maintenance et de sécurité du système",
+            "Exigences légales : certaines données peuvent être conservées plus longtemps pour respecter des obligations légales"
+          ]
+        },
+        "rights": {
+          "title": "8. Vos droits et choix",
+          "access": {
+            "title": "8.1 Accès et rectification",
+            "intro": "Vous avez le droit de :",
+            "items": [
+              "Accéder à vos informations personnelles et à vos PHI",
+              "Demander la correction d’informations inexactes ou incomplètes",
+              "Demander des copies de vos données dans un format portable"
+            ]
+          },
+          "deletion": {
+            "title": "8.2 Suppression et limitation",
+            "intro": "Vous pouvez demander :",
+            "items": [
+              "La suppression de vos informations personnelles (sous réserve des exigences légales et réglementaires)",
+              "La limitation du traitement dans certaines circonstances",
+              "L’opposition à certains types de traitements"
+            ]
+          },
+          "withdrawal": {
+            "title": "8.3 Retrait du consentement",
+            "content": "Lorsque le traitement repose sur le consentement, vous pouvez le retirer à tout moment. Cela peut toutefois affecter l’utilisation de certaines fonctionnalités de la plateforme."
+          }
+        },
+        "intlTransfers": {
+          "title": "9. Transferts internationaux de données",
+          "content": "Si vous êtes situé en dehors des États‑Unis, vos informations peuvent être transférées et traitées aux États‑Unis. Nous mettons en place les garanties appropriées, notamment des clauses contractuelles types ou des décisions d’adéquation, le cas échéant."
+        },
+        "children": {
+          "title": "10. Confidentialité des enfants",
+          "content": "Nos services ne sont pas destinés aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d’informations personnelles auprès d’eux. Si une telle collecte était constatée, nous supprimerions ces données sans délai."
+        },
+        "changes": {
+          "title": "11. Modifications de cette politique",
+          "content": "Nous pouvons mettre à jour la présente politique pour refléter l’évolution de nos pratiques ou des lois applicables. Nous publierons toute modification importante sur notre site et mettrons à jour la date « Dernière mise à jour »."
         },
         "contact": {
-          "title": "Informations de Contact",
-          "content": "Si vous avez des questions concernant cette Politique de Confidentialité, veuillez nous contacter à privacy@percisio.com"
+          "title": "12. Informations de contact",
+          "intro": "Pour toute question concernant cette politique de confidentialité ou nos pratiques, veuillez nous contacter à :",
+          "privacyOfficer": "",
+          "privacyEmail": "E‑mail : hello@percisio.com",
+          "privacyPhone": "",
+          "privacyAddress": "",
+          "dpo": "",
+          "dpoEmail": "E‑mail : hello@percisio.com"
+        },
+        "complaints": {
+          "title": "13. Réclamations",
+          "content": "Si vous estimez que nous avons violé vos droits en matière de confidentialité, vous pouvez déposer une réclamation auprès de nous ou de l’autorité compétente de votre juridiction. Nous examinerons toute réclamation sans délai et prendrons les mesures correctives appropriées."
         }
       }
     }
   },
   "common": {
-    "learnMore": "En Savoir Plus",
-    "getStarted": "Commencer",
-    "contactUs": "Nous Contacter",
-    "readMore": "Lire Plus",
-    "viewAll": "Tout Voir",
-    "backToHome": "Retour à l'Accueil"
+    "learnMore": "En savoir plus",
+    "getStarted": "Planifier une démonstration en direct",
+    "contactUs": "Nous contacter",
+    "readMore": "Lire la suite",
+    "viewAll": "Voir tout",
+    "backToHome": "Retour à l’accueil"
   },
   "home": {
     "badge": "Approuvé par plus de 500 hôpitaux dans le monde",
-    "title": "Réalisez vos interventions avec une précision absolue",
-    "subtitle": "Une visualisation 3D alimentée par l'IA et la réalité augmentée pour réduire les risques, gagner du temps et améliorer les résultats des patients.",
-    "ctaPrimary": "Réserver une Démo",
-    "ctaSecondary": "Découvrir comment ça marche",
+    "title": "Guidage de précision pour chaque procédure guidée par l’image",
+    "subtitle": "Percisio transforme les données CT, IRM et échographiques en cartes holographiques en temps réel, permettant aux cliniciens d’atteindre leurs cibles avec une précision <3 mm tout en réduisant le temps de procédure jusqu’à 40 %. ",
+    "ctaPrimary": "Planifier une démonstration en direct",
+    "ctaSecondary": "Voir comment cela fonctionne",
     "stats": {
-      "hospitals": "Hôpitaux dans le Monde",
-      "surgeries": "Chirurgies Réussies",
-      "uptime": "Disponibilité du Système",
-      "support": "Support Expert"
+      "hospitals": "Hôpitaux dans le monde",
+      "surgeries": "Interventions réussies",
+      "uptime": "Disponibilité du système",
+      "support": "Support expert"
     },
-    "featuresTitle": "Précision à Chaque Étape",
-    "featuresSubtitle": "Notre plateforme complète combine une technologie de pointe avec un design intuitif pour améliorer les résultats chirurgicaux et la sécurité des patients.",
+    "featuresTitle": "Précision à chaque étape",
+    "featuresSubtitle": "Notre plateforme complète combine technologie de pointe et design intuitif pour améliorer les résultats chirurgicaux et la sécurité des patients.",
     "features": {
-      "aiVisualization": {
-        "title": "Visualisation Alimentée par l'IA",
-        "description": "Algorithmes d'apprentissage automatique avancés pour la reconnaissance anatomique en temps réel et le guidage chirurgical."
+      "precision": {
+        "title": "Précision",
+        "description": "≤ 2 mm d’erreur moyenne de guidage sur la trajectoire de l’aiguille (mesurée sur banc d’essai ou fantôme anatomique)."
       },
-      "surgicalPrecision": {
-        "title": "Précision Chirurgicale",
-        "description": "Précision sub-millimétrique avec superposition de réalité augmentée pour les procédures complexes."
+      "prepTime": {
+        "title": "Temps de préparation",
+        "description": "< 3 minutes entre l’allumage et la calibration complète (observé dans le flux de travail utilisateur)."
       },
-      "collaboration": {
-        "title": "Collaboration en Temps Réel",
-        "description": "Connectez les équipes chirurgicales dans le monde entier avec streaming à faible latence et outils d'annotation."
-      },
-      "holographic": {
-        "title": "Affichage Holographique 3D",
-        "description": "Visualisation immersive de l'anatomie du patient avec perception de profondeur et conscience spatiale."
-      },
-      "hipaa": {
-        "title": "Conforme HIPAA",
-        "description": "Sécurité de niveau entreprise avec cryptage de bout en bout et certifications de conformité."
-      },
-      "latency": {
-        "title": "Latence Ultra-Faible",
-        "description": "Traitement en temps réel inférieur à 50 ms pour une navigation chirurgicale réactive."
+      "rxReduction": {
+        "title": "Réduction de l’exposition RX",
+        "description": "– 40 % d’images de contrôle en moins. Impact clinique immédiat : moins de rayonnements, procédures plus fluides."
       }
     },
-    "ctaTitle": "Prêt à Transformer Votre Pratique Chirurgicale?",
-    "ctaDescription": "Rejoignez des centaines d'hôpitaux et d'institutions de santé de premier plan qui utilisent Percisio pour offrir de meilleurs résultats aux patients."
+    "ctaTitle": "Prêt à transformer votre pratique chirurgicale ?",
+    "ctaDescription": "Rejoignez des centaines d’hôpitaux et d’institutions de santé qui utilisent Percisio pour offrir de meilleurs résultats aux patients."
   },
   "faq": {
-    "title": "Questions Fréquemment Posées",
-    "subtitle": "Trouvez des réponses aux questions courantes sur Percisio",
+    "title": "Foire aux questions",
+    "subtitle": "Trouvez les réponses aux questions fréquentes sur Percisio",
     "categories": {
       "general": "Général",
       "technology": "Technologie",
-      "implementation": "Implémentation",
-      "support": "Support & Formation",
-      "pricing": "Tarification & Licences"
+      "implementation": "Mise en œuvre",
+      "support": "Support et formation",
+      "pricing": "Tarification et licences"
     },
     "questions": {
       "whatIsPercisio": {
-        "question": "Qu'est-ce que Percisio ?",
-        "answer": "Percisio est un système d'assistance médicale de pointe alimenté par la technologie de vision par ordinateur. Il fournit un guidage en temps réel pour les procédures guidées par imagerie, aidant les cliniciens à atteindre une précision avec une exactitude ≤2mm tout en réduisant les temps de procédure jusqu'à 40%."
+        "question": "Qu’est-ce que Percisio ?",
+        "answer": "Percisio est un système d’assistance médicale de pointe alimenté par la vision par ordinateur. Il fournit un guidage en temps réel pour les procédures guidées par l’image, aidant les cliniciens à atteindre une précision ≤2 mm tout en réduisant le temps de procédure jusqu’à 40 %."
       },
       "howDoesItWork": {
         "question": "Comment fonctionne Percisio ?",
-        "answer": "Percisio utilise des algorithmes de vision par ordinateur avancés pour suivre les instruments médicaux en temps réel. Il crée des cartes holographiques à partir des données CT, IRM et échographiques, fournissant aux cliniciens un guidage précis pendant les procédures grâce à la visualisation en réalité augmentée."
+        "answer": "Percisio utilise des algorithmes avancés de vision par ordinateur pour suivre les instruments médicaux en temps réel. Il crée des cartes holographiques à partir de données CT, IRM et échographiques, offrant aux cliniciens un guidage précis grâce à la visualisation en réalité augmentée."
       },
       "whatProcedures": {
-        "question": "Quelles procédures Percisio supporte-t-il ?",
-        "answer": "Percisio supporte un large éventail d'interventions percutanées incluant les biopsies, infiltrations, ponctions et procédures de drainage. Il est compatible avec les sondes échographiques, aiguilles cliniques et divers autres instruments médicaux."
+        "question": "Quelles procédures sont prises en charge par Percisio ?",
+        "answer": "Percisio prend en charge un large éventail d’interventions percutanées, notamment les biopsies, infiltrations, ponctions et drainages. Il est compatible avec les sondes échographiques, les aiguilles cliniques et divers autres instruments médicaux."
       },
       "accuracy": {
         "question": "Quelle est la précision de Percisio ?",
-        "answer": "Percisio atteint une erreur de guidage moyenne ≤2mm sur la trajectoire de l'aiguille, mesurée sur banc d'essai et fantômes anatomiques. Cette haute précision aide à réduire le besoin de multiples tentatives et images de contrôle."
+        "answer": "Percisio atteint une erreur moyenne de guidage ≤2 mm sur la trajectoire de l’aiguille, mesurée sur banc d’essai et fantômes anatomiques. Cette haute précision réduit le besoin de tentatives et d’images de contrôle multiples."
       },
       "setupTime": {
-        "question": "Combien de temps faut-il pour configurer Percisio ?",
-        "answer": "Le processus de calibration complet prend moins de 3 minutes de la mise sous tension à l'état prêt à utiliser. Notre flux de travail rationalisé assure un temps de préparation minimal sans compromettre la précision."
+        "question": "Combien de temps faut-il pour installer Percisio ?",
+        "answer": "Le processus complet de calibration prend moins de 3 minutes, de l’allumage à l’état prêt à l’emploi. Notre flux de travail optimisé garantit un temps de préparation minimal sans compromettre la précision."
       },
       "radiationReduction": {
-        "question": "Comment Percisio réduit-il l'exposition aux radiations ?",
-        "answer": "Percisio réduit le besoin d'images de contrôle de 40%, diminuant significativement l'exposition aux radiations pour les patients et le personnel médical. Le guidage précis réduit le nombre de tentatives nécessaires pour des procédures réussies."
+        "question": "Comment Percisio réduit-il l’exposition aux rayonnements ?",
+        "answer": "Percisio réduit le besoin d’images de contrôle de 40 %, diminuant ainsi considérablement l’exposition aux rayonnements pour les patients et le personnel médical. Le guidage précis réduit le nombre de tentatives nécessaires."
       },
       "compatibility": {
-        "question": "Percisio est-il compatible avec l'équipement existant ?",
-        "answer": "Oui, Percisio est conçu pour fonctionner avec l'équipement médical existant. Il est compatible avec les systèmes échographiques, scanners CT, machines IRM et divers instruments médicaux couramment utilisés dans les procédures percutanées."
+        "question": "Percisio est-il compatible avec les équipements existants ?",
+        "answer": "Oui, Percisio est conçu pour fonctionner avec les équipements médicaux existants. Il est compatible avec les systèmes d’échographie, les scanners CT, les IRM et divers instruments utilisés dans les procédures percutanées."
       },
       "training": {
-        "question": "Quelle formation est requise pour Percisio ?",
-        "answer": "Percisio dispose d'une interface intuitive conçue pour les professionnels de santé. Nous fournissons des programmes de formation complets incluant des ateliers pratiques, modules en ligne et support continu pour assurer une implémentation réussie."
+        "question": "Quelle formation est nécessaire pour utiliser Percisio ?",
+        "answer": "Percisio dispose d’une interface intuitive conçue pour les professionnels de santé. Nous proposons des programmes de formation complets comprenant des ateliers pratiques, des modules en ligne et un accompagnement continu pour une mise en œuvre réussie."
       },
       "maintenance": {
-        "question": "Quelle maintenance Percisio nécessite-t-il ?",
-        "answer": "Percisio nécessite une maintenance minimale. Les mises à jour logicielles régulières sont fournies automatiquement, et notre équipe de support effectue des vérifications système périodiques pour assurer des performances optimales. La maintenance matérielle est minimale grâce à notre conception robuste."
+        "question": "Quel entretien nécessite Percisio ?",
+        "answer": "Percisio nécessite très peu d’entretien. Les mises à jour logicielles sont fournies automatiquement, et notre équipe de support effectue des vérifications régulières du système pour assurer des performances optimales. L’entretien matériel est minimal grâce à une conception robuste."
       },
       "dataSecurity": {
         "question": "Comment les données des patients sont-elles protégées ?",
-        "answer": "Percisio est conforme HIPAA avec une sécurité de niveau entreprise. Toutes les données sont cryptées de bout en bout, et nous suivons des protocoles de confidentialité stricts pour assurer que les informations des patients restent sécurisées et confidentielles."
+        "answer": "Percisio est conforme à la HIPAA et offre une sécurité de niveau entreprise. Toutes les données sont chiffrées de bout en bout et nous suivons des protocoles stricts pour garantir la confidentialité des informations des patients."
       },
       "pricing": {
-        "question": "Comment Percisio est-il tarifé ?",
-        "answer": "La tarification de Percisio est basée sur les besoins spécifiques de votre institution et les modèles d'utilisation. Nous offrons des options de licence flexibles incluant par-procédure, abonnements annuels et packages entreprise. Contactez notre équipe commerciale pour un devis personnalisé."
+        "question": "Comment est fixé le prix de Percisio ?",
+        "answer": "La tarification de Percisio dépend des besoins spécifiques et du mode d’utilisation de votre établissement. Nous proposons des licences flexibles incluant des options à l’acte, des abonnements annuels et des formules institutionnelles. Contactez notre équipe commerciale pour un devis personnalisé."
       },
       "support": {
         "question": "Quel support est disponible ?",
-        "answer": "Nous fournissons un support technique 24/7, des mises à jour logicielles régulières, des programmes de formation complets et des services de consultation continus. Notre équipe de support expert est disponible pour aider avec toute question ou problème."
+        "answer": "Nous offrons une assistance technique 24h/24 et 7j/7, des mises à jour logicielles régulières, des programmes de formation complets et un accompagnement continu. Notre équipe d’experts est disponible pour répondre à toutes vos questions."
       },
       "clinicalValidation": {
-        "question": "Percisio est-il cliniquement validé ?",
-        "answer": "Oui, Percisio a été largement testé et validé dans des contextes cliniques. Notre technologie est approuvée par plus de 500 hôpitaux dans le monde et a été utilisée dans des milliers de procédures réussies."
+        "question": "Percisio est-il validé cliniquement ?",
+        "answer": "Oui, Percisio a été largement testé et validé dans des environnements cliniques. Notre technologie est approuvée par plus de 500 hôpitaux dans le monde et utilisée dans des milliers de procédures réussies."
       },
       "integration": {
-        "question": "Comment Percisio s'intègre-t-il avec les systèmes hospitaliers ?",
-        "answer": "Percisio s'intègre parfaitement avec l'infrastructure IT hospitalière existante, les systèmes PACS et les dossiers médicaux électroniques. Notre équipe travaille étroitement avec votre département IT pour assurer une intégration fluide et l'optimisation du flux de travail."
+        "question": "Comment Percisio s’intègre-t-il aux systèmes hospitaliers ?",
+        "answer": "Percisio s’intègre parfaitement à l’infrastructure informatique existante des hôpitaux, aux systèmes PACS et aux dossiers médicaux électroniques. Notre équipe collabore avec votre service informatique pour garantir une intégration fluide et une optimisation du flux de travail."
       },
       "future": {
-        "question": "Quels développements futurs sont planifiés ?",
-        "answer": "Nous développons continuellement de nouvelles fonctionnalités et applications basées sur les retours cliniques. Les développements à venir incluent un support de procédure étendu, des algorithmes IA améliorés et des capacités d'intégration améliorées avec les technologies émergentes."
+        "question": "Quels développements futurs sont prévus ?",
+        "answer": "Nous développons en permanence de nouvelles fonctionnalités et applications basées sur les retours cliniques. Les prochaines évolutions incluent un support étendu des procédures, des algorithmes d’IA améliorés et une meilleure intégration avec les technologies émergentes."
       }
+    }
+  },
+  "sections": {
+    "globalHealthcareChallenges": {
+      "title": "Répondre aux défis mondiaux de la santé",
+      "panels": [
+        {
+          "title": "Pénurie de professionnels qualifiés",
+          "description": "Les systèmes de santé du monde entier font face à une pénurie croissante de professionnels formés. PERCISIO comble cette lacune grâce à un guidage intuitif des procédures, permettant même aux non-experts de réaliser des interventions essentielles en toute sécurité et en toute confiance."
+        },
+        {
+          "title": "Accès limité aux salles d'opération",
+          "description": "Les salles d’opération pour procédures interventionnelles sont souvent rares ou indisponibles. PERCISIO fournit un système portable et facile à utiliser qui permet de commencer des soins critiques même en dehors des blocs traditionnels, là où le besoin se fait sentir."
+        },
+        {
+          "title": "Innovation abordable et accessible",
+          "description": "Conçu pour l’accessibilité, PERCISIO est un dispositif médical abordable qui rend la médecine interventionnelle accessible à davantage de praticiens et de patients à l’échelle mondiale."
+        }
+      ]
+    },
+    "moreFeatures": {
+      "title": "Découvrez plus de fonctionnalités",
+      "features": [
+        {
+          "title": "Collaboration multi-utilisateurs",
+          "description": "Collaboration en temps réel entre équipes médicales grâce à un partage de visualisations et d’outils d’annotation."
+        },
+        {
+          "title": "Validation clinique",
+          "description": "Testé et validé cliniquement avec des résultats prouvés dans de multiples établissements."
+        },
+        {
+          "title": "Assurance qualité",
+          "description": "Contrôles de qualité intégrés et protocoles de validation pour garantir des performances fiables."
+        },
+        {
+          "title": "Modules de formation",
+          "description": "Programmes et modules interactifs complets pour assurer une mise en œuvre réussie."
+        },
+        {
+          "title": "Analyses propulsées par l’IA",
+          "description": "Des algorithmes d’apprentissage automatique avancés vous apportent recommandations intelligentes et analyses prédictives."
+        },
+        {
+          "title": "Sécurité des données",
+          "description": "Protocoles de sécurité de niveau entreprise afin de garantir la protection des données patients et la conformité réglementaire."
+        }
+      ]
+    }
+  },
+  "guidance": {
+    "hero": {
+      "title": "PERCISIO Guidance",
+      "badge": "Un nouveau standard pour la médecine",
+      "subtitle": "Découvrez PERCISIO Guidance, un nouveau standard pour la médecine."
+    },
+    "powerVision": {
+      "title": "La puissance de la vision par ordinateur",
+      "description": "PERCISIO est propulsé par la vision par ordinateur, offrant un système d’assistance de pointe qui suit activement les instruments médicaux pendant les procédures.",
+      "cards": [
+        {
+          "title": "Vision par ordinateur avancée",
+          "description": "Cette technologie accompagne les praticiens en médecine interventionnelle et non interventionnelle."
+        },
+        {
+          "title": "Suivi en temps réel",
+          "description": "Une technologie de vision par ordinateur avancée suit activement les instruments pendant les procédures, apportant un soutien continu aux praticiens."
+        },
+        {
+          "title": "Procédures facilitées",
+          "description": "Grâce à ce système d’assistance, la réalisation d’un acte médical avec PERCISIO devient plus fluide, améliorant à la fois la sécurité et l’efficacité."
+        }
+      ]
+    },
+    "gallery": {
+      "title": "Applications médicales en pratique",
+      "description": "PERCISIO accompagne les praticiens dans diverses applications, des contrôles aux interventions percutanées critiques.",
+      "items": [
+        {
+          "title": "Guidage d’aiguille",
+          "description": "Positionnement précis de l’aiguille avec suivi en temps réel"
+        },
+        {
+          "title": "Traitement des abcès",
+          "description": "Procédures de drainage guidées avec une précision renforcée"
+        },
+        {
+          "title": "Traitement avancé",
+          "description": "Procédures complexes avec assistance par vision par ordinateur"
+        }
+      ]
+    },
+    "essential": {
+      "title": "Procédures essentielles",
+      "intro": "Cet outil indispensable soutient des procédures essentielles telles que :",
+      "applications": [
+        {
+          "title": "Biopsie",
+          "description": "Prélèvements tissulaires précis avec guidage en temps réel"
+        },
+        { "title": "Infiltration", "description": "Injections précises avec support visuel" },
+        {
+          "title": "Ponction",
+          "description": "Mise en place sûre de l’aiguille avec suivi continu"
+        },
+        { "title": "Drainage", "description": "Évacuation efficace des fluides avec accès guidé" }
+      ]
+    },
+    "integration": {
+      "title": "Intégration fluide et flexibilité",
+      "description": "Nous comprenons le besoin d’adaptabilité en milieu clinique.",
+      "cards": [
+        {
+          "title": "Compatibilité étendue",
+          "description": "PERCISIO peut s’intégrer avec un large éventail d’outils, garantissant la compatibilité avec votre parc actuel."
+        },
+        {
+          "title": "Support universel",
+          "description": "Que vous utilisiez des sondes échographiques ou diverses aiguilles cliniques, PERCISIO fonctionne à vos côtés."
+        },
+        {
+          "title": "Design moderne",
+          "description": "Au-delà de sa sophistication technique, PERCISIO est conçu pour la pratique moderne : léger, mobile et simple d’utilisation."
+        }
+      ],
+      "ctaTitle": "Adoptez PERCISIO dès aujourd’hui",
+      "ctaDescription": "La solution qui apporte simplicité et avancée technologique au cœur de vos actes médicaux."
+    }
+  },
+  "insight": {
+    "hero": {
+      "title": "Percisio Insight",
+      "badge": "Système de suivi intelligent pour tout dispositif médical",
+      "subtitle": "PERCISIO est fourni avec un ensemble complet de modules d’attache, chacun équipé d’un système électronique assurant un suivi spatial en temps réel. L’illustration suivante présente le module aiguille utilisé pour les procédures percutanées."
+    },
+    "keyFeatures": {
+      "title": "Fonctionnalités clés",
+      "subtitle": "Technologie de suivi avancée pour des procédures médicales précises"
+    },
+    "keyFeaturesList": [
+      {
+        "title": "Précision millimétrique",
+        "description": "Les tests réalisés sur le fantôme abdominal 3D montrent que le système de suivi garantit une précision millimétrique."
+      },
+      {
+        "title": "Suivi en temps réel",
+        "description": "Chaque module d’attache est équipé d’un système électronique assurant un suivi spatial en temps réel."
+      },
+      {
+        "title": "Conception légère",
+        "description": "Chaque module d’attache est suffisamment léger pour ne pas gêner le praticien durant l’acte."
+      },
+      {
+        "title": "Configuration portable",
+        "description": "La configuration Percisio est plus légère que toute solution comparable et se transporte facilement dans un petit sac."
+      }
+    ],
+    "testing": {
+      "title": "Tests et validation",
+      "subtitle": "Validé avec des fantômes de référence (banc d’essai) pour des tests précis",
+      "sunNuclear": {
+        "title": "Fantômes abdominaux Sun Nuclear",
+        "description": "Les tests effectués sur le fantôme abdominal 3D démontrent que le système de suivi garantit une précision millimétrique, pouvant être améliorée avec tout type de sonde échographique.",
+        "link": "En savoir plus sur les fantômes Sun Nuclear",
+        "badgesLeft": ["26 x 19 x 12.5 cm", "11 lbs (5 kg)", "Réutilisable"],
+        "badgesRight": ["28 x 20 x 12.5 cm", "12.1 lbs (5.5 kg)", "12 masses (5-12 mm)"]
+      },
+      "cards": [
+        {
+          "title": "Tests de précision",
+          "description": "Les tests réalisés sur le fantôme abdominal 3D montrent que le système de suivi garantit une précision millimétrique, améliorable avec tout type de sonde échographique."
+        },
+        {
+          "title": "Performances améliorées",
+          "description": "Améliorez les performances des biopsies abdominales à main levée et validez les systèmes de biopsie automatisés grâce à des capacités de suivi complètes."
+        }
+      ],
+      "multiModality": "Les fantômes abdominaux multi‑modalités conviennent au CT, à l’IRM et à l’échographie. Ils offrent des modèles simplifiés adaptés à la formation et à la démonstration d’outils de navigation pour biopsie guidée par l’image."
+    },
+    "compatible": {
+      "title": "Instruments médicaux compatibles",
+      "subtitle": "Les modules d’attache s’adaptent à un large éventail d’instruments médicaux"
+    },
+    "attachmentCategories": [
+      {
+        "title": "Aiguilles et cathéters",
+        "items": [
+          "Aiguilles de biopsie",
+          "Aiguilles d’intervention percutanée",
+          "Aiguilles péridurales",
+          "Cathéters veineux centraux"
+        ],
+        "color": "from-blue-500 to-cyan-500"
+      },
+      {
+        "title": "Sondes échographiques",
+        "items": ["Sonde linéaire", "Sonde convexe"],
+        "color": "from-green-500 to-emerald-500"
+      },
+      {
+        "title": "Instruments chirurgicaux",
+        "items": ["Outils laparoscopiques", "Sondes électrochirurgicales"],
+        "color": "from-purple-500 to-violet-500"
+      },
+      {
+        "title": "Instruments endoscopiques et mini‑invasifs",
+        "items": ["Outils endoscopiques", "Dispositifs mini‑invasifs"],
+        "color": "from-orange-500 to-red-500"
+      },
+      {
+        "title": "Dispositifs de radiothérapie et laser",
+        "items": ["Outils de radiothérapie", "Dispositifs laser"],
+        "color": "from-indigo-500 to-blue-500"
+      }
+    ],
+    "setup": {
+      "title": "Configuration",
+      "subtitle": "Redéfinir les procédures médicales grâce à une technologie portable et légère",
+      "portable": {
+        "title": "Conception portable",
+        "description": "La configuration Percisio est plus légère que toute solution comparable et se transporte facilement dans un petit sac, d’une salle à l’autre ou même à l’extérieur de l’hôpital.",
+        "badges": ["Léger", "Portable", "Transport facilité", "Petit format"]
+      },
+      "standard": {
+        "title": "Nouveau standard",
+        "description": "Ce nouveau standard redéfinit les procédures médicales pour de nombreuses applications et contribue à décongestionner les services critiques."
+      },
+      "applications": {
+        "title": "Large champ d’applications",
+        "description": "Adapté à de nombreuses applications médicales, notamment les biopsies, les interventions percutanées, les procédures chirurgicales et les traitements thérapeutiques."
+      }
+    }
+  },
+  "schedule": {
+    "back": "Retour",
+    "title": "Planifier une démonstration en direct",
+    "book": "Réservez votre démonstration personnalisée",
+    "intro": "Sélectionnez le créneau horaire qui vous convient pour une démonstration en direct de Percisio."
+  },
+  "applicationsPages": {
+    "pleural": {
+      "title": "Drainage pleural",
+      "subtitle": "Drainage rapide et efficace du liquide pleural."
+    },
+    "hepatic": {
+      "title": "Drainage hépatique",
+      "subtitle": "Un classique de la radiologie interventionnelle."
+    },
+    "biopsy": {
+      "title": "Biopsie",
+      "subtitle": "Guidage de bout en bout pour des biopsies mini-invasives."
+    }
+  },
+  "applicationsContent": {
+    "hepatic": {
+      "intro1": "Le drainage fait partie des grands classiques de la radiologie interventionnelle. Avec PERCISIO Guidance, l’accès à un abcès hépatique devient plus rapide, plus sûr et plus intuitif. Le système fournit une visualisation holographique 3D du foie et des organes adjacents, permettant à l’opérateur de planifier et de suivre en temps réel la trajectoire de l’aiguille tout en minimisant le risque de lésion des vaisseaux ou des structures voisines.",
+      "imageAlt": "Procédure de drainage hépatique avec PERCISIO montrant une visualisation holographique",
+      "para2": "L’illustration présente un volume holographique précisément positionné sur la zone de l’abcès, accompagné d’un trajet d’aiguille virtuel. Ces éléments, intégrés à la superposition holographique du patient, fournissent toutes les informations essentielles à la bonne exécution de l’acte. Le logiciel s’appuie également sur les informations de profondeur et les dimensions du volume cible pour autoriser l’intervention.",
+      "para3": "PERCISIO ne valide que les actions restant dans sa plage de précision certifiée, garantissant la sécurité de la procédure et le niveau d’exactitude attendu pour les actes guidés par l’image. En combinant le suivi corporel sans marqueur, les volumes issus du CT et des superpositions de guidage augmentées, PERCISIO permet un accès percutané précis à des lésions profondes ou complexes.",
+      "para4": "Il en résulte des temps de procédure plus courts, une exposition réduite aux rayonnements et une confiance accrue de l’opérateur, tant en pratique clinique qu’en formation."
+    },
+    "biopsy": {
+      "imageAlt": "Biopsie guidée par PERCISIO montrant une visualisation holographique 3D du foie et du nodule cible",
+      "para1": "L’image montre une métastase hépatique suspectée, nécessitant une biopsie interventionnelle pour confirmation histopathologique. Ce type de procédure exige une planification minutieuse afin d’éviter les gros vaisseaux et de garantir un prélèvement précis du tissu cible.",
+      "para2": "Avec PERCISIO Guidance, l’opérateur visualise le foie et le nodule cible comme un volume holographique 3D parfaitement aligné avec l’anatomie du patient. L’hologramme affiche la trajectoire planifiée de l’aiguille, le point d’entrée et la distance jusqu’à la lésion, permettant un guidage sûr et intuitif tout au long de l’approche.",
+      "para3": "Si la zone cible est trop petite ou trop profonde pour garantir une précision totale dans la plage certifiée de PERCISIO, le système peut être utilisé pour guider la trajectoire initiale et rapprocher l’aiguille au plus près de la lésion. Le praticien peut ensuite finaliser l’étape sous contrôle CT, en combinant le guidage spatial de PERCISIO avec l’imagerie conventionnelle pour une précision optimale.",
+      "para4": "Ce flux de travail hybride améliore la fiabilité diagnostique, la sécurité de l’opérateur et l’efficacité globale de la procédure, tout en restant pleinement compatible avec les protocoles interventionnels standards."
+    },
+    "pleural": {
+      "imageAlt": "Procédure de drainage pleural avec PERCISIO montrant une visualisation holographique 3D",
+      "para1": "L’épanchement pleural est une situation fréquente, due à l’accumulation de liquide dans la cavité pleurale. Il peut comprimer le poumon et provoquer dyspnée, douleur thoracique et inconfort respiratoire. Le liquide peut être séreux, hémorragique, purulent ou chyleux selon la cause sous‑jacente (insuffisance cardiaque, infection, cancer, traumatisme, etc.).",
+      "para2": "Lorsque l’épanchement devient volumineux, cloisonné ou symptomatique, un drainage pleural est indiqué pour évacuer le liquide et permettre la ré‑expansion pulmonaire. Sous guidage d’imagerie, un cathéter est introduit à travers la paroi thoracique dans l’espace pleural, assurant une décompression immédiate et un soulagement clinique. Le liquide évacué peut être analysé pour en déterminer la nature et orienter la prise en charge.",
+      "para3": "Dans les collections profondes ou complexes, où l’accès est limité par les côtes, le diaphragme ou les organes adjacents, PERCISIO Guidance aide à planifier et visualiser la trajectoire de drainage afin d’optimiser la sécurité et la précision."
+    }
+  },
+  "videos": {
+    "title": "Démonstrations vidéo",
+    "intro": "Découvrez notre bibliothèque de vidéos présentant la technologie de pointe de PERCISIO, de la présentation du dispositif aux fonctionnalités avancées de réalité augmentée.",
+    "loading": "Chargement des vidéos…",
+    "empty": "Aucune vidéo disponible pour le moment.",
+    "clickToLoad": "Cliquer pour charger la vidéo",
+    "categories": {
+      "overview": "Présentation",
+      "technical": "Technique",
+      "features": "Fonctionnalités",
+      "arDemo": "Démo AR"
+    }
+  },
+  "homePage": {
+    "learnMorePrefix": "En savoir plus sur",
+    "videoTitle": "Percisio - Présentation de la technologie de pointe de Percisio",
+    "scrollToFeatures": "Aller aux fonctionnalités"
+  },
+  "documentation": {
+    "title": "Documentation",
+    "subtitle": "Documentation de Percisio."
+  },
+  "faqUi": {
+    "back": "Retour",
+    "searchPlaceholder": "Rechercher dans la FAQ…",
+    "all": "Tout",
+    "wasThisHelpful": "Cette réponse vous a‑t‑elle été utile ?",
+    "noResultsTitle": "Aucune question trouvée",
+    "noResultsText": "Modifiez votre recherche ou parcourez toutes les catégories.",
+    "stillHaveQuestions": "Vous avez encore des questions ?",
+    "stillHaveQuestionsDesc": "Vous ne trouvez pas la réponse recherchée ? Notre équipe d’experts est là pour vous aider.",
+    "contactSupport": "Contacter le support",
+    "scheduleDemo": "Planifier une démo"
+  },
+  "caseStudies": {
+    "title": "Études de cas",
+    "subtitle": "Découvrez comment les hôpitaux de référence transforment les résultats chirurgicaux avec Percisio.",
+    "comingSoon": "Études de cas à venir"
+  },
+  "blogPage": {
+    "title": "Blog",
+    "subtitle": "Analyses, actualités et innovations en visualisation chirurgicale.",
+    "comingSoon": "Articles de blog à venir"
+  },
+  "aboutPage": {
+    "title": "À propos de Percisio",
+    "subtitle": "Percisio est un dispositif médical de classe IIA protégé par un brevet européen, qui s’appuie sur la réalité augmentée pilotée par l’IA et des hologrammes pour guider avec précision des procédures mini‑invasives, y compris pour des non‑experts.",
+    "missionTitle": "Notre mission",
+    "missionText": "Améliorer les résultats chirurgicaux et la sécurité des patients grâce à des procédures innovantes guidées par hologrammes et réalité augmentée, afin de rendre les actes complexes accessibles à tous les praticiens.",
+    "valuesTitle": "Nos valeurs",
+    "valuesText": "Précision, innovation et intégration intelligente. Nous croyons que les meilleures solutions médicales naissent d’un design réfléchi et d’un usage pertinent des technologies existantes.",
+    "impactTitle": "Impact mondial",
+    "impactText": "Répondre à la pénurie mondiale d’experts médicaux, accompagner des hôpitaux dans le monde entier et permettre un guidage à distance grâce à l’imagerie avancée et à la RA.",
+    "techTitle": "Technologie",
+    "techText": "PERCISIO adopte une approche basée sur les hologrammes pour cartographier l’anatomie, suivre les instruments en temps réel et fournir un guidage à l’écran pour des procédures telles que le drainage percutané d’abcès hépatiques.",
+    "philosophyTitle": "Philosophie",
+    "philosophyText": "Conçu comme un projet DIY pour rivaliser avec les grands acteurs du médical, Percisio met l’accent sur l’ergonomie, l’efficacité et l’intégration la plus intelligente des sous‑systèmes disponibles."
+  },
+  "careersPage": {
+    "title": "Carrières chez Percisio",
+    "subtitle": "Rejoignez notre équipe innovante et contribuez à façonner l’avenir de la technologie médicale. Nous développons des solutions de pointe qui améliorent les résultats des patients dans le monde entier.",
+    "cta": "Postuler maintenant",
+    "why": {
+      "innovationTitle": "Innovation avant tout",
+      "innovationText": "Travaillez sur une technologie médicale de rupture qui a un réel impact sur les soins.",
+      "impactTitle": "Impact mondial",
+      "impactText": "Participez à une mission visant à améliorer l’accessibilité des soins à l’échelle mondiale.",
+      "teamTitle": "Excellente équipe",
+      "teamText": "Collaborez avec des professionnels talentueux dans un environnement bienveillant et propice à la progression."
+    },
+    "openPositions": {
+      "title": "Postes ouverts",
+      "line1": "Nous recherchons en permanence des talents d’exception pour rejoindre notre équipe.",
+      "line2": "Vous ne voyez pas de poste correspondant à votre profil ? Nous serions tout de même ravis d’échanger !",
+      "cta": "Envoyer votre candidature"
+    }
+  },
+  "careersApply": {
+    "back": "Retour",
+    "title": "Postuler chez Percisio",
+    "subtitle": "Rejoignez notre équipe innovante et contribuez à façonner l’avenir de la technologie médicale",
+    "form": {
+      "title": "Formulaire de candidature",
+      "desc": "Veuillez renseigner tous les champs requis. Nous étudierons votre dossier et vous répondrons rapidement.",
+      "personal": "Informations personnelles",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Adresse e‑mail",
+      "phone": "Numéro de téléphone",
+      "location": "Localisation (Ville, Pays)",
+      "professional": "Informations professionnelles",
+      "positionLabel": "Poste visé",
+      "positionPlaceholder": "Sélectionner un poste",
+      "experienceLabel": "Niveau d’expérience",
+      "experiencePlaceholder": "Sélectionner un niveau d’expérience",
+      "education": "Parcours scolaire",
+      "additional": "Informations complémentaires",
+      "availabilityLabel": "Disponibilité",
+      "availabilityPlaceholder": "Quand pouvez‑vous commencer ?",
+      "salary": "Salaire attendu (Optionnel)",
+      "linkedin": "Profil LinkedIn (Optionnel)",
+      "portfolio": "Portfolio/Site web (Optionnel)",
+      "resumeTitle": "CV",
+      "resumeClick": "Cliquez pour téléverser votre CV",
+      "resumeNote": "Fichiers PDF, DOC ou DOCX uniquement (Max 10 Mo)",
+      "coverLetter": "Lettre de motivation",
+      "coverPlaceholder": "Expliquez‑nous pourquoi vous souhaitez rejoindre Percisio et ce qui fait de vous un excellent candidat…",
+      "submit": "Envoyer la candidature",
+      "submitting": "Envoi de la candidature…"
+    },
+    "options": {
+      "positions": [
+        "Ingénieur logiciel",
+        "Développeur Frontend",
+        "Développeur Backend",
+        "Développeur Full Stack",
+        "Ingénieur DevOps",
+        "Data Scientist",
+        "Ingénieur Machine Learning",
+        "Product Manager",
+        "Designer UI/UX",
+        "Responsable marketing",
+        "Commercial",
+        "Développement commercial",
+        "Ingénieur dispositifs médicaux",
+        "Ingénieur qualité",
+        "Autre"
+      ],
+      "experience": [
+        "Débutant (0‑2 ans)",
+        "Intermédiaire (3‑5 ans)",
+        "Senior (6‑10 ans)",
+        "Lead/Principal (10+ ans)"
+      ],
+      "availability": [
+        "Immédiatement",
+        "Préavis 2 semaines",
+        "Préavis 1 mois",
+        "Préavis 2 mois",
+        "Préavis 3+ mois"
+      ]
+    },
+    "submitted": {
+      "title": "Candidature envoyée !",
+      "desc": "Merci pour l’intérêt que vous portez à Percisio. Nous avons bien reçu votre candidature et l’examinerons avec attention. Notre équipe reviendra vers vous sous 5 à 7 jours ouvrés.",
+      "viewPositions": "Voir les autres postes",
+      "backHome": "Retour à l’accueil"
     }
   }
 }

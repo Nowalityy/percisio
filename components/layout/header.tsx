@@ -43,10 +43,10 @@ export function Header() {
 
   const mobileNavigation = [
     {
-      label: 'Solutions',
+      label: t('nav.solutions'),
       sections: [
         {
-          title: 'Our Products',
+          title: t('nav.project'),
           items: [
             {
               title: 'Percisio Guidance',
@@ -84,50 +84,38 @@ export function Header() {
       ],
     },
     {
-      label: 'Resources',
+      label: t('nav.resources'),
       sections: [
         {
-          title: 'Learn',
+          title: t('nav.resources'),
           items: [
+            { title: t('nav.videos'), description: t('nav.videosDesc'), href: '/learn/videos' },
             {
-              title: 'Videos',
-              description: 'Product demos and tutorials',
-              href: '/learn/videos',
-            },
-            {
-              title: 'Documentation',
-              description: 'Technical guides and API docs',
+              title: t('nav.documentation'),
+              description: t('nav.documentationDesc'),
               href: '/learn/documentation',
             },
-            {
-              title: 'FAQ',
-              description: 'Common questions answered',
-              href: '/learn/faq',
-            },
+            { title: t('nav.faq'), description: t('nav.faqDesc'), href: '/learn/faq' },
           ],
         },
         {
-          title: 'Insights',
+          title: t('nav.insights'),
           items: [
             {
-              title: 'Case Studies',
-              description: 'Real-world success stories',
+              title: t('nav.caseStudies'),
+              description: t('nav.caseStudiesDesc'),
               href: '/insights/case-studies',
             },
-            {
-              title: 'Blog',
-              description: 'Latest news and insights',
-              href: '/insights/blog',
-            },
+            { title: t('nav.blog'), description: t('nav.blogDesc'), href: '/insights/blog' },
           ],
         },
       ],
     },
     {
-      label: 'Company',
+      label: t('nav.company'),
       sections: [
         {
-          title: 'About Us',
+          title: t('nav.aboutUs'),
           items: [
             {
               title: 'About Percisio',
@@ -157,7 +145,7 @@ export function Header() {
       ],
     },
     {
-      label: 'Contact',
+      label: t('nav.contact'),
       href: '/contact',
     },
   ];

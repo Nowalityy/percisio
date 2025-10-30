@@ -6,8 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from '@/lib/hooks/use-translations';
 
 export default function CaseStudiesPage() {
+  const { t } = useTranslations();
   const [caseStudies] = useState<
     Array<{
       id: number;
@@ -28,9 +30,9 @@ export default function CaseStudiesPage() {
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
-            <h1 className="mb-6 text-5xl font-bold md:text-6xl">Case Studies</h1>
+            <h1 className="mb-6 text-5xl font-bold md:text-6xl">{t('caseStudies.title')}</h1>
             <p className="text-muted-foreground mx-auto max-w-3xl text-xl">
-              Discover how leading hospitals are transforming surgical outcomes with Percisio.
+              {t('caseStudies.subtitle')}
             </p>
           </div>
 
@@ -61,7 +63,7 @@ export default function CaseStudiesPage() {
               ))
             ) : (
               <div className="text-muted-foreground col-span-full py-12 text-center">
-                Case studies coming soon
+                {t('caseStudies.comingSoon')}
               </div>
             )}
           </div>
