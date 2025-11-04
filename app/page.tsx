@@ -141,7 +141,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
               className="fade-in-right img-fade-in relative"
             >
               <img
-                src="/cam_percisio.png"
+                src="/assets/2cameras.png"
                 alt="Percisio Medical Device"
                 className="h-auto max-w-full rounded-lg shadow-xl sm:max-w-md lg:max-w-lg"
               />
