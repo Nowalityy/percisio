@@ -142,7 +142,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
             >
               <img
                 src="/cam_percisio.png"
-                alt="PERCISIO Medical Device"
+                alt="Percisio Medical Device"
                 className="h-auto max-w-full rounded-lg shadow-xl sm:max-w-md lg:max-w-lg"
               />
             </motion.div>
