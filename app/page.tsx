@@ -382,6 +382,54 @@ function AdditionalFeaturesSection() {
   );
 }
 
+// --- PARTNERS SECTION ---
+function PartnersSection() {
+  const { t } = useTranslations();
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+    rootMargin: '50px',
+  });
+
+  return (
+    <section
+      className="bg-secondary/20 section-fade-in py-12 sm:py-16 md:py-20 lg:py-24"
+      aria-labelledby="partners-heading"
+    >
+      <div ref={ref}>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <h2
+              id="partners-heading"
+              className="mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl lg:text-5xl"
+            >
+              {t('sections.partners.title')}
+            </h2>
+            <div className="flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+                className="relative"
+              >
+                <img
+                  src="/assets/Google_for_Startups_logo.svg"
+                  alt="Google for Startups"
+                  className="h-auto max-w-full object-contain sm:max-w-md md:max-w-lg"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 // --- CTA SECTION ---
 function CTASection({ t }: { t: (key: string) => string }) {
   return (
@@ -443,6 +491,7 @@ export default function HomePage() {
       <Suspense fallback={<div className="py-12 sm:py-16 md:py-20" />}>
         <LazyAdditionalFeaturesSection />
       </Suspense>
+      <PartnersSection />
       <CTASection t={t} />
       <Footer />
     </div>

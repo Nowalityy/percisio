@@ -579,6 +579,9 @@
           "description": "Protocoles de sécurité de niveau entreprise afin de garantir la protection des données patients et la conformité réglementaire."
         }
       ]
+    },
+    "partners": {
+      "title": "Nos partenaires"
     }
   },
   "guidance": {
