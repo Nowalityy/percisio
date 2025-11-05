@@ -80,7 +80,17 @@ function HeroSection({ t }: { t: (key: string) => string }) {
       className="relative flex min-h-screen items-center py-16 sm:py-20 lg:py-24"
       aria-labelledby="hero-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/guidance_image/abscess1.jpg)',
+        }}
+      >
+        <div className="bg-background/70 absolute inset-0" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           {/* Left side - Text content */}
           <div className="text-center lg:text-left">
@@ -130,22 +140,13 @@ function HeroSection({ t }: { t: (key: string) => string }) {
 
           {/* Right side - Image */}
           <div className="flex justify-center lg:justify-end">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: 'easeOut',
-                delay: 0.2,
-              }}
-              className="fade-in-right img-fade-in relative"
-            >
+            <div className="relative rounded-lg bg-white p-4 sm:p-6">
               <img
                 src="/assets/2cameras.png"
                 alt="Percisio Medical Device"
-                className="h-auto max-w-full rounded-lg shadow-xl sm:max-w-md lg:max-w-lg"
+                className="h-auto max-w-full rounded-lg sm:max-w-md lg:max-w-lg"
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
