@@ -151,42 +151,37 @@ export function Header() {
   ];
 
   return (
-    <header className="border-border bg-background/80 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-lg">
+    <header className="border-border bg-background fixed top-0 right-0 left-0 z-50 border-b">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div>
               <Link href="/" className="flex items-center space-x-2" aria-label="Percisio Home">
-                <motion.div
+                <div
                   className="h-8 w-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600"
                   aria-hidden="true"
-                  whileHover={{ rotate: 5 }}
-                  transition={{ duration: 0.2 }}
                 />
                 <span className="text-xl font-bold">Percisio</span>
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           <MegaMenu />
 
           <div className="hidden items-center space-x-4 lg:flex">
             <LanguageSwitcher />
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                className="hover:shadow-primary/20 w-full transition-all duration-200 hover:shadow-lg"
-                asChild
-              >
+            <div>
+              <Button className="w-full" asChild>
                 <Link href="/schedule" aria-label="Schedule a Live Demo">
                   Schedule a Live Demo
                 </Link>
               </Button>
-            </motion.div>
+            </div>
           </div>
 
           <div className="flex items-center space-x-2 lg:hidden">
             <LanguageSwitcher />
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div>
               <Button
                 variant="ghost"
                 size="icon"
@@ -194,21 +189,18 @@ export function Header() {
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={mobileMenuOpen}
                 aria-controls="mobile-menu"
-                className="min-h-[44px] min-w-[44px] transition-all duration-200"
+                className="min-h-[44px] min-w-[44px]"
               >
-                <motion.div
-                  animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
-                  transition={{ duration: 0.2 }}
-                >
+                <div>
                   {mobileMenuOpen ? (
                     <X className="h-6 w-6" aria-hidden="true" />
                   ) : (
                     <Menu className="h-6 w-6" aria-hidden="true" />
                   )}
-                </motion.div>
+                </div>
                 <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </nav>
@@ -235,7 +227,7 @@ export function Header() {
                   {section.href ? (
                     <Link
                       href={section.href}
-                      className="hover:bg-accent block flex min-h-[44px] items-center rounded-md px-3 py-3 text-base font-semibold transition-colors"
+                      className="block flex min-h-[44px] items-center rounded-md px-3 py-3 text-base font-semibold"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {section.label}
@@ -255,7 +247,7 @@ export function Header() {
                               <Link
                                 key={item.title}
                                 href={item.href}
-                                className="hover:bg-accent block flex min-h-[44px] items-center rounded-md px-3 py-3 text-sm transition-colors"
+                                className="block flex min-h-[44px] items-center rounded-md px-3 py-3 text-sm"
                                 onClick={() => setMobileMenuOpen(false)}
                               >
                                 <div>

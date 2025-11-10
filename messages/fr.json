@@ -816,6 +816,7 @@
     "empty": "Aucune vidéo disponible pour le moment.",
     "clickToLoad": "Cliquer pour charger la vidéo",
     "categories": {
+      "all": "Toutes les vidéos",
       "overview": "Présentation",
       "technical": "Technique",
       "features": "Fonctionnalités",
@@ -825,7 +826,8 @@
   "homePage": {
     "learnMorePrefix": "En savoir plus sur",
     "videoTitle": "Percisio - Présentation de la technologie de pointe de Percisio",
-    "scrollToFeatures": "Aller aux fonctionnalités"
+    "scrollToFeatures": "Aller aux fonctionnalités",
+    "scrollToHowItWorks": "Aller à la vidéo de démonstration"
   },
   "documentation": {
     "title": "Documentation",

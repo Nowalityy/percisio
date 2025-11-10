@@ -176,7 +176,7 @@ export default function InsightPage() {
                         href="https://www.sunnuclear.com/products/multi-modality-abdominal-biopsy-phantoms"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary hover:text-primary/80 inline-flex items-center gap-2 transition-colors"
+                        className="text-primary inline-flex items-center gap-2"
                       >
                         {t('insight.testing.sunNuclear.link')}
                         <ExternalLink className="h-4 w-4" />

@@ -12,7 +12,7 @@ import { useInView } from 'react-intersection-observer';
 import { useTranslations } from '@/lib/hooks/use-translations';
 import { Brain, Shield, Activity, ArrowRight, Play, CheckCircle, Users, Award } from 'lucide-react';
 import Link from 'next/link';
-import { Suspense, lazy, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 type Panel = {
   title: string;
@@ -23,11 +23,6 @@ type TranslatedFeature = {
   title: string;
   description: string;
 };
-
-// Lazy load heavy components
-const LazyAdditionalFeaturesSection = lazy(() =>
-  Promise.resolve({ default: AdditionalFeaturesSection })
-);
 
 // YouTube Facade for performance optimization
 function YouTubeFacade() {
@@ -106,7 +101,7 @@ function HeroSection({ t }: { t: (key: string) => string }) {
             >
               <h1
                 id="hero-heading"
-                className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl font-bold text-transparent sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl"
+                className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl leading-snug font-bold text-transparent sm:mb-6 sm:text-4xl sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug"
               >
                 {t('home.title')}
               </h1>
@@ -114,23 +109,22 @@ function HeroSection({ t }: { t: (key: string) => string }) {
                 {t('home.subtitle')}
               </p>
               <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
-                <AnimatedButton delay={0.2} size="lg" className="text-base sm:text-lg" asChild>
+                <AnimatedButton size="lg" className="text-base sm:text-lg" asChild>
                   <Link href="/schedule" aria-label="Schedule a Live Demo">
                     {t('home.ctaPrimary')}{' '}
                     <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
                   </Link>
                 </AnimatedButton>
                 <AnimatedButton
-                  delay={0.4}
                   size="lg"
                   variant="outline"
                   className="text-base sm:text-lg"
                   onClick={() => {
                     document
-                      .getElementById('features-section')
+                      .getElementById('how-it-works')
                       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  aria-label={t('homePage.scrollToFeatures')}
+                  aria-label={t('homePage.scrollToHowItWorks')}
                 >
                   {t('home.ctaSecondary')}
                 </AnimatedButton>
@@ -177,7 +171,7 @@ function GlobalChallenges() {
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <h2
               id="challenges-heading"
-              className="mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl lg:text-5xl"
+              className="mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl leading-snug font-bold text-transparent sm:mb-10 sm:text-3xl sm:leading-snug md:mb-12 md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug"
             >
               {t('sections.globalHealthcareChallenges.title')}
             </h2>
@@ -189,7 +183,7 @@ function GlobalChallenges() {
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut', type: 'tween' }}
                 >
-                  <Card className="border-border bg-background/80 card-hover fade-in-up h-full min-h-[220px] border p-4 text-left backdrop-blur-md transition-shadow hover:shadow-lg sm:p-6">
+                  <Card className="border-border bg-background h-full min-h-[220px] border p-4 text-left sm:p-6">
                     <CardHeader className="mb-4 flex-1 p-0">
                       <CardTitle className="text-primary mb-2 min-h-[48px] text-lg font-semibold sm:min-h-[56px] sm:text-xl">
                         {panel.title}
@@ -212,7 +206,10 @@ function GlobalChallenges() {
 // --- VIDEO SECTION ---
 function VideoSection() {
   return (
-    <section className="section-fade-in relative w-full overflow-hidden py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20">
+    <section
+      id="how-it-works"
+      className="section-fade-in relative w-full scroll-mt-32 overflow-hidden py-6 sm:scroll-mt-36 sm:py-8 md:py-12 lg:py-16 xl:py-20"
+    >
       <motion.div
         className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"
         initial={{ opacity: 0, y: 30 }}
@@ -241,7 +238,7 @@ function FeaturesSection({
     icon: React.ComponentType<{ className?: string }>;
     titleKey: string;
     descKey: string;
-    link: string;
+    link?: string;
   }>;
 }) {
   return (
@@ -255,7 +252,7 @@ function FeaturesSection({
           <div className="mb-12 text-center sm:mb-14 md:mb-16">
             <h2
               id="features-heading"
-              className="mb-4 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl"
+              className="mb-4 text-2xl leading-snug font-bold sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug"
             >
               {t('home.featuresTitle')}
             </h2>
@@ -265,120 +262,44 @@ function FeaturesSection({
           </div>
 
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, index) => (
-              <HoverCard
-                key={index}
-                delay={index * 0.1}
-                hoverContent={`${t('homePage.learnMorePrefix')} ${t(feature.titleKey)}`}
-              >
-                <Link
-                  href={feature.link}
-                  aria-label={`${t('homePage.learnMorePrefix')} ${t(feature.titleKey)}`}
-                >
-                  <AnimatedCard
-                    delay={index * 0.1}
-                    hoverScale={1.05}
-                    className="group h-full cursor-pointer"
-                  >
-                    <CardHeader className="flex h-full flex-col">
-                      <div className="bg-primary/10 group-hover:bg-primary/20 mb-3 flex h-10 w-10 items-center justify-center rounded-lg transition-colors sm:mb-4 sm:h-12 sm:w-12">
-                        <feature.icon
-                          className="text-primary h-5 w-5 sm:h-6 sm:w-6"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <CardTitle className="min-h-[48px] sm:min-h-[56px]">
-                        {t(feature.titleKey)}
-                      </CardTitle>
-                      <CardDescription className="min-h-[72px] text-sm sm:min-h-[80px] sm:text-base">
-                        {t(feature.descKey)}
-                      </CardDescription>
-                    </CardHeader>
-                  </AnimatedCard>
-                </Link>
-              </HoverCard>
-            ))}
+            {features.map((feature, index) => {
+              const cardContent = (
+                <AnimatedCard className="h-full">
+                  <CardHeader className="flex h-full flex-col">
+                    <div className="bg-primary/10 mb-3 flex h-10 w-10 items-center justify-center rounded-lg sm:mb-4 sm:h-12 sm:w-12">
+                      <feature.icon
+                        className="text-primary h-5 w-5 sm:h-6 sm:w-6"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <CardTitle className="min-h-[48px] sm:min-h-[56px]">
+                      {t(feature.titleKey)}
+                    </CardTitle>
+                    <CardDescription className="min-h-[72px] text-sm sm:min-h-[80px] sm:text-base">
+                      {t(feature.descKey)}
+                    </CardDescription>
+                  </CardHeader>
+                </AnimatedCard>
+              );
+
+              return (
+                <HoverCard key={index}>
+                  {feature.link ? (
+                    <Link
+                      href={feature.link}
+                      aria-label={`${t('homePage.learnMorePrefix')} ${t(feature.titleKey)}`}
+                    >
+                      {cardContent}
+                    </Link>
+                  ) : (
+                    cardContent
+                  )}
+                </HoverCard>
+              );
+            })}
           </div>
         </div>
       </AnimatedSection>
-    </section>
-  );
-}
-
-// --- ADDITIONAL FEATURES SECTION ---
-function AdditionalFeaturesSection() {
-  const { t, getRaw } = useTranslations();
-  const additionalFeatures = (getRaw<TranslatedFeature[]>('sections.moreFeatures.features') ||
-    []) as TranslatedFeature[];
-  const iconList = [Users, Award, CheckCircle, Play, Brain, Shield];
-  const colorList = [
-    'from-blue-500 to-cyan-500',
-    'from-green-500 to-emerald-500',
-    'from-purple-500 to-violet-500',
-    'from-orange-500 to-red-500',
-    'from-indigo-500 to-blue-500',
-    'from-teal-500 to-green-500',
-  ];
-  return (
-    <section
-      className="from-muted/20 to-background bg-gradient-to-b py-12 sm:py-16 md:py-20"
-      aria-labelledby="more-features-heading"
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center sm:mb-14 md:mb-16">
-          <motion.h2
-            id="more-features-heading"
-            className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent sm:mb-6 sm:text-3xl md:text-4xl lg:text-5xl"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {t('sections.moreFeatures.title')}
-          </motion.h2>
-          {/* Optionally add a brief description here, if you want to support translated feature section subtitles */}
-        </div>
-        <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {additionalFeatures.map((feature, index) => {
-            const Icon = iconList[index] ?? Users;
-            const color = colorList[index] ?? 'from-blue-500 to-cyan-500';
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05, ease: 'easeOut' }}
-                viewport={{ once: true }}
-              >
-                <HoverCard
-                  delay={index * 0.1}
-                  hoverContent={`${t('homePage.learnMorePrefix')} ${feature.title}`}
-                >
-                  <Card className="group card-hover fade-in-up h-full min-h-[220px] cursor-pointer transition-all duration-300 hover:shadow-lg">
-                    <CardHeader>
-                      <div className="flex items-start gap-3 sm:gap-4">
-                        <div
-                          className={`bg-gradient-to-r ${color} flex h-10 w-10 items-center justify-center rounded-xl shadow-lg sm:h-12 sm:w-12`}
-                        >
-                          <Icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />
-                        </div>
-                        <div className="flex-1">
-                          <CardTitle className="group-hover:text-primary text-base sm:text-lg">
-                            {feature.title}
-                          </CardTitle>
-                          <CardDescription className="min-h-[72px] text-xs leading-relaxed sm:min-h-[84px] sm:text-sm">
-                            {feature.description}
-                          </CardDescription>
-                        </div>
-                      </div>
-                    </CardHeader>
-                  </Card>
-                </HoverCard>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
     </section>
   );
 }
@@ -406,7 +327,7 @@ function PartnersSection() {
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <h2
               id="partners-heading"
-              className="mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent sm:mb-10 sm:text-3xl md:mb-12 md:text-4xl lg:text-5xl"
+              className="mb-8 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-2xl leading-snug font-bold text-transparent sm:mb-10 sm:text-3xl sm:leading-snug md:mb-12 md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug"
             >
               {t('sections.partners.title')}
             </h2>
@@ -439,14 +360,14 @@ function CTASection({ t }: { t: (key: string) => string }) {
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2
             id="cta-heading"
-            className="mb-4 text-2xl font-bold sm:mb-6 sm:text-3xl md:text-4xl lg:text-5xl"
+            className="mb-4 text-2xl leading-snug font-bold sm:mb-6 sm:text-3xl sm:leading-snug md:text-4xl md:leading-snug lg:text-5xl lg:leading-snug"
           >
             {t('home.ctaTitle')}
           </h2>
           <p className="text-muted-foreground mb-6 text-base sm:mb-8 sm:text-lg md:text-xl">
             {t('home.ctaDescription')}
           </p>
-          <AnimatedButton delay={0.2} size="lg" className="text-base sm:text-lg" asChild>
+          <AnimatedButton size="lg" className="text-base sm:text-lg" asChild>
             <Link href="/schedule" aria-label="Get started with Percisio">
               {t('home.ctaPrimary')} <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
             </Link>
@@ -461,24 +382,35 @@ function CTASection({ t }: { t: (key: string) => string }) {
 export default function HomePage() {
   const { t } = useTranslations();
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    if (window.location.hash === '#how-it-works') {
+      const element = document.getElementById('how-it-works');
+      if (element) {
+        window.requestAnimationFrame(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    }
+  }, []);
+
   const features = [
     {
       icon: Brain,
       titleKey: 'home.features.precision.title',
       descKey: 'home.features.precision.description',
-      link: '/features/precision',
     },
     {
       icon: Activity,
       titleKey: 'home.features.prepTime.title',
       descKey: 'home.features.prepTime.description',
-      link: '/features/preptime',
     },
     {
       icon: Shield,
       titleKey: 'home.features.rxReduction.title',
       descKey: 'home.features.rxReduction.description',
-      link: '/features/rxreduction',
     },
   ];
 
@@ -489,9 +421,6 @@ export default function HomePage() {
       <GlobalChallenges />
       <VideoSection />
       <FeaturesSection t={t} features={features} />
-      <Suspense fallback={<div className="py-12 sm:py-16 md:py-20" />}>
-        <LazyAdditionalFeaturesSection />
-      </Suspense>
       <PartnersSection />
       <CTASection t={t} />
       <Footer />

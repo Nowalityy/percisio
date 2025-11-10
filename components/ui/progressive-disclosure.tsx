@@ -32,9 +32,7 @@ export function ProgressiveDisclosure({
     <div className={`space-y-4 ${className}`}>
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between rounded-lg bg-muted/30 p-4 text-left transition-all duration-200 hover:bg-muted/50"
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 0.99 }}
+        className="flex w-full items-center justify-between rounded-lg bg-muted/30 p-4 text-left"
       >
         <h3 className="text-lg font-semibold">{title}</h3>
         <motion.div
@@ -72,11 +70,7 @@ export function ProgressiveDisclosure({
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <Button
-                    variant="ghost"
-                    onClick={() => setShowAll(true)}
-                    className="mt-2 text-primary hover:text-primary/80"
-                  >
+                  <Button variant="ghost" onClick={() => setShowAll(true)} className="mt-2 text-primary">
                     Show {childrenArray.length - maxItems} more
                     <ChevronDown className="ml-2 h-4 w-4" />
                   </Button>
@@ -92,7 +86,7 @@ export function ProgressiveDisclosure({
                   <Button
                     variant="ghost"
                     onClick={() => setShowAll(false)}
-                    className="mt-2 text-muted-foreground hover:text-foreground"
+                    className="mt-2 text-muted-foreground"
                   >
                     Show less
                     <ChevronUp className="ml-2 h-4 w-4" />

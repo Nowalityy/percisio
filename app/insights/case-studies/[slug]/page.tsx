@@ -29,7 +29,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           <div className="mb-8">
             <Link
               href="/insights/case-studies"
-              className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 transition-colors"
+              className="text-muted-foreground inline-flex items-center gap-2"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Case Studies

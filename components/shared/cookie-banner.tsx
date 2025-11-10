@@ -41,7 +41,7 @@ export function CookieBanner() {
               We use cookies to enhance your browsing experience, serve personalized content, and
               analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of
               cookies.{' '}
-              <Link href="/legal/cookies" className="hover:text-primary underline">
+              <Link href="/legal/cookies" className="underline">
                 Read our Cookie Policy
               </Link>
             </p>

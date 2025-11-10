@@ -27,10 +27,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <main className="pt-24 pb-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <Link
-              href="/insights/blog"
-              className="text-muted-foreground hover:text-primary inline-flex items-center gap-2 transition-colors"
-            >
+            <Link href="/insights/blog" className="text-muted-foreground inline-flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
               Back to Blog
             </Link>

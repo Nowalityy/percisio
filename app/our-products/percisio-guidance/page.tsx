@@ -131,7 +131,6 @@ export default function GuidancePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     viewport={{ once: true }}
-                    className="group"
                   >
                     <div className="relative overflow-hidden rounded-lg shadow-lg">
                       <Image
@@ -139,7 +138,7 @@ export default function GuidancePage() {
                         alt="PERCISIO Needle Guidance Procedure"
                         width={400}
                         height={300}
-                        className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="h-64 w-full object-cover"
                       />
                     </div>
                     <div className="mt-4 text-center">
@@ -158,7 +157,6 @@ export default function GuidancePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="group"
                   >
                     <div className="relative overflow-hidden rounded-lg shadow-lg">
                       <Image
@@ -166,7 +164,7 @@ export default function GuidancePage() {
                         alt="PERCISIO Abscess Treatment Procedure"
                         width={400}
                         height={300}
-                        className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="h-64 w-full object-cover"
                       />
                     </div>
                     <div className="mt-4 text-center">
@@ -185,7 +183,6 @@ export default function GuidancePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                     viewport={{ once: true }}
-                    className="group"
                   >
                     <div className="relative overflow-hidden rounded-lg shadow-lg">
                       <Image
@@ -193,7 +190,7 @@ export default function GuidancePage() {
                         alt="PERCISIO Advanced Abscess Treatment"
                         width={400}
                         height={300}
-                        className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="h-64 w-full object-cover"
                       />
                     </div>
                     <div className="mt-4 text-center">

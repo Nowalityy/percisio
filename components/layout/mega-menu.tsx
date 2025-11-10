@@ -156,7 +156,7 @@ export function MegaMenu() {
           {item.href ? (
             <Link
               href={item.href}
-              className={`hover:text-primary px-4 py-2 text-sm font-medium transition-colors ${
+              className={`px-4 py-2 text-sm font-medium ${
                 isActive(item.href) ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
@@ -164,7 +164,7 @@ export function MegaMenu() {
             </Link>
           ) : (
             <button
-              className={`hover:text-primary flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-1 px-4 py-2 text-sm font-medium ${
                 isActive(undefined, item.sections) ? 'text-primary' : 'text-muted-foreground'
               }`}
             >
@@ -180,7 +180,7 @@ export function MegaMenu() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.2 }}
-                className="border-border bg-background/95 absolute top-full left-0 mt-2 overflow-hidden rounded-lg border shadow-2xl backdrop-blur-lg"
+                className="border-border bg-background absolute top-full left-0 mt-2 overflow-hidden rounded-lg border shadow-2xl"
                 style={{ minWidth: '500px' }}
               >
                 <div className="grid grid-cols-2 gap-8 p-6">
@@ -194,9 +194,9 @@ export function MegaMenu() {
                           <Link
                             key={menuItem.href}
                             href={menuItem.href}
-                            className="group hover:bg-accent block rounded-md px-3 py-2 transition-colors"
+                            className="block rounded-md px-3 py-2"
                           >
-                            <div className="group-hover:text-primary text-sm font-medium transition-colors">
+                            <div className="text-sm font-medium">
                               {menuItem.title}
                             </div>
                             {menuItem.description && (

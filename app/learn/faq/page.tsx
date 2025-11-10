@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { HoverCard } from '@/components/ui/hover-card';
 import { useTranslations } from '@/lib/hooks/use-translations';
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -93,7 +92,7 @@ export default function FAQPage() {
             <Button
               variant="ghost"
               onClick={() => router.back()}
-              className="text-muted-foreground hover:text-foreground flex items-center gap-2"
+              className="text-muted-foreground flex items-center gap-2"
             >
               <ArrowLeft className="h-4 w-4" />
               {t('faqUi.back')}
@@ -125,31 +124,26 @@ export default function FAQPage() {
 
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-2">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <div>
                 <Badge
                   variant={selectedCategory === 'all' ? 'default' : 'outline'}
-                  className="cursor-pointer px-4 py-2 text-sm transition-all duration-200 hover:shadow-md"
+                  className="cursor-pointer px-4 py-2 text-sm"
                   onClick={() => setSelectedCategory('all')}
                 >
                   <Filter className="mr-2 h-3 w-3" />
                   {t('faqUi.all')}
                 </Badge>
-              </motion.div>
-              {Object.keys(faqCategories).map((category, index) => (
-                <motion.div
-                  key={category}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ delay: index * 0.1 }}
-                >
+              </div>
+              {Object.keys(faqCategories).map((category) => (
+                <div key={category}>
                   <Badge
                     variant={selectedCategory === category ? 'default' : 'outline'}
-                    className="cursor-pointer px-4 py-2 text-sm transition-all duration-200 hover:shadow-md"
+                    className="cursor-pointer px-4 py-2 text-sm"
                     onClick={() => setSelectedCategory(category)}
                   >
                     {t(`faq.categories.${category}`)}
                   </Badge>
-                </motion.div>
+                </div>
               ))}
             </div>
           </motion.div>
@@ -172,68 +166,59 @@ export default function FAQPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <HoverCard hoverContent={t('common.readMore')}>
-                        <AccordionItem value={`item-${index}`} className="rounded-lg border px-4">
-                          <AccordionTrigger className="py-6 text-left hover:no-underline">
-                            <div className="flex items-center gap-3">
-                              <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                transition={{ duration: 0.2 }}
-                              >
-                                <Badge variant="secondary" className="text-xs">
-                                  {t(`faq.categories.${faq.category}`)}
-                                </Badge>
-                              </motion.div>
-                              <span className="font-medium">
-                                {t(`faq.questions.${faq.id}.question`)}
-                              </span>
+                      <AccordionItem value={`item-${index}`} className="rounded-lg border px-4">
+                        <AccordionTrigger className="py-6 text-left">
+                          <div className="flex items-center gap-3">
+                            <div>
+                              <Badge variant="secondary" className="text-xs">
+                                {t(`faq.categories.${faq.category}`)}
+                              </Badge>
                             </div>
-                          </AccordionTrigger>
-                          <AccordionContent className="text-muted-foreground pb-6">
-                            <div className="prose prose-sm mb-4 max-w-none">
-                              {t(`faq.questions.${faq.id}.answer`)}
-                            </div>
+                            <span className="font-medium">
+                              {t(`faq.questions.${faq.id}.question`)}
+                            </span>
+                          </div>
+                        </AccordionTrigger>
+                        <AccordionContent className="text-muted-foreground pb-6">
+                          <div className="prose prose-sm mb-4 max-w-none">
+                            {t(`faq.questions.${faq.id}.answer`)}
+                          </div>
 
-                            {/* Feedback Section */}
-                            <motion.div
-                              className="flex items-center gap-2 border-t pt-4"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.2 }}
-                            >
-                              <span className="text-muted-foreground text-sm">
-                                {t('faqUi.wasThisHelpful')}
-                              </span>
-                              <div className="flex gap-1">
-                                <motion.button
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.9 }}
-                                  onClick={() => handleFeedback(faq.id, 'helpful')}
-                                  className={`rounded p-1 transition-colors ${
-                                    feedback[faq.id] === 'helpful'
-                                      ? 'bg-green-50 text-green-600'
-                                      : 'text-muted-foreground hover:text-green-600'
-                                  }`}
-                                >
-                                  <ThumbsUp className="h-4 w-4" />
-                                </motion.button>
-                                <motion.button
-                                  whileHover={{ scale: 1.1 }}
-                                  whileTap={{ scale: 0.9 }}
-                                  onClick={() => handleFeedback(faq.id, 'not-helpful')}
-                                  className={`rounded p-1 transition-colors ${
-                                    feedback[faq.id] === 'not-helpful'
-                                      ? 'bg-red-50 text-red-600'
-                                      : 'text-muted-foreground hover:text-red-600'
-                                  }`}
-                                >
-                                  <ThumbsDown className="h-4 w-4" />
-                                </motion.button>
-                              </div>
-                            </motion.div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </HoverCard>
+                          {/* Feedback Section */}
+                          <motion.div
+                            className="flex items-center gap-2 border-t pt-4"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                          >
+                            <span className="text-muted-foreground text-sm">
+                              {t('faqUi.wasThisHelpful')}
+                            </span>
+                            <div className="flex gap-1">
+                              <button
+                                onClick={() => handleFeedback(faq.id, 'helpful')}
+                                className={`rounded p-1 ${
+                                  feedback[faq.id] === 'helpful'
+                                    ? 'bg-green-50 text-green-600'
+                                    : 'text-muted-foreground'
+                                }`}
+                              >
+                                <ThumbsUp className="h-4 w-4" />
+                              </button>
+                              <button
+                                onClick={() => handleFeedback(faq.id, 'not-helpful')}
+                                className={`rounded p-1 ${
+                                  feedback[faq.id] === 'not-helpful'
+                                    ? 'bg-red-50 text-red-600'
+                                    : 'text-muted-foreground'
+                                }`}
+                              >
+                                <ThumbsDown className="h-4 w-4" />
+                              </button>
+                            </div>
+                          </motion.div>
+                        </AccordionContent>
+                      </AccordionItem>
                     </motion.div>
                   ))}
                 </Accordion>
@@ -252,58 +237,6 @@ export default function FAQPage() {
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Contact CTA */}
-          <motion.div
-            className="bg-muted/50 mt-16 rounded-lg p-8 text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.h3
-              className="mb-4 text-2xl font-semibold"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              {t('faqUi.stillHaveQuestions')}
-            </motion.h3>
-            <motion.p
-              className="text-muted-foreground mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-            >
-              {t('faqUi.stillHaveQuestionsDesc')}
-            </motion.p>
-            <motion.div
-              className="flex flex-col gap-4 sm:flex-row sm:justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <motion.a
-                href="/contact"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-primary/20 inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-medium transition-all duration-200 hover:shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {t('faqUi.contactSupport')}
-              </motion.a>
-              <motion.a
-                href="/schedule"
-                className="border-input bg-background hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-md border px-6 py-3 text-sm font-medium transition-all duration-200 hover:shadow-md"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {t('faqUi.scheduleDemo')}
-              </motion.a>
-            </motion.div>
-          </motion.div>
         </div>
       </main>
       <Footer />

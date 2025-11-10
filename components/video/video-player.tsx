@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Play } from 'lucide-react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface VideoPlayerProps {
@@ -33,22 +32,15 @@ export function VideoPlayer({
 
   if (!isPlaying && !autoplay) {
     return (
-      <Card
-        className="group relative cursor-pointer overflow-hidden"
-        onClick={() => setIsPlaying(true)}
-      >
+      <Card className="relative cursor-pointer overflow-hidden" onClick={() => setIsPlaying(true)}>
         <div className="relative aspect-video">
           {defaultThumbnail && (
             <Image src={defaultThumbnail} alt={title} fill className="object-cover" />
           )}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition-colors group-hover:bg-black/60">
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary flex h-20 w-20 items-center justify-center rounded-full shadow-lg"
-            >
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+            <div className="bg-primary flex h-20 w-20 items-center justify-center rounded-full shadow-lg">
               <Play className="text-primary-foreground ml-1 h-10 w-10" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </Card>

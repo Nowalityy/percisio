@@ -46,7 +46,7 @@ export default function BlogPage() {
             {posts.length > 0 ? (
               posts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.slug_en}`}>
-                  <Card className="h-full transition-shadow hover:shadow-lg">
+                  <Card className="h-full">
                     <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
                       {post.cover_image && (
                         <Image

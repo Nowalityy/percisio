@@ -813,6 +813,7 @@
     "empty": "No videos available at the moment.",
     "clickToLoad": "Click to load video",
     "categories": {
+      "all": "All",
       "overview": "Overview",
       "technical": "Technical",
       "features": "Features",
@@ -822,7 +823,8 @@
   "homePage": {
     "learnMorePrefix": "Learn more about",
     "videoTitle": "Percisio - An overview of Percisio's cutting-edge technology",
-    "scrollToFeatures": "Scroll to features section"
+    "scrollToFeatures": "Scroll to features section",
+    "scrollToHowItWorks": "Scroll to How It Works video"
   },
   "documentation": {
     "title": "Documentation",

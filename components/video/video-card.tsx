@@ -7,7 +7,7 @@ import { useTranslations } from '@/lib/hooks/use-translations';
 
 interface VideoCardProps {
   title: string;
-  description: string;
+  description?: string;
   youtubeId?: string;
   videoUrl?: string;
   thumbnailUrl?: string;
@@ -16,19 +16,12 @@ interface VideoCardProps {
   category?: string;
 }
 
-export function VideoCard({
-  title,
-  description,
-  youtubeId,
-  videoUrl,
-  thumbnailUrl,
-  category,
-}: VideoCardProps) {
+export function VideoCard({ title, description, youtubeId, videoUrl, thumbnailUrl, category }: VideoCardProps) {
   const { t } = useTranslations();
   const catKeyMap: Record<string, string> = { 'ar-demo': 'arDemo' };
   const resolvedCategoryKey = category ? catKeyMap[category] || category : undefined;
   return (
-    <Card className="overflow-hidden transition-shadow hover:shadow-lg">
+    <Card className="overflow-hidden">
       <VideoPlayer
         youtubeId={youtubeId}
         videoUrl={videoUrl}
@@ -44,7 +37,7 @@ export function VideoCard({
             </Badge>
           )}
         </div>
-        <CardDescription className="text-base">{description}</CardDescription>
+        {description && <CardDescription className="text-base">{description}</CardDescription>}
       </CardHeader>
     </Card>
   );

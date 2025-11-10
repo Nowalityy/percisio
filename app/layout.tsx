@@ -1,21 +1,14 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Noto_Sans } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const notoSans = Noto_Sans({
+  variable: '--font-noto-sans',
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  fallback: ['system-ui', 'arial'],
-  adjustFontFallback: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-  display: 'swap',
-  fallback: ['ui-monospace', 'monospace'],
+  fallback: ['system-ui', 'sans-serif'],
   adjustFontFallback: true,
 });
 
@@ -40,10 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://www.youtube.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{ backgroundColor: '#ffffff', color: '#0a0a0a' }}
-      >
+      <body className={`${notoSans.className} antialiased`} style={{ backgroundColor: '#ffffff', color: '#0a0a0a' }}>
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-KTRCENX2W3"

@@ -40,7 +40,7 @@ export default function CaseStudiesPage() {
             {caseStudies.length > 0 ? (
               caseStudies.map((study) => (
                 <Link key={study.id} href={`/case-studies/${study.slug}`}>
-                  <Card className="h-full transition-shadow hover:shadow-lg">
+                  <Card className="h-full">
                     <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
                       {study.cover_image && (
                         <Image

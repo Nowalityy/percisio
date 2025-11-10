@@ -86,10 +86,7 @@ export default function TeamPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {teamMembers.map((member) => (
-              <Card
-                key={member.id}
-                className="card-hover fade-in-up flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg"
-              >
+              <Card key={member.id} className="flex h-full flex-col overflow-hidden">
                 <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-cyan-500/20 to-blue-600/20">
                   {member.image ? (
                     <Image
@@ -119,7 +116,7 @@ export default function TeamPage() {
                         href={member.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary inline-flex items-center text-sm hover:underline"
+                        className="text-primary inline-flex items-center text-sm"
                         aria-label={`${member.name} LinkedIn profile`}
                       >
                         <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />

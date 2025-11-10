@@ -5,8 +5,8 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { VideoCard } from '@/components/video/video-card';
 import { AnimatedSection } from '@/components/shared/animated-section';
-import { Play } from 'lucide-react';
 import { useTranslations } from '@/lib/hooks/use-translations';
+import { Button } from '@/components/ui/button';
 
 interface Video {
   id: string;
@@ -29,6 +29,7 @@ export default function VideosPage() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [locale, setLocale] = useState<'en' | 'fr'>('en');
+  const [activeCategory, setActiveCategory] = useState<string>('all');
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -134,18 +135,14 @@ export default function VideosPage() {
   }, []);
 
   const categories = [
+    { id: 'all', label: t('videos.categories.all') },
     { id: 'overview', label: t('videos.categories.overview') },
     { id: 'technical', label: t('videos.categories.technical') },
     { id: 'features', label: t('videos.categories.features') },
     { id: 'ar-demo', label: t('videos.categories.arDemo') },
   ];
-
-  const videosByCategory = categories
-    .map((cat) => ({
-      ...cat,
-      videos: videos.filter((v) => v.category === cat.id),
-    }))
-    .filter((cat) => cat.videos.length > 0);
+  const filteredVideos =
+    activeCategory === 'all' ? videos : videos.filter((video) => video.category === activeCategory);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -156,11 +153,7 @@ export default function VideosPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
               <div className="mx-auto mb-16 max-w-3xl text-center">
-                <div className="bg-primary/10 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full">
-                  <Play className="text-primary h-8 w-8" />
-                </div>
-                <h1 className="mb-6 text-4xl font-bold md:text-5xl">{t('videos.title')}</h1>
-                <p className="text-muted-foreground text-xl">{t('videos.intro')}</p>
+                <h1 className="text-4xl font-bold md:text-5xl">{t('videos.title')}</h1>
               </div>
             </AnimatedSection>
 
@@ -171,32 +164,37 @@ export default function VideosPage() {
               </div>
             ) : (
               <>
-                {videosByCategory.map((category, idx) => (
-                  <AnimatedSection key={category.id} delay={idx * 0.1}>
-                    <div className="mb-16">
-                      <h2 className="mb-8 text-3xl font-bold capitalize">{category.label}</h2>
-                      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        {category.videos.map((video) => (
-                          <VideoCard
-                            key={video.id}
-                            title={locale === 'en' ? video.title_en : video.title_fr}
-                            description={
-                              locale === 'en' ? video.description_en : video.description_fr
-                            }
-                            youtubeId={video.youtube_id || undefined}
-                            videoUrl={video.video_url || undefined}
-                            thumbnailUrl={video.thumbnail_url || undefined}
-                            duration={video.duration || undefined}
-                            viewCount={video.view_count}
-                            category={video.category}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </AnimatedSection>
-                ))}
+                <div className="mx-auto mb-12 flex flex-wrap justify-center gap-3">
+                  {categories.map((category) => (
+                    <Button
+                      key={category.id}
+                      variant={activeCategory === category.id ? 'default' : 'outline'}
+                      className="min-w-[120px] capitalize"
+                      onClick={() => setActiveCategory(category.id)}
+                    >
+                      {category.label}
+                    </Button>
+                  ))}
+                </div>
 
-                {videos.length === 0 && !loading && (
+                <AnimatedSection>
+                  <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {filteredVideos.map((video) => (
+                      <VideoCard
+                        key={video.id}
+                        title={locale === 'en' ? video.title_en : video.title_fr}
+                        youtubeId={video.youtube_id || undefined}
+                        videoUrl={video.video_url || undefined}
+                        thumbnailUrl={video.thumbnail_url || undefined}
+                        duration={video.duration || undefined}
+                        viewCount={video.view_count}
+                        category={video.category}
+                      />
+                    ))}
+                  </div>
+                </AnimatedSection>
+
+                {filteredVideos.length === 0 && !loading && (
                   <div className="py-16 text-center">
                     <p className="text-muted-foreground text-xl">{t('videos.empty')}</p>
                   </div>

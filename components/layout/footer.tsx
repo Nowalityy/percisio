@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Twitter, Linkedin, Youtube, Facebook } from 'lucide-react';
+import { Linkedin, Youtube } from 'lucide-react';
 import { useTranslations } from '@/lib/hooks/use-translations';
 
 export function Footer() {
@@ -38,32 +38,18 @@ export function Footer() {
             <p className="text-muted-foreground mb-4 text-sm">{t('footer.description')}</p>
             <div className="flex space-x-4">
               <Link
-                href="https://twitter.com"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </Link>
-              <Link
                 href="https://www.linkedin.com/company/percisio/"
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </Link>
               <Link
                 href="https://www.youtube.com/@PERCISIO"
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground"
                 aria-label="YouTube"
               >
                 <Youtube className="h-5 w-5" />
-              </Link>
-              <Link
-                href="https://facebook.com"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
               </Link>
             </div>
           </div>
@@ -73,10 +59,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary text-sm"
-                  >
+                  <Link href={link.href} className="text-muted-foreground text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -89,10 +72,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary text-sm"
-                  >
+                  <Link href={link.href} className="text-muted-foreground text-sm">
                     {link.name}
                   </Link>
                 </li>
@@ -105,10 +85,7 @@ export function Footer() {
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary text-sm"
-                  >
+                  <Link href={link.href} className="text-muted-foreground text-sm">
                     {link.name}
                   </Link>
                 </li>

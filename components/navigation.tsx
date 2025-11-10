@@ -139,7 +139,7 @@ export function Navigation() {
           onMouseLeave={() => setActiveMenu(null)}
         >
           <button
-            className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors hover:text-cyan-400 ${
+            className={`flex items-center gap-1 px-4 py-2 text-sm font-medium ${
               isActive(item.sections) ? 'text-cyan-400' : 'text-slate-300'
             }`}
           >
@@ -155,7 +155,7 @@ export function Navigation() {
           </button>
 
           {activeMenu === item.label && (
-            <div className="absolute top-full left-0 z-50 mt-2 overflow-hidden rounded-lg border border-cyan-500/20 bg-slate-800/95 shadow-2xl backdrop-blur-lg transition-all duration-200">
+            <div className="absolute top-full left-0 z-50 mt-2 overflow-hidden rounded-lg border border-cyan-500 bg-slate-800 shadow-2xl">
               <div className="grid grid-cols-2 gap-8 p-6" style={{ minWidth: '500px' }}>
                 {item.sections.map((section) => (
                   <div key={section.title}>
@@ -167,9 +167,9 @@ export function Navigation() {
                         <Link
                           key={menuItem.href}
                           href={menuItem.href}
-                          className="group block rounded-md px-3 py-2 transition-colors hover:bg-slate-700/50"
+                          className="block rounded-md px-3 py-2"
                         >
-                          <div className="text-sm font-medium text-white transition-colors group-hover:text-cyan-400">
+                          <div className="text-sm font-medium text-white">
                             {menuItem.title}
                           </div>
                           {'description' in menuItem && menuItem.description && (
