@@ -455,6 +455,10 @@
       "rxReduction": {
         "title": "Réduction de l’exposition RX",
         "description": "– 40 % d’images de contrôle en moins. Impact clinique immédiat : moins de rayonnements, procédures plus fluides."
+      },
+      "materialUsage": {
+        "title": "Réduction de l’usage des consommables",
+        "description": "Waiting Fred."
       }
     },
     "ctaTitle": "Expériencez le futur de la navigation chirurgicale",
@@ -857,17 +861,19 @@
   },
   "aboutPage": {
     "title": "À propos de Percisio",
-    "subtitle": "Percisio est un dispositif médical de classe IIA protégé par un brevet européen, qui s’appuie sur la réalité augmentée pilotée par l’IA et des hologrammes pour guider avec précision des procédures mini‑invasives, y compris pour des non‑experts.",
-    "missionTitle": "Notre mission",
-    "missionText": "Améliorer les résultats chirurgicaux et la sécurité des patients grâce à des procédures innovantes guidées par hologrammes et réalité augmentée, afin de rendre les actes complexes accessibles à tous les praticiens.",
-    "valuesTitle": "Nos valeurs",
-    "valuesText": "Précision, innovation et intégration intelligente. Nous croyons que les meilleures solutions médicales naissent d’un design réfléchi et d’un usage pertinent des technologies existantes.",
-    "impactTitle": "Impact mondial",
-    "impactText": "Répondre à la pénurie mondiale d’experts médicaux, accompagner des hôpitaux dans le monde entier et permettre un guidage à distance grâce à l’imagerie avancée et à la RA.",
-    "techTitle": "Technologie",
-    "techText": "PERCISIO adopte une approche basée sur les hologrammes pour cartographier l’anatomie, suivre les instruments en temps réel et fournir un guidage à l’écran pour des procédures telles que le drainage percutané d’abcès hépatiques.",
-    "philosophyTitle": "Philosophie",
-    "philosophyText": "Conçu comme un projet DIY pour rivaliser avec les grands acteurs du médical, Percisio met l’accent sur l’ergonomie, l’efficacité et l’intégration la plus intelligente des sous‑systèmes disponibles."
+    "intro": "Un aperçu des personnes derrière Percisio et de notre collaboration pour faire progresser le guidage par l’image.",
+    "sections": {
+      "team": {
+        "title": "Équipes",
+        "description": "Ingénieurs, cliniciens et designers unissent leurs forces pour concevoir des outils de guidage fiables.",
+        "cta": "Découvrir l’équipe"
+      },
+      "careers": {
+        "title": "Carrières",
+        "description": "Nous grandissons avec soin — consultez les postes ouverts ou contactez-nous pour contribuer à la navigation de précision.",
+        "cta": "Voir les carrières"
+      }
+    }
   },
   "careersPage": {
     "title": "Carrières chez Percisio",

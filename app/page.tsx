@@ -106,11 +106,11 @@ function HeroSection({ t }: { t: (key: string) => string }) {
             >
               <h1
                 id="hero-heading"
-                className="mb-4 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl leading-snug font-bold text-transparent sm:mb-6 sm:text-4xl sm:leading-snug md:text-5xl md:leading-snug lg:text-6xl lg:leading-snug"
+                className="mb-3 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-3xl leading-tight font-semibold text-transparent sm:mb-5 sm:text-4xl sm:leading-tight md:text-[2.75rem] md:leading-snug lg:text-[3.25rem] lg:leading-tight"
               >
                 {t('home.title')}
               </h1>
-              <p className="text-muted-foreground mx-auto mb-6 max-w-2xl text-base sm:mb-8 sm:text-lg md:text-xl lg:mx-0">
+              <p className="text-muted-foreground mx-auto mb-5 max-w-2xl text-base sm:mb-7 sm:text-lg md:text-lg lg:mx-0">
                 {t('home.subtitle')}
               </p>
               <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
@@ -266,7 +266,7 @@ function FeaturesSection({
             </p>
           </div>
 
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
             {features.map((feature, index) => {
               const cardContent = (
                 <AnimatedCard className="h-full">
@@ -416,6 +416,11 @@ export default function HomePage() {
       icon: Shield,
       titleKey: 'home.features.rxReduction.title',
       descKey: 'home.features.rxReduction.description',
+    },
+    {
+      icon: Award,
+      titleKey: 'home.features.materialUsage.title',
+      descKey: 'home.features.materialUsage.description',
     },
   ];
 

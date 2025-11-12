@@ -455,6 +455,10 @@
       "rxReduction": {
         "title": "Reduction of RX Exposure",
         "description": "– 40% fewer control images needed. Immediate clinical impact: less radiation, smoother procedures."
+      },
+      "materialUsage": {
+        "title": "Reduces Material Usage",
+        "description": "Waiting Fred."
       }
     },
     "ctaTitle": "Experience the Future of Surgical Navigation",
@@ -854,17 +858,19 @@
   },
   "aboutPage": {
     "title": "About Percisio",
-    "subtitle": "Percisio is a Class IIA medical device protected by a European patent, leveraging AI-powered augmented reality and holograms to guide minimally invasive procedures with precision, even for non-experts.",
-    "missionTitle": "Our Mission",
-    "missionText": "Enhance surgical outcomes and patient safety through innovative holographic and AR-guided procedures, making complex medical tasks accessible to all practitioners.",
-    "valuesTitle": "Our Values",
-    "valuesText": "Precision, innovation, and smart integration. We believe the best medical solutions come from thoughtful design and intelligent use of existing technologies.",
-    "impactTitle": "Global Impact",
-    "impactText": "Addressing the global shortage of medical experts, serving hospitals worldwide, and enabling remote guidance through advanced imaging and AR technology.",
-    "techTitle": "Technology",
-    "techText": "PERCISIO adopts a hologram-based approach to map patient anatomy, track instruments in real time, and provide on-screen guidance for procedures like percutaneous drainage of liver abscesses.",
-    "philosophyTitle": "Philosophy",
-    "philosophyText": "Built as a DIY project to rival big medical companies, Percisio emphasizes ergonomics, efficiency, and the smartest integration of available subsystems."
+    "intro": "A focused look at the people behind Percisio and how we collaborate to advance image-guided care.",
+    "sections": {
+      "team": {
+        "title": "Teams",
+        "description": "Interdisciplinary engineers, clinicians, and designers working together on guidance tools you can trust.",
+        "cta": "Explore the team"
+      },
+      "careers": {
+        "title": "Careers",
+        "description": "We’re growing thoughtfully — see open roles or send us a note if you want to help shape precision navigation.",
+        "cta": "View careers"
+      }
+    }
   },
   "careersPage": {
     "title": "Careers at Percisio",

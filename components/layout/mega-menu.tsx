@@ -77,11 +77,6 @@ export function MegaMenu() {
           title: t('nav.resources'),
           items: [
             { title: t('nav.videos'), description: t('nav.videosDesc'), href: '/learn/videos' },
-            {
-              title: t('nav.documentation'),
-              description: t('nav.documentationDesc'),
-              href: '/learn/documentation',
-            },
             { title: t('nav.faq'), description: t('nav.faqDesc'), href: '/learn/faq' },
           ],
         },
@@ -103,33 +98,8 @@ export function MegaMenu() {
       ],
     },
     {
-      label: t('nav.company'),
-      sections: [
-        {
-          title: t('nav.about'),
-          items: [
-            { title: t('nav.about'), description: t('nav.aboutDesc'), href: '/about-us/about' },
-            {
-              title: t('nav.team'),
-              description: t('nav.teamDesc'),
-              href: '/about-us/team',
-            },
-            {
-              title: t('nav.careers'),
-              description: t('nav.careersDesc'),
-              href: '/about-us/careers',
-            },
-          ],
-        },
-        {
-          title: t('nav.legal'),
-          items: [
-            { title: t('nav.termsOfService'), href: '/legal/terms' },
-            { title: t('nav.privacyPolicy'), href: '/legal/privacy' },
-            { title: t('nav.cookiePolicy'), href: '/legal/cookies' },
-          ],
-        },
-      ],
+      label: t('nav.about'),
+      href: '/about-us/about',
     },
     {
       label: t('nav.contact'),

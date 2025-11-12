@@ -90,11 +90,6 @@ export function Header() {
           title: t('nav.resources'),
           items: [
             { title: t('nav.videos'), description: t('nav.videosDesc'), href: '/learn/videos' },
-            {
-              title: t('nav.documentation'),
-              description: t('nav.documentationDesc'),
-              href: '/learn/documentation',
-            },
             { title: t('nav.faq'), description: t('nav.faqDesc'), href: '/learn/faq' },
           ],
         },
@@ -112,37 +107,8 @@ export function Header() {
       ],
     },
     {
-      label: t('nav.company'),
-      sections: [
-        {
-          title: t('nav.aboutUs'),
-          items: [
-            {
-              title: 'About Percisio',
-              description: 'Our mission and vision',
-              href: '/about-us/about',
-            },
-            {
-              title: 'Team',
-              description: 'Meet the experts',
-              href: '/about-us/team',
-            },
-            {
-              title: 'Careers',
-              description: 'Join our team',
-              href: '/about-us/careers',
-            },
-          ],
-        },
-        {
-          title: 'Legal',
-          items: [
-            { title: 'Terms of Service', href: '/legal/terms' },
-            { title: 'Privacy Policy', href: '/legal/privacy' },
-            { title: 'Cookie Policy', href: '/legal/cookies' },
-          ],
-        },
-      ],
+      label: t('nav.about'),
+      href: '/about-us/about',
     },
     {
       label: t('nav.contact'),
