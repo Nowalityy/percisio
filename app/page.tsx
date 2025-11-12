@@ -24,8 +24,6 @@ type TranslatedFeature = {
   title: string;
   description: string;
 };
-
-// YouTube Facade for performance optimization
 function YouTubeFacade() {
   const { t } = useTranslations();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -140,9 +138,13 @@ function HeroSection({ t }: { t: (key: string) => string }) {
           {/* Right side - Image */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative rounded-lg bg-white p-4 sm:p-6">
-              <img
+              <Image
                 src="/assets/2cameras.png"
                 alt="Percisio Medical Device"
+                width={896}
+                height={704}
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 60vw, 448px"
+                priority
                 className="h-auto max-w-full rounded-lg sm:max-w-md lg:max-w-lg"
               />
             </div>
