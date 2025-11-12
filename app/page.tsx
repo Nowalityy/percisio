@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -76,12 +77,16 @@ function HeroSection({ t }: { t: (key: string) => string }) {
       aria-labelledby="hero-heading"
     >
       {/* Background Image */}
-      <div
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: 'url(/guidance_image/abscess1.jpg)',
-        }}
-      >
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/guidance_image/abscess1.jpg"
+          alt="Percisio guidance in action"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center md:object-[center_right]"
+          style={{ transform: 'scale(1.08)' }}
+        />
         <div className="bg-background/70 absolute inset-0" />
       </div>
 

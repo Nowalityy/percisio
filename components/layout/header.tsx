@@ -151,8 +151,8 @@ export function Header() {
   ];
 
   return (
-    <header className="border-border bg-background fixed top-0 right-0 left-0 z-50 border-b">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+    <header className="border-border fixed inset-x-0 top-0 z-50 border-b bg-transparent backdrop-blur-md">
+      <nav className="w-full px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <div>
